@@ -15,6 +15,5 @@ The repository currently revolves around several related themes:
 - **research framework**, where the methodological foundations of the work are developed
 - **equity volatility targeting**, focused on risk-managed exposure to the equity market through futures
 - **alternative risk premia**, focused on systematic return sources such as trend, term structure, volatility, and momentum
-- **project-based research**, where more specific or academic work is developed in standalone form
 
 Together, these areas reflect a common objective: understanding how market exposure, diversification, and systematic rules can be combined in a disciplined way.
