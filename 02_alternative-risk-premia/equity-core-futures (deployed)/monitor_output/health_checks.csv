@@ -6,4 +6,4 @@ unexpected_symbols_held,OK,All open symbols belong to expected families.
 target_vs_actual_lots,WARNING,Lots-gap check skipped because implementation state is incomplete.
 target_vs_actual_notional,WARNING,Notional-gap check skipped because implementation state is incomplete.
 long_only_constraint,OK,Long-only constraint respected.
-equity_positive,OK,Account equity positive: 968258.00
+equity_positive,OK,Account equity positive: 966918.00
