@@ -14,7 +14,7 @@ What this monitor can do now
 ----------------------------
 1. Read MT5 account, positions, orders, and deal history
 2. Build a provisional post-deployment performance view
-3. Compare against ES benchmark from the chosen inception date
+3. Compare against SPY benchmark from the chosen inception date
 4. Reconstruct current exposures by asset family
 5. Run implementation checks when EA state export exists
 6. Mark performance quality explicitly
@@ -662,7 +662,7 @@ class PerformanceBuilder:
         plt.figure(figsize=(12, 6))
         plt.plot(perf_df["date"], perf_df["strategy_index"], label="Strategy")
         plt.plot(perf_df["date"], perf_df["balance_index"], label="Balance")
-        plt.plot(perf_df["date"], perf_df["benchmark_index"], label="ES Benchmark")
+        plt.plot(perf_df["date"], perf_df["benchmark_index"], label="SPY Benchmark")
         plt.title(f"Cumulative Performance ({performance_quality.capitalize()})")
         plt.xlabel("Date")
         plt.ylabel("Index")
@@ -679,7 +679,7 @@ class PerformanceBuilder:
         plt.figure(figsize=(12, 5))
         plt.plot(perf_df["date"], strat_dd, label="Strategy DD")
         plt.plot(perf_df["date"], bal_dd, label="Balance DD")
-        plt.plot(perf_df["date"], bench_dd, label="ES Benchmark DD")
+        plt.plot(perf_df["date"], bench_dd, label="SPY Benchmark DD")
         plt.title(f"Drawdowns ({performance_quality.capitalize()})")
         plt.xlabel("Date")
         plt.ylabel("Drawdown")
