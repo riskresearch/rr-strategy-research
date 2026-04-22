@@ -1,0 +1,42 @@
+---
+title: "RR Strategy Research"
+subtitle: "A systematic framework for multi-asset investing and risk premia harvesting"
+author: "Juan Antonio Roger"
+date: today
+---
+
+## About this document
+
+This document is a research framework for systematic multi-asset investing. It is not a strategy guide, a trading manual, or a retail investment primer. It is an attempt to build a rigorous intellectual foundation for the kind of investment process that takes markets seriously — one that respects the difficulty of outperformance, understands where returns actually come from, and designs portfolios that can survive the conditions they will realistically encounter.
+
+The framework draws on work from Fama, Cochrane, Campbell and Shiller, Ilmanen, Asness and colleagues at AQR, Research Affiliates, and others who have built the empirical and theoretical foundations that serious investment practice now rests on. It also draws on practical experience of risk management and portfolio oversight in live markets. The combination matters: theory without implementation tends toward abstraction, and implementation without theory tends toward overconfidence in backtests.
+
+## Structure
+
+The framework is organized in seven sections that build on each other.
+
+**Section 1** establishes what a market price actually is — the clearing level at which buyers and sellers exchange risk — and why the gap between price, value, and expectations is the central object of investment analysis rather than a peripheral concern.
+
+**Section 2** examines how speculative dynamics can drive prices well beyond what fundamentals support, why informed investors participate anyway, and why identifying excess is easier than trading it profitably.
+
+**Section 3** addresses how investors try to form an edge through fundamental and price-based signals, why most signals decay after discovery, and why the structural arithmetic of active management makes persistent outperformance rare in aggregate.
+
+**Section 4** develops a taxonomy of return sources — market beta, systematic factor premia, and alpha — and connects it to the modern portfolio methods that attempt to harvest those sources more deliberately, including factor investing, smart beta, risk budgeting, and risk parity.
+
+**Section 5** addresses portfolio construction directly: how exposures should be sized and combined, why diversification is a structural property rather than a count, why correlation rises in stress when it matters most, and why the path of returns is as important as their terminal level.
+
+**Section 6** grounds expected return estimation in observable arithmetic — starting valuation, current carry, and regime conditioning — rather than in historical averages or narrative optimism, and explains what the most common forecasting errors have in common.
+
+**Section 7** draws the practical conclusion: strategic allocation comes first, active programs require explicit justification against a rigorous passive baseline, and the failure modes of core-plus-active structures are as important to understand as their theoretical properties.
+
+## The connected strategy
+
+This framework is the intellectual foundation for a connected systematic strategy that implements its core ideas across a focused set of liquid futures instruments — equity indices, fixed income, and selected real asset futures. The strategy is deployed live on Darwinex Zero and documented separately. Each design choice in the strategy is traceable to a section of this framework: the return source taxonomy motivates the factor exposures, the portfolio construction principles motivate the volatility targeting and correlation management, and the expected return framework motivates the regime-conditional signal weighting.
+
+The purpose of maintaining both documents together is to make the connection between research and implementation explicit. A strategy without a framework is a backtest with no explanation of why it should continue to work. A framework without a strategy is a literature review with no practical consequence. Together they form a documented investment process that can be evaluated, challenged, and improved on the basis of evidence rather than narrative.
+
+## A note on references and charts
+
+All citations refer to academic papers, working papers, or practitioner research that are publicly available or widely accessible through standard academic channels. Where a paper is cited in support of a specific empirical claim, the reader is encouraged to consult the original source. The framework uses the literature selectively — to support load-bearing claims rather than to demonstrate familiarity with it.
+
+Charts throughout the sections are drawn from publicly available data sources including the Ken French Data Library, Robert Shiller's data series, FRED, Yahoo Finance, and S&P Dow Jones Indices publications. Data sources and construction methodology are noted in each caption. A small number of propositions remain as clearly marked placeholders where the required data requires either the connected strategy's live outputs or constituent-level datasets that are not yet available. These are identified explicitly and will be populated as the strategy analysis layer is completed.
