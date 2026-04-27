@@ -9,21 +9,19 @@ website:
       - href: index.qmd
         text: Home
       - href: 01_markets_prices_expectations.qmd
-        text: "1. Markets & Prices"
-      - href: 02_speculation_excess_crowds.qmd
-        text: "2. Speculation"
-      - href: 03_signals_forecasting_outperformance.qmd
-        text: "3. Signals"
-      - href: 04_return_sources_factor_structure.qmd
-        text: "4. Return Sources"
-      - href: 05_portfolio_construction.qmd
-        text: "5. Portfolio Construction"
-      - href: 06_expected_returns.qmd
-        text: "6. Expected Returns"
-      - href: 07_core_allocation_active_programs.qmd
-        text: "7. Core Allocation"
-      - href: 08_strategy_implementation.qmd
-        text: "8. Strategy"
+        text: "1. Prices & Expectations"
+      - href: 02_signals_forecasting_outperformance.qmd
+        text: "2. Signals"
+      - href: 03_return_sources_factor_structure.qmd
+        text: "3. Return Sources"
+      - href: 04_portfolio_construction.qmd
+        text: "4. Portfolio Construction"
+      - href: 05_expected_returns.qmd
+        text: "5. Expected Returns"
+      - href: 06_core_allocation_active_programs.qmd
+        text: "6. Core Allocation"
+      - href: 07_strategy_implementation.qmd
+        text: "7. Strategy"
 
 format:
   html:
