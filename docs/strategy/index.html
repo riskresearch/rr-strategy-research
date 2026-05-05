@@ -173,20 +173,23 @@
     </p>
   </div>
 
-  <div class="chart-box" style="margin-top:14px"><img src="chart_dashboard.png" alt="Equity curve vs SPY"></div>
+  <div class="chart-box" style="margin-top:14px">
+    <div class="chart-placeholder">Chart will appear here after the next script run.</div>
+  </div>
 
   <div class="stats-row">
     <div>
       <div class="col-label">Target Allocation</div>
       <table>
         <thead><tr><th>Asset</th><th style="text-align:right">Weight</th></tr></thead>
-        <tbody><tr><td>ES &mdash; S&amp;P 500</td><td class="num">89.0%</td></tr>
-<tr><td>NQ &mdash; Nasdaq-100</td><td class="num">17.7% <em style='font-size:0.78em;color:#888'>(redirected to ES)</em></td></tr>
+        <tbody>
+<tr><td>ES &mdash; S&amp;P 500</td><td class="num">89.0%</td></tr>
+<tr><td>NQ &mdash; Nasdaq-100</td><td class="num">0.0%</td></tr>
 <tr><td>RTY &mdash; Russell 2000</td><td class="num">11.0%</td></tr>
 <tr><td>ZN &mdash; 10Y Treasury</td><td class="num">0.0%</td></tr>
-<tr><td>GC &mdash; Gold</td><td class="num">4.6% <em style='font-size:0.78em;color:#888'>(redirected to ES)</em></td></tr>
-<tr><td>SI &mdash; Silver</td><td class="num">16.6% <em style='font-size:0.78em;color:#888'>(redirected to ES)</em></td></tr>
-</tbody>
+<tr><td>GC &mdash; Gold</td><td class="num">0.0%</td></tr>
+<tr><td>SI &mdash; Silver</td><td class="num">0.0%</td></tr>
+        </tbody>
       </table>
     </div>
     <div>
@@ -196,13 +199,18 @@
           <tr><th>Metric</th><th style="text-align:right">Strategy</th><th style="text-align:right">SPY (adj.)</th></tr>
         </thead>
         <tbody>
-          <tr><td>Total return</td><td style="text-align:right;color:#005500">+2.7%</td><td style="text-align:right;color:#005500">+7.1%</td></tr>
-          <tr><td>Ann. CAGR</td>   <td style="text-align:right">&mdash;</td>          <td style="text-align:right">&mdash;</td></tr>
-          <tr><td>Sharpe ratio</td><td style="text-align:right">&mdash;</td>       <td style="text-align:right">&mdash;</td></tr>
-          <tr><td>Max drawdown</td><td style="text-align:right;color:#880000">-12.9%</td>       <td style="text-align:right;color:#880000">-6.6%</td></tr>
+          <tr><td>Total return</td>   <td style="text-align:right;color:#005500">+2.7%</td> <td style="text-align:right;color:#005500">+7.1%</td></tr>
+          <tr><td>Ann. CAGR</td>      <td style="text-align:right">&mdash;</td>              <td style="text-align:right">&mdash;</td></tr>
+          <tr><td>Ann. volatility</td><td style="text-align:right">&mdash;</td>              <td style="text-align:right">&mdash;</td></tr>
+          <tr><td>Sharpe ratio</td>   <td style="text-align:right">&mdash;</td>              <td style="text-align:right">&mdash;</td></tr>
+          <tr><td>Sortino ratio</td>  <td style="text-align:right">&mdash;</td>              <td style="text-align:right">&mdash;</td></tr>
+          <tr><td>Max drawdown</td>   <td style="text-align:right;color:#880000">-12.9%</td><td style="text-align:right;color:#880000">-6.6%</td></tr>
         </tbody>
       </table>
-      <p style="margin-top:8px;font-size:0.78rem;color:#555">Account equity: <strong style="color:#000">$1,034,390&nbsp;USD</strong></p>
+      <p style="margin-top:6px;font-size:0.75rem;color:#888">
+        Annualized metrics require a minimum of 60 trading days and will populate as the track record builds.
+      </p>
+      <p style="margin-top:6px;font-size:0.78rem;color:#555">Account equity: <strong style="color:#000">$1,034,390&nbsp;USD</strong></p>
     </div>
   </div>
 </div>
