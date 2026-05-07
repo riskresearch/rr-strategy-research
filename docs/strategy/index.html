@@ -96,16 +96,38 @@
 </div>
 
 <div id="nav">
-  <a href="#strategy">Strategy</a>
-  <a href="#performance">Performance</a>
+  <a href="#about">About</a>
+  <a href="#strategy">ES Core Program</a>
   <a href="#invest">How to Invest</a>
   <a href="attribution.html">Performance Attribution</a>
   <a href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Research &#8599;</a>
 </div>
 
+<!-- ── About ── -->
+<div class="section" id="about">
+  <h2>About RR Capital</h2>
+  <div class="body-text">
+    <p>
+      RR Capital is a quantitative investment management firm specializing in systematic
+      futures strategies. Our focus is on building rules-based investment programs that
+      combine rigorous signal research, disciplined risk management, and transparent
+      execution across regulated U.S. futures exchanges.
+    </p>
+    <p>
+      All strategies are developed entirely in-house, grounded in academic finance and
+      empirical market research. We operate with full transparency: the complete signal
+      construction methodology is published openly, and live account performance is reported
+      without adjustment. We believe that long-term investor trust is built through
+      verifiable track records and honest communication of both returns and risks.
+    </p>
+  </div>
+</div>
+
+<hr>
+
 <!-- ── Strategy ── -->
 <div class="section" id="strategy">
-  <h2>Strategy</h2>
+  <h2>ES Core Relative Allocation Program</h2>
   <div class="body-text">
     <p>
       <strong>ES Core Relative Allocation</strong> is a systematic long-only futures strategy
@@ -131,36 +153,6 @@
       1&times; during high-volatility or weak-signal periods. Leverage is a structural
       consequence of risk control, not a return-enhancement tool.
     </p>
-    <p><strong>Backtested results (2003&ndash;2026):</strong></p>
-    <p>
-      The full signal construction, volatility estimation, and portfolio rebalancing methodology
-      are documented in the <a href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">research section</a>.
-      Over a 23-year backtest using continuous futures data, the strategy produced a 16.8% annual
-      compounded return and a Sharpe ratio of 0.807, compared to 8.6% CAGR and a 0.530 Sharpe
-      for a simple S&amp;P 500 buy-and-hold. The maximum peak-to-trough drawdown was
-      &minus;30.2%, versus &minus;57.1% for the benchmark &mdash; substantially better
-      risk-adjusted performance with nearly half the downside.
-    </p>
-    <table style="width:auto;min-width:360px;margin:10px auto 0">
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th style="text-align:right">Strategy</th>
-          <th style="text-align:right">ES buy-and-hold</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Total return</td>    <td class="num">3,699%</td><td class="num">601%</td></tr>
-        <tr><td>CAGR</td>            <td class="num">16.8%</td> <td class="num">8.6%</td></tr>
-        <tr><td>Ann. volatility</td> <td class="num">22.3%</td> <td class="num">19.0%</td></tr>
-        <tr><td>Sharpe ratio</td>    <td class="num">0.807</td> <td class="num">0.530</td></tr>
-        <tr><td>Max drawdown</td>    <td class="num">-30.2%</td><td class="num">-57.1%</td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:8px;font-size:0.78rem;color:#555">
-      Backtest does not guarantee future results. Past performance is not indicative of future
-      returns. Signal parameters are not disclosed to prevent accelerated strategy decay.
-    </p>
   </div>
   <a class="plain-link" href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Full research and methodology &#8599;</a>
 </div>
@@ -170,6 +162,22 @@
 <!-- ── Live Performance ── -->
 <div class="section" id="performance">
   <h2>Live Performance</h2>
+
+  <div class="body-text" style="margin-bottom:14px">
+    <p>
+      The strategy has been running live since 2026-03-06 on a Darwinex Zero account.
+      The chart below shows the cumulative equity curve benchmarked against SPY since inception.
+      For a full breakdown of all live performance metrics &mdash; including monthly returns,
+      drawdown analysis, risk ratios, and statistical attribution benchmarked against SPY &mdash;
+      see the Performance Attribution page.
+    </p>
+    <p style="margin-top:10px">
+      <a href="attribution.html" style="display:inline-block;padding:7px 18px;background:#1a3a6b;color:#fff;
+         font-weight:bold;font-size:0.82rem;text-decoration:none;border-radius:3px;letter-spacing:0.3px">
+        Performance Attribution &#8599;
+      </a>
+    </p>
+  </div>
 
   <div class="chart-box" style="margin-top:8px"><canvas id="eqChart" style="width:100%"></canvas>
 <script>
