@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RR Capital — Attribution</title>
+<title>RR Capital &mdash; Performance Attribution</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -13,67 +13,46 @@
       padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
   #dh-title{font-family:Georgia,serif;font-size:1.05rem;font-weight:bold;text-transform:uppercase;letter-spacing:2px}
   #dh-sub{font-size:0.78rem;color:#555;margin-top:2px}
-  #period-btns,#roll-btns{display:flex;gap:6px;flex-wrap:wrap}
-  .pbtn,.rbtn{padding:4px 12px;border:1px solid #ccc;border-radius:3px;cursor:pointer;
-              font-size:0.78rem;font-family:Verdana,sans-serif;background:#fff;color:#333}
-  .pbtn.active{background:#1a3a6b;color:#fff;border-color:#1a3a6b}
-  .rbtn.active{background:#007070;color:#fff;border-color:#007070}
-  .pbtn:hover:not(.active),.rbtn:hover:not(.active){background:#eef}
   #nav-links{font-size:0.78rem}
   #nav-links a{margin:0 8px;color:#00437c;font-weight:bold;text-transform:uppercase;letter-spacing:0.3px}
-  #page{max-width:1120px;margin:0 auto;padding:20px 20px 60px}
+  #page{max-width:960px;margin:0 auto;padding:20px 20px 60px}
+  .intro{font-size:0.82rem;color:#555;max-width:860px;margin-bottom:28px;line-height:1.7}
   .dash-section{margin-bottom:40px}
   .s-title{font-family:Georgia,"Times New Roman",serif;font-size:0.95rem;font-weight:bold;
            text-transform:uppercase;letter-spacing:1px;color:#000;
            border-bottom:1px solid #aaa;padding-bottom:4px;margin-bottom:14px}
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   .chart-wrap{position:relative;background:#fff;border:1px solid #ddd;padding:10px 10px 4px}
-  .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-  .mcard{background:#fff;border:1px solid #ddd;border-left:4px solid #ddd;padding:12px 14px}
-  .mcard.f-ret{border-left-color:#0057b7}
-  .mcard.f-risk{border-left-color:#c47800}
-  .mcard.f-radj{border-left-color:#007070}
-  .c-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.4px;color:#666;margin-bottom:4px}
-  .c-val{font-size:1.25rem;font-weight:bold;color:#111;white-space:nowrap}
-  .c-spy{font-size:0.75rem;color:#888;margin-top:2px}
-  .badge{display:inline-block;font-size:0.65rem;font-weight:bold;color:#fff;
-         padding:1px 5px;border-radius:3px;margin-left:6px;vertical-align:middle}
-  #roll-btns{margin-bottom:10px}
-  .hm-tbl{border-collapse:collapse;font-size:0.78rem}
-  .hm-tbl th{padding:3px 6px;background:#f0f0f0;border:1px solid #ddd;font-weight:bold;text-align:center;font-size:0.75rem}
-  .hm-tbl td{border:1px solid #ddd;text-align:center;min-width:54px;padding:3px 4px}
-  .hm-m{text-align:left !important;font-weight:bold;color:#444;background:#fafafa;min-width:36px}
-  .hm-label{font-size:0.75rem;font-weight:bold;text-transform:uppercase;color:#555;letter-spacing:0.4px;margin-bottom:8px}
+  .metrics-tbl{border-collapse:collapse;font-size:0.8rem;width:100%}
+  .metrics-tbl thead th{background:#f0f0f0;padding:6px 10px;border:1px solid #ccc;
+                         font-size:0.75rem;text-transform:uppercase;white-space:nowrap}
+  .metrics-tbl tbody td{padding:5px 10px;border:1px solid #e8e8e8;vertical-align:top}
+  .metrics-tbl .num{text-align:right;font-family:"Courier New",Courier,monospace;white-space:nowrap}
+  .desc-cell{font-size:0.75rem;color:#666;max-width:340px}
+  .hm-tbl{border-collapse:collapse;font-size:0.78rem;width:100%}
+  .hm-tbl th{padding:3px 6px;background:#f0f0f0;border:1px solid #ddd;font-weight:bold;
+              text-align:center;font-size:0.75rem;white-space:nowrap}
+  .hm-tbl td{border:1px solid #ddd;text-align:center;min-width:50px;padding:3px 4px}
+  .hm-m{text-align:left !important;font-weight:bold;color:#444;background:#fafafa;white-space:nowrap;padding:3px 8px !important}
   .stats-wrap{overflow-x:auto}
-  .stats-tbl{border-collapse:collapse;font-size:0.8rem;width:100%;min-width:620px}
-  .stats-tbl thead th{background:#f0f0f0;padding:6px 10px;border:1px solid #ccc;
-                       text-align:center;font-size:0.75rem;text-transform:uppercase;white-space:nowrap}
-  .stats-tbl thead th:first-child{text-align:left}
-  .stats-tbl tbody td{padding:4px 8px;border:1px solid #e8e8e8;vertical-align:middle;text-align:center}
-  .s-lbl{text-align:left !important;font-size:0.78rem;color:#333;white-space:nowrap;background:#fafafa;
-          position:sticky;left:0;z-index:1}
+  .stats-tbl{border-collapse:collapse;font-size:0.8rem;width:auto;min-width:340px}
+  .stats-tbl thead th{background:#f0f0f0;padding:6px 12px;border:1px solid #ccc;
+                       font-size:0.75rem;text-transform:uppercase;white-space:nowrap}
+  .stats-tbl tbody td{padding:4px 10px;border:1px solid #e8e8e8;vertical-align:middle}
+  .s-lbl{text-align:left !important;font-size:0.78rem;color:#333;white-space:nowrap;
+          background:#fafafa;min-width:160px}
+  .num{text-align:right !important;font-family:"Courier New",Courier,monospace;white-space:nowrap}
   .s-div td{background:#eef2f7 !important;font-weight:bold;font-size:0.75rem;text-transform:uppercase;
-             letter-spacing:0.5px;color:#555;padding:5px 8px;border-top:1px solid #bbb}
-  .spy-sub{font-size:0.72rem;color:#888}
+             letter-spacing:0.5px;color:#555;padding:5px 10px;border-top:1px solid #bbb}
   tr:nth-child(even) td:not(.s-div td){background:#fafafa}
   #footer{border-top:1px solid #ccc;padding-top:10px;font-size:0.72rem;color:#888;text-align:center;margin-top:20px}
-  @media(max-width:800px){.cards-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}
-  @media(max-width:500px){.cards-grid{grid-template-columns:1fr}}
+  @media(max-width:700px){.desc-cell{display:none}}
 </style>
 </head>
 <body>
 <div id="dh">
   <div>
-    <div id="dh-title">RR Capital &mdash; Portfolio Attribution</div>
-    <div id="dh-sub">ES Core Relative Allocation &nbsp;|&nbsp; Mar 2026 – May 2026</div>
-  </div>
-  <div id="period-btns">
-    <button class="pbtn active" data-p="all">All</button>
-    <button class="pbtn" data-p="ytd">YTD</button>
-    <button class="pbtn" data-p="1y">1Y</button>
-    <button class="pbtn" data-p="2y">2Y</button>
-    <button class="pbtn" data-p="3y">3Y</button>
-    <button class="pbtn" data-p="5y">5Y</button>
+    <div id="dh-title">RR Capital &mdash; Performance Attribution</div>
+    <div id="dh-sub">ES Core Relative Allocation &nbsp;|&nbsp; Live since 2026-03-06</div>
   </div>
   <div id="nav-links">
     <a href="index.html">&#8592; Strategy</a>
@@ -84,108 +63,47 @@
 
 <div id="page">
 
+<p class="intro">
+  We publish this attribution report to give investors full transparency into how the live strategy
+  has performed since inception. All figures are computed directly from the actual account equity
+  curve, without any smoothing or adjustment, and benchmarked against SPY over the same period.
+  The data updates each time the monitoring script runs.
+</p>
+
 <div class="dash-section">
-  <div class="s-title">Growth of $100 &amp; Drawdown</div>
+  <div class="s-title">Cumulative Return &amp; Drawdown</div>
   <div class="chart-wrap" style="height:260px"><canvas id="growthChart"></canvas></div>
   <div class="chart-wrap" style="height:110px;margin-top:6px;border-top:none"><canvas id="ddChart"></canvas></div>
 </div>
 
 <div class="dash-section">
   <div class="s-title">Key Metrics &mdash; Full Track Record</div>
-  <div class="cards-grid">
-<div class="mcard f-ret"><div class="c-title">Ann. Return</div><div class="c-val">+43.4%<span class="badge" style="background:#c0392b">-13.1</span></div><div class="c-spy">SPY: +56.5%</div></div>
-<div class="mcard f-ret"><div class="c-title">Monthly Avg</div><div class="c-val">+2.3%<span class="badge" style="background:#c0392b">-0.4</span></div><div class="c-spy">SPY: +2.7%</div></div>
-<div class="mcard f-ret"><div class="c-title">Best Month</div><div class="c-val">+10.3%<span class="badge" style="background:#c0392b">-0.2</span></div><div class="c-spy">SPY: +10.5%</div></div>
-<div class="mcard f-ret"><div class="c-title">Worst Month</div><div class="c-val">-7.3%<span class="badge" style="background:#27ae60">-4.3</span></div><div class="c-spy">SPY: -3.0%</div></div>
-<div class="mcard f-risk"><div class="c-title">Ann. Volatility</div><div class="c-val">29.1%<span class="badge" style="background:#c0392b">+13.6</span></div><div class="c-spy">SPY: 15.5%</div></div>
-<div class="mcard f-risk"><div class="c-title">Downside Risk</div><div class="c-val">20.0%<span class="badge" style="background:#c0392b">+10.3</span></div><div class="c-spy">SPY: 9.7%</div></div>
-<div class="mcard f-risk"><div class="c-title">Max Drawdown</div><div class="c-val">-12.9%<span class="badge" style="background:#27ae60">-6.3</span></div><div class="c-spy">SPY: -6.6%</div></div>
-<div class="mcard f-risk"><div class="c-title">VaR 95% (1M)</div><div class="c-val">+12.3%<span class="badge" style="background:#c0392b">+3.5</span></div><div class="c-spy">SPY: +8.8%</div></div>
-<div class="mcard f-radj"><div class="c-title">Sharpe Ratio</div><div class="c-val">+1.32<span class="badge" style="background:#c0392b">-2.0</span></div><div class="c-spy">SPY: +3.32</div></div>
-<div class="mcard f-radj"><div class="c-title">Sortino Ratio</div><div class="c-val">+1.92<span class="badge" style="background:#c0392b">-3.4</span></div><div class="c-spy">SPY: +5.31</div></div>
-<div class="mcard f-radj"><div class="c-title">Calmar Ratio</div><div class="c-val">+3.37<span class="badge" style="background:#c0392b">-5.2</span></div><div class="c-spy">SPY: +8.59</div></div>
-<div class="mcard f-radj"><div class="c-title">Info. Ratio</div><div class="c-val">-0.59</div></div>
-
-  </div>
-</div>
-
-<div class="dash-section">
-  <div class="s-title">Performance by Period</div>
-  <div class="two-col">
-    <div>
-      <div style="font-size:0.78rem;color:#555;margin-bottom:6px">Total Return &mdash; Portfolio vs SPY</div>
-      <div class="chart-wrap" style="height:240px"><canvas id="periodChart"></canvas></div>
-    </div>
-    <div>
-      <div style="font-size:0.78rem;color:#555;margin-bottom:6px">Excess Return vs Benchmark</div>
-      <div class="chart-wrap" style="height:240px"><canvas id="relChart"></canvas></div>
-    </div>
-  </div>
-</div>
-
-<div class="dash-section">
-  <div class="s-title">Rolling Metrics <span style="font-size:0.75rem;font-weight:normal;letter-spacing:0">(14-day window)</span></div>
-  <div id="roll-btns">
-    <button class="rbtn active" data-m="sharpe">Sharpe</button>
-    <button class="rbtn" data-m="vol">Volatility</button>
-    <button class="rbtn" data-m="sortino">Sortino</button>
-    <button class="rbtn" data-m="ir">Info. Ratio</button>
-    <button class="rbtn" data-m="beta">Beta</button>
-    <button class="rbtn" data-m="corr">Correlation</button>
-  </div>
-  <div class="chart-wrap" style="height:220px"><canvas id="rollChart"></canvas></div>
+  <div class="stats-wrap"><table class="metrics-tbl"><thead><tr><th style="text-align:left">Metric</th><th style="text-align:right;color:#1a3a6b">Strategy</th><th style="text-align:right;color:#555">SPY</th><th style="text-align:left">How computed</th></tr></thead><tbody><tr class="s-div"><td colspan="4">Return Metrics</td></tr><tr><td class="s-lbl">Ann. Return (CAGR)</td><td class="num" style="color:#880000;font-weight:bold">+54.9%</td><td class="num">+67.6%</td><td class="desc-cell">Geometric compound annual return: (end/start)^(252/n) − 1</td></tr><tr><td class="s-lbl">Monthly Avg. Return</td><td class="num" style="color:#880000;font-weight:bold">+2.9%</td><td class="num">+3.2%</td><td class="desc-cell">Arithmetic mean of monthly compounded returns</td></tr><tr><td class="s-lbl">Best Month</td><td class="num" style="color:#880000;font-weight:bold">+10.3%</td><td class="num">+10.5%</td><td class="desc-cell">Highest single-month compounded return in the period</td></tr><tr><td class="s-lbl">Worst Month</td><td class="num" style="color:#005500;font-weight:bold">-7.3%</td><td class="num">-3.0%</td><td class="desc-cell">Lowest single-month compounded return in the period</td></tr><tr class="s-div"><td colspan="4">Risk Metrics</td></tr><tr><td class="s-lbl">Ann. Volatility</td><td class="num" style="color:#880000;font-weight:bold">32.5%</td><td class="num">15.6%</td><td class="desc-cell">Annualized std dev of daily returns × √252</td></tr><tr><td class="s-lbl">Downside Risk</td><td class="num" style="color:#880000;font-weight:bold">23.1%</td><td class="num">9.7%</td><td class="desc-cell">Annualized semi-deviation of negative daily returns × √252</td></tr><tr><td class="s-lbl">Max Drawdown</td><td class="num" style="color:#005500;font-weight:bold">-12.9%</td><td class="num">-6.6%</td><td class="desc-cell">Largest peak-to-trough equity decline over the period</td></tr><tr><td class="s-lbl">VaR 95% (1M)</td><td class="num" style="color:#880000;font-weight:bold">+12.1%</td><td class="num">+8.0%</td><td class="desc-cell">5th-percentile monthly return (historical); higher = more tail risk</td></tr><tr><td class="s-lbl">CVaR 95% (hist.)</td><td class="num" style="color:#005500;font-weight:bold">-3.8%</td><td class="num">-1.7%</td><td class="desc-cell">Average of the worst 5% monthly returns; expected shortfall</td></tr><tr class="s-div"><td colspan="4">Risk-Adjusted Ratios</td></tr><tr><td class="s-lbl">Sharpe Ratio</td><td class="num" style="color:#880000;font-weight:bold">+1.53</td><td class="num">+4.02</td><td class="desc-cell">Excess return over RF (5%) per unit of total volatility</td></tr><tr><td class="s-lbl">Sortino Ratio</td><td class="num" style="color:#880000;font-weight:bold">+2.16</td><td class="num">+6.46</td><td class="desc-cell">Excess return over RF (5%) per unit of downside risk only</td></tr><tr><td class="s-lbl">Calmar Ratio</td><td class="num" style="color:#880000;font-weight:bold">+4.26</td><td class="num">+10.29</td><td class="desc-cell">Ann. CAGR divided by the absolute maximum drawdown</td></tr><tr class="s-div"><td colspan="4">Relative vs SPY</td></tr><tr><td class="s-lbl">Beta</td><td class="num" style="color:#880000;font-weight:bold">+1.27</td><td class="num">1.00</td><td class="desc-cell">Daily return covariance with SPY / SPY variance; market sensitivity</td></tr><tr><td class="s-lbl">Correlation</td><td class="num" style="color:#880000;font-weight:bold">+0.61</td><td class="num">1.00</td><td class="desc-cell">Pearson correlation of daily returns with SPY</td></tr><tr><td class="s-lbl">Alpha (ann.)</td><td class="num" style="color:#880000;font-weight:bold">-29.9%</td><td class="num">+0.0%</td><td class="desc-cell">Ann. return − Beta × SPY ann. return; return unexplained by market</td></tr><tr><td class="s-lbl">Tracking Error</td><td class="num" style="color:#880000;font-weight:bold">26.1%</td><td class="num">0.0%</td><td class="desc-cell">Annualized std dev of daily active returns (portfolio − SPY)</td></tr><tr><td class="s-lbl">Information Ratio</td><td class="num" style="color:#880000;font-weight:bold">-0.49</td><td class="num">+0.00</td><td class="desc-cell">Active ann. return divided by tracking error</td></tr><tr><td class="s-lbl">M² Excess Ret.</td><td class="num" style="color:#880000;font-weight:bold">-38.7%</td><td class="num">+0.0%</td><td class="desc-cell">Modigliani-squared minus RF: Sharpe × SPY vol + RF − RF</td></tr></tbody></table></div>
 </div>
 
 <div class="dash-section">
   <div class="s-title">Monthly Returns</div>
-  <div class="two-col">
-    <div><div class="hm-label">Portfolio</div><table class="hm-tbl"><thead><tr><th></th><th>2026</th></tr></thead><tbody>
-<tr><td class="hm-m">Jan</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Feb</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Mar</td><td style="background:hsl(0,65%,55%);color:#fff">-7.3%</td></tr>
-<tr><td class="hm-m">Apr</td><td style="background:hsl(120,65%,40%);color:#fff">+10.3%</td></tr>
-<tr><td class="hm-m">May</td><td style="background:hsl(120,65%,74%);color:#222">+4.0%</td></tr>
-<tr><td class="hm-m">Jun</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Jul</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Aug</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Sep</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Oct</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Nov</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Dec</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m" style="font-weight:bold">Total</td><td style="background:hsl(120,65%,60%);color:#fff;font-weight:bold">+6.3%</td></tr>
+  <div style="overflow-x:auto"><table class="hm-tbl"><thead><tr><th>Year</th><th></th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th>Total</th></tr></thead><tbody>
+<tr><td class="hm-m">2026</td><td class="hm-m" style="font-size:0.72rem;min-width:52px">Strategy</td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:hsl(0,65%,55%);color:#fff">-7.3%</td><td style="background:hsl(120,65%,40%);color:#fff">+10.3%</td><td style="background:hsl(120,65%,65%);color:#222">+5.5%</td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:hsl(120,65%,51%);color:#fff;font-weight:bold">+7.9%</td></tr>
+<tr><td class="hm-m"></td><td class="hm-m" style="font-size:0.72rem;min-width:52px">SPY</td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:hsl(0,65%,79%);color:#222">-3.0%</td><td style="background:hsl(120,65%,40%);color:#fff">+10.5%</td><td style="background:hsl(120,65%,84%);color:#222">+2.1%</td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:#f0f0f0;color:#bbb"></td><td style="background:hsl(120,65%,43%);color:#fff;font-weight:bold">+9.4%</td></tr>
 </tbody></table></div>
-    <div><div class="hm-label">SPY</div><table class="hm-tbl"><thead><tr><th></th><th>2026</th></tr></thead><tbody>
-<tr><td class="hm-m">Jan</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Feb</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Mar</td><td style="background:hsl(0,65%,79%);color:#222">-3.0%</td></tr>
-<tr><td class="hm-m">Apr</td><td style="background:hsl(120,65%,40%);color:#fff">+10.5%</td></tr>
-<tr><td class="hm-m">May</td><td style="background:hsl(120,65%,92%);color:#222">+0.7%</td></tr>
-<tr><td class="hm-m">Jun</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Jul</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Aug</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Sep</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Oct</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Nov</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m">Dec</td><td style="background:#f0f0f0;color:#bbb"></td></tr>
-<tr><td class="hm-m" style="font-weight:bold">Total</td><td style="background:hsl(120,65%,51%);color:#fff;font-weight:bold">+7.9%</td></tr>
-</tbody></table></div>
-  </div>
 </div>
 
 <div class="dash-section">
   <div class="s-title">Statistical Analysis</div>
   <p style="font-size:0.75rem;color:#888;margin-bottom:10px">
-    Portfolio in bold; SPY benchmark below in gray. Green/red indicates out/underperformance vs benchmark.
-    Annualized metrics populate as the track record grows beyond 60 trading days.
+    Green/red indicates out/underperformance vs benchmark. Annualized metrics require a minimum
+    of 60 trading days and will populate as the track record builds.
   </p>
-  <div class="stats-wrap"><table class="stats-tbl"><thead><tr><th>Metric</th><th>3M</th><th>6M</th><th>YTD</th><th>1Y</th><th>2Y</th><th>3Y</th><th>All</th></tr></thead><tbody><tr class="s-div"><td colspan="8">Return Metrics</td></tr><tr><td class="s-lbl">Portfolio Return</td><td>+6.3%</td><td>+6.3%</td><td>+6.3%</td><td>+6.3%</td><td>+6.3%</td><td>+6.3%</td><td>+6.3%</td></tr><tr><td class="s-lbl">Benchmark Return</td><td>+7.9%</td><td>+7.9%</td><td>+7.9%</td><td>+7.9%</td><td>+7.9%</td><td>+7.9%</td><td>+7.9%</td></tr><tr><td class="s-lbl">Excess Return</td><td>-1.6%</td><td>-1.6%</td><td>-1.6%</td><td>-1.6%</td><td>-1.6%</td><td>-1.6%</td><td>-1.6%</td></tr><tr><td class="s-lbl">Ann. Return</td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td><td><b style="color:#c0392b">+43.4%</b><br><span class="spy-sub">+56.5%</span></td></tr><tr><td class="s-lbl">Ann. Relative Ret.</td><td>-13.1%</td><td>-13.1%</td><td>-13.1%</td><td>-13.1%</td><td>-13.1%</td><td>-13.1%</td><td>-13.1%</td></tr><tr><td class="s-lbl">Monthly Avg</td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td><td><b style="color:#c0392b">+2.3%</b><br><span class="spy-sub">+2.7%</span></td></tr><tr class="s-div"><td colspan="8">Risk Metrics</td></tr><tr><td class="s-lbl">Ann. Volatility</td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td><td><b style="color:#c0392b">29.1%</b><br><span class="spy-sub">15.5%</span></td></tr><tr><td class="s-lbl">Downside Risk</td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td><td><b style="color:#c0392b">20.0%</b><br><span class="spy-sub">9.7%</span></td></tr><tr><td class="s-lbl">Max Drawdown</td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td><td><b style="color:#27ae60">-12.9%</b><br><span class="spy-sub">-6.6%</span></td></tr><tr><td class="s-lbl">VaR 95% (1M)</td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td><td><b style="color:#c0392b">+12.3%</b><br><span class="spy-sub">+8.8%</span></td></tr><tr><td class="s-lbl">CVaR 95% (hist.)</td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td><td><b style="color:#27ae60">-3.4%</b><br><span class="spy-sub">-1.7%</span></td></tr><tr><td class="s-lbl">Best Month</td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td><td><b style="color:#c0392b">+10.3%</b><br><span class="spy-sub">+10.5%</span></td></tr><tr><td class="s-lbl">Worst Month</td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td><td><b style="color:#27ae60">-7.3%</b><br><span class="spy-sub">-3.0%</span></td></tr><tr><td class="s-lbl">Positive Months %</td><td>66.7%</td><td>66.7%</td><td>66.7%</td><td>66.7%</td><td>66.7%</td><td>66.7%</td><td>66.7%</td></tr><tr class="s-div"><td colspan="8">Distribution</td></tr><tr><td class="s-lbl">Skewness</td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td><td><b style="color:#c0392b">+0.23</b><br><span class="spy-sub">+0.28</span></td></tr><tr><td class="s-lbl">Kurtosis (excess)</td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td><td><b style="color:#27ae60">+1.20</b><br><span class="spy-sub">+1.10</span></td></tr><tr><td class="s-lbl">Adjusted Sharpe</td><td>+1.27</td><td>+1.27</td><td>+1.27</td><td>+1.27</td><td>+1.27</td><td>+1.27</td><td>+1.27</td></tr><tr class="s-div"><td colspan="8">Risk-Adjusted Ratios</td></tr><tr><td class="s-lbl">Sharpe Ratio</td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td><td><b style="color:#c0392b">+1.32</b><br><span class="spy-sub">+3.32</span></td></tr><tr><td class="s-lbl">Sortino Ratio</td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td><td><b style="color:#c0392b">+1.92</b><br><span class="spy-sub">+5.31</span></td></tr><tr><td class="s-lbl">Calmar Ratio</td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td><td><b style="color:#c0392b">+3.37</b><br><span class="spy-sub">+8.59</span></td></tr><tr><td class="s-lbl">Conditional Sharpe</td><td>+0.72</td><td>+0.72</td><td>+0.72</td><td>+0.72</td><td>+0.72</td><td>+0.72</td><td>+0.72</td></tr><tr><td class="s-lbl">Gain : Loss Ratio</td><td>+0.98</td><td>+0.98</td><td>+0.98</td><td>+0.98</td><td>+0.98</td><td>+0.98</td><td>+0.98</td></tr><tr class="s-div"><td colspan="8">Relative / Benchmark</td></tr><tr><td class="s-lbl">Beta</td><td>+1.26</td><td>+1.26</td><td>+1.26</td><td>+1.26</td><td>+1.26</td><td>+1.26</td><td>+1.26</td></tr><tr><td class="s-lbl">Correlation</td><td>+0.67</td><td>+0.67</td><td>+0.67</td><td>+0.67</td><td>+0.67</td><td>+0.67</td><td>+0.67</td></tr><tr><td class="s-lbl">Alpha (ann.)</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td></tr><tr><td class="s-lbl">Jensen's Alpha</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td><td>-26.5%</td></tr><tr><td class="s-lbl">Tracking Error</td><td>22.0%</td><td>22.0%</td><td>22.0%</td><td>22.0%</td><td>22.0%</td><td>22.0%</td><td>22.0%</td></tr><tr><td class="s-lbl">Information Ratio</td><td>-0.59</td><td>-0.59</td><td>-0.59</td><td>-0.59</td><td>-0.59</td><td>-0.59</td><td>-0.59</td></tr><tr><td class="s-lbl">M² Excess Ret.</td><td>-31.1%</td><td>-31.1%</td><td>-31.1%</td><td>-31.1%</td><td>-31.1%</td><td>-31.1%</td><td>-31.1%</td></tr></tbody></table></div>
+  <div class="stats-wrap"><table class="stats-tbl"><thead><tr><th style="text-align:left">Metric</th><th style="text-align:right;color:#1a3a6b">Strategy</th><th style="text-align:right;color:#555">SPY</th></tr></thead><tbody><tr class="s-div"><td colspan="3">Return Metrics</td></tr><tr><td class="s-lbl">Total Return</td><td class="num" style="color:#880000;font-weight:bold">+7.9%</td><td class="num">+9.4%</td></tr><tr><td class="s-lbl">Excess Return</td><td class="num">-1.5%</td><td class="num">—</td></tr><tr><td class="s-lbl">Ann. Return (CAGR)</td><td class="num" style="color:#880000;font-weight:bold">+54.9%</td><td class="num">+67.6%</td></tr><tr><td class="s-lbl">Ann. Relative Ret.</td><td class="num">-12.7%</td><td class="num">—</td></tr><tr><td class="s-lbl">Monthly Avg.</td><td class="num" style="color:#880000;font-weight:bold">+2.9%</td><td class="num">+3.2%</td></tr><tr><td class="s-lbl">Best Month</td><td class="num" style="color:#880000;font-weight:bold">+10.3%</td><td class="num">+10.5%</td></tr><tr><td class="s-lbl">Worst Month</td><td class="num" style="color:#005500;font-weight:bold">-7.3%</td><td class="num">-3.0%</td></tr><tr><td class="s-lbl">Positive Months %</td><td class="num">66.7%</td><td class="num">—</td></tr><tr class="s-div"><td colspan="3">Risk Metrics</td></tr><tr><td class="s-lbl">Ann. Volatility</td><td class="num" style="color:#880000;font-weight:bold">32.5%</td><td class="num">15.6%</td></tr><tr><td class="s-lbl">Downside Risk</td><td class="num" style="color:#880000;font-weight:bold">23.1%</td><td class="num">9.7%</td></tr><tr><td class="s-lbl">Max Drawdown</td><td class="num" style="color:#005500;font-weight:bold">-12.9%</td><td class="num">-6.6%</td></tr><tr><td class="s-lbl">VaR 95% (1M)</td><td class="num" style="color:#880000;font-weight:bold">+12.1%</td><td class="num">+8.0%</td></tr><tr><td class="s-lbl">CVaR 95% (hist.)</td><td class="num" style="color:#005500;font-weight:bold">-3.8%</td><td class="num">-1.7%</td></tr><tr class="s-div"><td colspan="3">Distribution</td></tr><tr><td class="s-lbl">Skewness</td><td class="num" style="color:#005500;font-weight:bold">+0.39</td><td class="num">+0.22</td></tr><tr><td class="s-lbl">Kurtosis (excess)</td><td class="num" style="color:#005500;font-weight:bold">+2.63</td><td class="num">+0.92</td></tr><tr class="s-div"><td colspan="3">Risk-Adjusted Ratios</td></tr><tr><td class="s-lbl">Sharpe Ratio</td><td class="num" style="color:#880000;font-weight:bold">+1.53</td><td class="num">+4.02</td></tr><tr><td class="s-lbl">Sortino Ratio</td><td class="num" style="color:#880000;font-weight:bold">+2.16</td><td class="num">+6.46</td></tr><tr><td class="s-lbl">Calmar Ratio</td><td class="num" style="color:#880000;font-weight:bold">+4.26</td><td class="num">+10.29</td></tr><tr class="s-div"><td colspan="3">Relative / Benchmark</td></tr><tr><td class="s-lbl">Beta</td><td class="num">+1.27</td><td class="num">—</td></tr><tr><td class="s-lbl">Correlation</td><td class="num">+0.61</td><td class="num">—</td></tr><tr><td class="s-lbl">Alpha (ann.)</td><td class="num">-29.9%</td><td class="num">—</td></tr><tr><td class="s-lbl">Jensen's Alpha</td><td class="num">-29.9%</td><td class="num">—</td></tr><tr><td class="s-lbl">Tracking Error</td><td class="num">26.1%</td><td class="num">—</td></tr><tr><td class="s-lbl">Information Ratio</td><td class="num">-0.49</td><td class="num">—</td></tr><tr><td class="s-lbl">M² Excess Ret.</td><td class="num">-38.7%</td><td class="num">—</td></tr></tbody></table></div>
 </div>
 
 </div>
-<div id="footer">&copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-05-06 14:45</div>
+<div id="footer">&copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-05-07 10:03</div>
 
 <script>
-const DATA = {"chart": {"all": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "growth_eq": [100.0, 102.16, 102.26, 101.42, 98.9, 97.09, 97.8, 98.52, 95.25, 95.44, 93.37, 94.5, 94.81, 94.71, 92.1, 89.37, 89.09, 92.74, 93.73, 93.86, 93.43, 94.39, 94.27, 96.12, 96.65, 96.67, 97.49, 98.43, 98.98, 99.23, 100.36, 100.33, 99.94, 100.57, 99.96, 101.57, 101.7, 100.94, 106.34, 102.27, 102.96, 101.18, 104.83, 106.34], "growth_spy": [100.0, 100.88, 100.71, 100.59, 99.06, 98.5, 99.5, 99.76, 98.37, 98.13, 96.72, 97.74, 97.41, 97.95, 96.2, 94.56, 94.25, 96.99, 97.72, 97.8, 97.8, 98.27, 98.31, 100.81, 101.4, 101.33, 102.32, 103.57, 104.38, 104.64, 105.9, 105.69, 105.0, 106.06, 105.65, 106.47, 106.65, 106.14, 106.12, 107.17, 107.47, 107.08, 107.94, 107.94], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -3.83, -3.18, -4.86, -1.43, 0.0], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0]}, "ytd": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "growth_eq": [100.0, 102.16, 102.26, 101.42, 98.9, 97.09, 97.8, 98.52, 95.25, 95.44, 93.37, 94.5, 94.81, 94.71, 92.1, 89.37, 89.09, 92.74, 93.73, 93.86, 93.43, 94.39, 94.27, 96.12, 96.65, 96.67, 97.49, 98.43, 98.98, 99.23, 100.36, 100.33, 99.94, 100.57, 99.96, 101.57, 101.7, 100.94, 106.34, 102.27, 102.96, 101.18, 104.83, 106.34], "growth_spy": [100.0, 100.88, 100.71, 100.59, 99.06, 98.5, 99.5, 99.76, 98.37, 98.13, 96.72, 97.74, 97.41, 97.95, 96.2, 94.56, 94.25, 96.99, 97.72, 97.8, 97.8, 98.27, 98.31, 100.81, 101.4, 101.33, 102.32, 103.57, 104.38, 104.64, 105.9, 105.69, 105.0, 106.06, 105.65, 106.47, 106.65, 106.14, 106.12, 107.17, 107.47, 107.08, 107.94, 107.94], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -3.83, -3.18, -4.86, -1.43, 0.0], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0]}, "1y": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "growth_eq": [100.0, 102.16, 102.26, 101.42, 98.9, 97.09, 97.8, 98.52, 95.25, 95.44, 93.37, 94.5, 94.81, 94.71, 92.1, 89.37, 89.09, 92.74, 93.73, 93.86, 93.43, 94.39, 94.27, 96.12, 96.65, 96.67, 97.49, 98.43, 98.98, 99.23, 100.36, 100.33, 99.94, 100.57, 99.96, 101.57, 101.7, 100.94, 106.34, 102.27, 102.96, 101.18, 104.83, 106.34], "growth_spy": [100.0, 100.88, 100.71, 100.59, 99.06, 98.5, 99.5, 99.76, 98.37, 98.13, 96.72, 97.74, 97.41, 97.95, 96.2, 94.56, 94.25, 96.99, 97.72, 97.8, 97.8, 98.27, 98.31, 100.81, 101.4, 101.33, 102.32, 103.57, 104.38, 104.64, 105.9, 105.69, 105.0, 106.06, 105.65, 106.47, 106.65, 106.14, 106.12, 107.17, 107.47, 107.08, 107.94, 107.94], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -3.83, -3.18, -4.86, -1.43, 0.0], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0]}, "2y": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "growth_eq": [100.0, 102.16, 102.26, 101.42, 98.9, 97.09, 97.8, 98.52, 95.25, 95.44, 93.37, 94.5, 94.81, 94.71, 92.1, 89.37, 89.09, 92.74, 93.73, 93.86, 93.43, 94.39, 94.27, 96.12, 96.65, 96.67, 97.49, 98.43, 98.98, 99.23, 100.36, 100.33, 99.94, 100.57, 99.96, 101.57, 101.7, 100.94, 106.34, 102.27, 102.96, 101.18, 104.83, 106.34], "growth_spy": [100.0, 100.88, 100.71, 100.59, 99.06, 98.5, 99.5, 99.76, 98.37, 98.13, 96.72, 97.74, 97.41, 97.95, 96.2, 94.56, 94.25, 96.99, 97.72, 97.8, 97.8, 98.27, 98.31, 100.81, 101.4, 101.33, 102.32, 103.57, 104.38, 104.64, 105.9, 105.69, 105.0, 106.06, 105.65, 106.47, 106.65, 106.14, 106.12, 107.17, 107.47, 107.08, 107.94, 107.94], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -3.83, -3.18, -4.86, -1.43, 0.0], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0]}, "3y": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "growth_eq": [100.0, 102.16, 102.26, 101.42, 98.9, 97.09, 97.8, 98.52, 95.25, 95.44, 93.37, 94.5, 94.81, 94.71, 92.1, 89.37, 89.09, 92.74, 93.73, 93.86, 93.43, 94.39, 94.27, 96.12, 96.65, 96.67, 97.49, 98.43, 98.98, 99.23, 100.36, 100.33, 99.94, 100.57, 99.96, 101.57, 101.7, 100.94, 106.34, 102.27, 102.96, 101.18, 104.83, 106.34], "growth_spy": [100.0, 100.88, 100.71, 100.59, 99.06, 98.5, 99.5, 99.76, 98.37, 98.13, 96.72, 97.74, 97.41, 97.95, 96.2, 94.56, 94.25, 96.99, 97.72, 97.8, 97.8, 98.27, 98.31, 100.81, 101.4, 101.33, 102.32, 103.57, 104.38, 104.64, 105.9, 105.69, 105.0, 106.06, 105.65, 106.47, 106.65, 106.14, 106.12, 107.17, 107.47, 107.08, 107.94, 107.94], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -3.83, -3.18, -4.86, -1.43, 0.0], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0]}, "5y": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "growth_eq": [100.0, 102.16, 102.26, 101.42, 98.9, 97.09, 97.8, 98.52, 95.25, 95.44, 93.37, 94.5, 94.81, 94.71, 92.1, 89.37, 89.09, 92.74, 93.73, 93.86, 93.43, 94.39, 94.27, 96.12, 96.65, 96.67, 97.49, 98.43, 98.98, 99.23, 100.36, 100.33, 99.94, 100.57, 99.96, 101.57, 101.7, 100.94, 106.34, 102.27, 102.96, 101.18, 104.83, 106.34], "growth_spy": [100.0, 100.88, 100.71, 100.59, 99.06, 98.5, 99.5, 99.76, 98.37, 98.13, 96.72, 97.74, 97.41, 97.95, 96.2, 94.56, 94.25, 96.99, 97.72, 97.8, 97.8, 98.27, 98.31, 100.81, 101.4, 101.33, 102.32, 103.57, 104.38, 104.64, 105.9, 105.69, 105.0, 106.06, 105.65, 106.47, 106.65, 106.14, 106.12, 107.17, 107.47, 107.08, 107.94, 107.94], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -3.83, -3.18, -4.86, -1.43, 0.0], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0]}}, "rolling": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06"], "sharpe_eq": [null, null, null, null, null, null, null, -2.1704, -5.2152, -4.7257, -6.2947, -4.7199, -4.2484, -4.1836, -5.6311, -9.5978, -10.0064, -4.8729, -2.9684, -1.9161, -2.6176, -2.4309, -0.6909, 0.4087, 2.1774, 1.4319, 1.7577, 2.4351, 5.2729, 10.0727, 11.8849, 13.3587, 10.3455, 11.2629, 10.7544, 10.8998, 11.5225, 7.7654, 7.1353, 3.2986, 3.202, 1.5555, 2.9867, 3.5791], "sharpe_spy": [null, null, null, null, null, null, null, -0.9119, -3.7309, -4.0789, -6.0484, -3.6799, -4.0465, -3.0642, -4.7529, -7.6823, -7.9062, -3.2307, -1.3257, -0.7594, -1.6953, -1.4998, -0.2226, 2.0913, 3.9678, 3.0264, 4.1761, 4.6845, 7.8688, 11.818, 14.3149, 13.056, 9.8686, 11.1726, 10.2659, 10.6585, 10.9075, 8.5463, 7.4607, 9.1252, 8.1862, 5.628, 5.6437, 5.1698], "vol_eq": [null, null, null, null, null, null, null, 25.6569, 29.4957, 27.9014, 27.5952, 27.6811, 26.6638, 25.5688, 26.5158, 25.157, 24.8825, 32.9121, 32.4497, 31.7932, 31.5015, 31.7176, 28.5373, 29.8035, 28.035, 27.7076, 27.8481, 27.9787, 24.2691, 18.4458, 17.8251, 10.294, 10.7553, 10.6718, 10.9364, 11.7484, 11.5173, 10.7796, 23.8629, 30.6068, 30.5695, 31.74, 34.8633, 35.1114], "vol_spy": [null, null, null, null, null, null, null, 13.7988, 14.8956, 13.9356, 14.5116, 15.2673, 14.5693, 14.3571, 15.4316, 15.5951, 15.5487, 21.1563, 20.7107, 20.6049, 20.0341, 20.1304, 19.2423, 21.9949, 20.7136, 20.5181, 20.5282, 20.8409, 18.2976, 15.1545, 14.4513, 11.5615, 12.7273, 12.7282, 13.1719, 13.1973, 13.1077, 10.3399, 10.4153, 10.6086, 10.2856, 9.8922, 9.9065, 9.959], "sortino_eq": [null, null, null, null, null, null, null, -4.1817, -9.1884, -7.8759, -11.9773, -9.0089, -7.8109, -5.8048, -8.3884, -13.8178, -13.2735, -8.4722, -4.7789, -2.7605, -3.7488, -3.5053, -0.9577, 0.5917, 2.841, 1.8465, 2.2781, 3.0507, 6.0337, 69.4587, 56.125, 37.9447, 33.8684, 36.5857, 28.3553, 30.8726, 28.6087, 16.6864, 33.9413, 4.1368, 4.0108, 2.2253, 4.6934, 5.6643], "sortino_spy": [null, null, null, null, null, null, null, -1.2218, -5.2508, -5.6727, -8.5767, -5.4898, -6.0193, -4.4917, -6.8221, -10.8659, -11.4696, -6.6466, -2.6011, -1.4169, -3.0757, -2.734, -0.3637, 3.9834, 6.3523, 4.716, 6.004, 6.8376, 10.3166, 59.4968, null, 100.5124, 25.6471, 29.0382, 33.3873, 34.7306, 35.3007, 23.9774, 19.5328, 24.522, 21.3288, 15.7592, 15.826, 14.574], "beta": [null, null, null, null, null, null, null, 1.6953, 1.8506, 1.845, 1.7563, 1.6828, 1.669, 1.5991, 1.5677, 1.4829, 1.4727, 1.4881, 1.4963, 1.4797, 1.5116, 1.5159, 1.4376, 1.2951, 1.2859, 1.2799, 1.3025, 1.2929, 1.2611, 1.1327, 1.1414, 0.8136, 0.7908, 0.7805, 0.7856, 0.8138, 0.8034, 0.933, 0.6037, 0.0666, 0.0189, 0.1706, 0.5081, 0.4592], "corr": [null, null, null, null, null, null, null, 0.9118, 0.9346, 0.9215, 0.9236, 0.9281, 0.912, 0.8979, 0.9124, 0.9193, 0.9203, 0.9566, 0.955, 0.959, 0.9614, 0.9621, 0.9694, 0.9558, 0.9501, 0.9478, 0.9601, 0.963, 0.9508, 0.9306, 0.9254, 0.9138, 0.9358, 0.9309, 0.9462, 0.9142, 0.9144, 0.895, 0.2635, 0.0231, 0.0064, 0.0532, 0.1444, 0.1302], "ir": [null, null, null, null, null, null, null, -3.0244, -5.9723, -4.6873, -5.6371, -5.0805, -3.7077, -4.446, -5.4461, -9.7775, -10.334, -6.5288, -4.8902, -3.3845, -3.6118, -3.4708, -1.4085, -3.1003, -2.0016, -2.128, -3.693, -3.0418, -1.7976, 0.9513, 0.7056, -2.8557, -3.0942, -4.5895, -3.8894, -2.3531, -1.9262, -0.9589, 3.9579, 0.1291, 0.4251, -0.1925, 1.384, 2.1058]}, "bars": {"labels": ["3M", "6M", "YTD", "1Y", "2Y", "3Y", "All"], "eq": [6.34, 6.34, 6.34, 6.34, 6.34, 6.34, 6.34], "spy": [7.94, 7.94, 7.94, 7.94, 7.94, 7.94, 7.94], "excess": [-1.59, -1.59, -1.59, -1.59, -1.59, -1.59, -1.59], "te": [22.0, 22.0, 22.0, 22.0, 22.0, 22.0, 22.0], "ir": [-0.593, -0.593, -0.593, -0.593, -0.593, -0.593, -0.593]}};
+const DATA = {"chart": {"all": {"dates": ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07"], "ret_eq": [0.0, 2.16, 2.26, 1.42, -1.1, -2.91, -2.2, -1.48, -4.75, -4.56, -6.63, -5.5, -5.19, -5.29, -7.9, -10.63, -10.91, -7.26, -6.27, -6.14, -6.57, -5.61, -5.73, -3.88, -3.35, -3.33, -2.51, -1.57, -1.02, -0.77, 0.36, 0.33, -0.06, 0.57, -0.04, 1.57, 1.7, 0.94, 7.94, 2.27, 2.96, 1.18, 4.83, 8.05, 7.94], "ret_spy": [0.0, 0.88, 0.71, 0.59, -0.94, -1.5, -0.5, -0.24, -1.63, -1.87, -3.28, -2.26, -2.59, -2.05, -3.8, -5.44, -5.75, -3.01, -2.28, -2.2, -2.2, -1.73, -1.69, 0.81, 1.4, 1.33, 2.32, 3.57, 4.38, 4.64, 5.9, 5.69, 5.0, 6.06, 5.65, 6.47, 6.65, 6.14, 6.12, 7.17, 7.47, 7.08, 7.94, 9.44, 9.44], "dd_eq": [0.0, 0.0, 0.0, -0.82, -3.29, -5.06, -4.37, -3.66, -6.85, -6.67, -8.69, -7.59, -7.29, -7.38, -9.94, -12.61, -12.88, -9.31, -8.34, -8.21, -8.64, -7.69, -7.81, -6.0, -5.48, -5.46, -4.67, -3.75, -3.2, -2.96, -1.86, -1.89, -2.27, -1.65, -2.25, -0.67, -0.54, -1.3, 0.0, -5.25, -4.61, -6.27, -2.88, 0.0, -0.1], "dd_spy": [0.0, 0.0, -0.16, -0.29, -1.8, -2.36, -1.36, -1.1, -2.48, -2.72, -4.12, -3.11, -3.44, -2.9, -4.63, -6.26, -6.57, -3.86, -3.13, -3.04, -3.04, -2.59, -2.54, -0.06, 0.0, -0.07, 0.0, 0.0, 0.0, 0.0, 0.0, -0.2, -0.85, 0.0, -0.39, 0.0, 0.0, -0.49, -0.5, 0.0, 0.0, -0.37, 0.0, 0.0, 0.0]}}};
+const CD = DATA.chart.all;
 
 const CDFL = {
   responsive:true, maintainAspectRatio:false, animation:false,
@@ -193,116 +111,38 @@ const CDFL = {
     legend:{position:'top',labels:{boxWidth:12,font:{size:10}}},
     tooltip:{mode:'index',intersect:false,
       callbacks:{label:ctx=>{
-        if(ctx.dataset.label==='_h') return null;
         const v=ctx.parsed.y; if(v===null||v===undefined) return null;
-        return ctx.dataset.label+': '+(v>=0?'+':'')+v.toFixed(2);
+        return ctx.dataset.label+': '+(v>=0?'+':'')+v.toFixed(2)+'%';
       }}
     }
   }
 };
 
-function mkGrowth(pd){
-  return {type:'line',data:{labels:pd.dates,datasets:[
-    {label:'Portfolio',data:pd.growth_eq,borderColor:'#1a3a6b',borderWidth:2,pointRadius:0,fill:false,tension:0.1},
-    {label:'SPY',data:pd.growth_spy,borderColor:'#aaa',borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,tension:0.1}
-  ]},options:{...CDFL,scales:{
+new Chart(document.getElementById('growthChart'),{
+  type:'line',
+  data:{labels:CD.dates,datasets:[
+    {label:'Portfolio',data:CD.ret_eq,borderColor:'#1a3a6b',borderWidth:2,pointRadius:0,fill:false,tension:0.1},
+    {label:'SPY',data:CD.ret_spy,borderColor:'#aaa',borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,tension:0.1}
+  ]},
+  options:{...CDFL,scales:{
     x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{display:false}},
-    y:{ticks:{callback:v=>'$'+v.toFixed(0),font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}}
-  }}};
-}
+    y:{ticks:{callback:v=>(v>=0?'+':'')+v.toFixed(1)+'%',font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}}
+  }}
+});
 
-function mkDD(pd){
-  return {type:'line',data:{labels:pd.dates,datasets:[
-    {label:'Portfolio DD',data:pd.dd_eq,borderColor:'#b40000',backgroundColor:'rgba(180,0,0,0.18)',borderWidth:1,pointRadius:0,fill:'origin',tension:0.1},
-    {label:'SPY DD',data:pd.dd_spy,borderColor:'#888',backgroundColor:'rgba(100,100,100,0.12)',borderWidth:1,pointRadius:0,fill:'origin',tension:0.1}
-  ]},options:{...CDFL,
+new Chart(document.getElementById('ddChart'),{
+  type:'line',
+  data:{labels:CD.dates,datasets:[
+    {label:'Portfolio DD',data:CD.dd_eq,borderColor:'#b40000',backgroundColor:'rgba(180,0,0,0.18)',borderWidth:1,pointRadius:0,fill:'origin',tension:0.1},
+    {label:'SPY DD',data:CD.dd_spy,borderColor:'#888',backgroundColor:'rgba(100,100,100,0.12)',borderWidth:1,pointRadius:0,fill:'origin',tension:0.1}
+  ]},
+  options:{...CDFL,
     plugins:{...CDFL.plugins,legend:{display:false}},
     scales:{
       x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{display:false}},
       y:{max:0,ticks:{callback:v=>v.toFixed(0)+'%',font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}}
     }
-  }};
-}
-
-let gChart=new Chart(document.getElementById('growthChart'),mkGrowth(DATA.chart.all));
-let dChart=new Chart(document.getElementById('ddChart'),mkDD(DATA.chart.all));
-
-document.querySelectorAll('.pbtn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const pd=DATA.chart[btn.dataset.p]||DATA.chart.all;
-    gChart.data.labels=pd.dates;
-    gChart.data.datasets[0].data=pd.growth_eq;
-    gChart.data.datasets[1].data=pd.growth_spy;
-    gChart.update();
-    dChart.data.labels=pd.dates;
-    dChart.data.datasets[0].data=pd.dd_eq;
-    dChart.data.datasets[1].data=pd.dd_spy;
-    dChart.update();
-  });
-});
-
-new Chart(document.getElementById('periodChart'),{
-  type:'bar',
-  data:{labels:DATA.bars.labels,datasets:[
-    {label:'Portfolio',data:DATA.bars.eq,backgroundColor:'#1a3a6b'},
-    {label:'SPY',data:DATA.bars.spy,backgroundColor:'#aabbd4'}
-  ]},
-  options:{...CDFL,scales:{
-    x:{ticks:{font:{size:9}},grid:{display:false}},
-    y:{ticks:{callback:v=>(v>=0?'+':'')+v.toFixed(0)+'%',font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}}
-  }}
-});
-
-new Chart(document.getElementById('relChart'),{
-  type:'bar',
-  data:{labels:DATA.bars.labels,datasets:[
-    {label:'Excess Return (%)',data:DATA.bars.excess,
-     backgroundColor:DATA.bars.excess.map(v=>v===null?'#ccc':v>=0?'#27ae60':'#c0392b')}
-  ]},
-  options:{...CDFL,indexAxis:'y',plugins:{...CDFL.plugins,legend:{display:false}},scales:{
-    x:{ticks:{callback:v=>(v>=0?'+':'')+v.toFixed(0)+'%',font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}},
-    y:{ticks:{font:{size:9}},grid:{display:false}}
-  }}
-});
-
-const RM={
-  sharpe: {lbl:'Rolling Sharpe',    eq:DATA.rolling.sharpe_eq,  spy:DATA.rolling.sharpe_spy},
-  vol:    {lbl:'Rolling Vol (%)',    eq:DATA.rolling.vol_eq,     spy:DATA.rolling.vol_spy},
-  sortino:{lbl:'Rolling Sortino',   eq:DATA.rolling.sortino_eq, spy:DATA.rolling.sortino_spy},
-  ir:     {lbl:'Rolling Info. Ratio',eq:DATA.rolling.ir,        spy:null},
-  beta:   {lbl:'Rolling Beta',       eq:DATA.rolling.beta,      spy:null},
-  corr:   {lbl:'Rolling Corr.',      eq:DATA.rolling.corr,      spy:null}
-};
-
-function mkRDs(m){
-  const ds=[{label:'Portfolio',data:m.eq,borderColor:'#1a3a6b',borderWidth:2,pointRadius:0,fill:false,tension:0.1}];
-  if(m.spy) ds.push({label:'SPY',data:m.spy,borderColor:'#e69f00',borderWidth:1.5,borderDash:[5,3],pointRadius:0,fill:false,tension:0.1});
-  return ds;
-}
-
-let rChart=new Chart(document.getElementById('rollChart'),{
-  type:'line',
-  data:{labels:DATA.rolling.dates,datasets:mkRDs(RM.sharpe)},
-  options:{...CDFL,
-    plugins:{...CDFL.plugins,title:{display:true,text:'Rolling Sharpe',font:{size:10}}},
-    scales:{
-      x:{ticks:{maxTicksLimit:8,font:{size:9}},grid:{display:false}},
-      y:{ticks:{font:{size:9}},grid:{color:'rgba(0,0,0,0.05)'}}
-    }
   }
-});
-
-document.querySelectorAll('.rbtn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.rbtn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const m=RM[btn.dataset.m];
-    rChart.data.datasets=mkRDs(m);
-    rChart.options.plugins.title.text=m.lbl;
-    rChart.update();
-  });
 });
 </script>
 </body>
