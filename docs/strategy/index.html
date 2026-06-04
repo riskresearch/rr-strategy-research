@@ -167,7 +167,7 @@
 
   <div class="body-text" style="margin-bottom:14px">
     <p>
-      The strategy has been running live since 2026-03-06 on a Darwinex Zero account.
+      The strategy has been running live since 2026-06-04 on an IBKR paper trading account.
       The chart and tables below show the cumulative equity curve, current target allocation,
       and a summary of key performance metrics versus SPY since inception. For a full breakdown
       &mdash; including monthly returns, drawdown analysis, risk-adjusted ratios, and statistical
@@ -179,9 +179,9 @@
   <div class="chart-box" style="margin-top:8px"><canvas id="eqChart" style="width:100%"></canvas>
 <script>
 (function() {
-  var labels  = ["2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07"];
-  var eqRet   = [0.0, 2.16, 2.26, 1.42, -1.1, -2.91, -2.2, -1.48, -4.75, -4.56, -6.63, -5.5, -5.19, -5.29, -7.9, -10.63, -10.91, -7.26, -6.27, -6.14, -6.57, -5.61, -5.73, -3.88, -3.35, -3.33, -2.51, -1.57, -1.02, -0.77, 0.36, 0.33, -0.06, 0.57, -0.04, 1.57, 1.7, 0.94, 8.2, 2.27, 2.96, 1.18, 4.83, 8.05, 8.2];
-  var hwmRet  = [0.0, 2.16, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 2.26, 8.2, 8.2, 8.2, 8.2, 8.2, 8.2, 8.2];
+  var labels  = ["2026-06-04"];
+  var eqRet   = [0.0];
+  var hwmRet  = [0.0];
   new Chart(document.getElementById('eqChart'), {
     type: 'line',
     data: {
@@ -209,7 +209,7 @@
         },
         {
           label: 'SPY',
-          data: [0.0, 0.88, 0.71, 0.59, -0.94, -1.5, -0.5, -0.24, -1.63, -1.87, -3.28, -2.26, -2.59, -2.05, -3.8, -5.44, -5.75, -3.01, -2.28, -2.2, -2.2, -1.73, -1.69, 0.81, 1.4, 1.33, 2.32, 3.57, 4.38, 4.64, 5.9, 5.69, 5.0, 6.06, 5.65, 6.47, 6.65, 6.14, 6.12, 7.17, 7.47, 7.08, 7.94, 9.44, 9.44],
+          data: [0.0],
           borderColor: '#e69f00',
           borderWidth: 1.5,
           borderDash: [5, 3],
@@ -266,31 +266,29 @@
       <div class="col-label">Target Allocation</div>
       <table>
         <thead><tr><th>Asset</th><th style="text-align:right">Weight</th></tr></thead>
-        <tbody><tr><td>ES &mdash; S&amp;P 500</td><td class="num">89.2%</td></tr>
-<tr><td>NQ &mdash; Nasdaq-100</td><td class="num">0.0%</td></tr>
-<tr><td>RTY &mdash; Russell 2000</td><td class="num">10.8%</td></tr>
-<tr><td>ZN &mdash; 10Y Treasury</td><td class="num">0.0%</td></tr>
-<tr><td>GC &mdash; Gold</td><td class="num">0.0%</td></tr>
-<tr><td>SI &mdash; Silver</td><td class="num">0.0%</td></tr>
+        <tbody>
+<tr><td>ES &mdash; S&amp;P 500</td><td class="num">50.0%</td></tr>
+<tr><td>NQ &mdash; Nasdaq-100</td><td class="num">22.3%</td></tr>
+<tr><td>RTY &mdash; Russell 2000</td><td class="num">9.8%</td></tr>
+<tr><td>GC &mdash; Gold</td><td class="num">5.1%</td></tr>
+<tr><td>SI &mdash; Silver</td><td class="num">12.8%</td></tr>
 </tbody>
       </table>
     </div>
     <div>
-      <div class="col-label">Performance vs SPY &mdash; 62 days live</div>
+      <div class="col-label">Performance vs SPY &mdash; 1 day live</div>
       <table>
         <thead>
           <tr><th>Metric</th><th style="text-align:right">Strategy</th><th style="text-align:right">SPY (adj.)</th></tr>
         </thead>
         <tbody>
-          <tr><td>Total return</td>   <td style="text-align:right;color:#005500">+8.2%</td><td style="text-align:right;color:#005500">+9.4%</td></tr>
-          <tr><td>Ann. CAGR</td>      <td style="text-align:right">&mdash;</td>          <td style="text-align:right">&mdash;</td></tr>
-          <tr><td>Ann. volatility</td><td style="text-align:right">&mdash;</td>   <td style="text-align:right">&mdash;</td></tr>
-          <tr><td>Sharpe ratio</td>   <td style="text-align:right">&mdash;</td>      <td style="text-align:right">&mdash;</td></tr>
-          <tr><td>Sortino ratio</td>  <td style="text-align:right">&mdash;</td>    <td style="text-align:right">&mdash;</td></tr>
-          <tr><td>Max drawdown</td>   <td style="text-align:right;color:#880000">-12.9%</td>      <td style="text-align:right;color:#880000">-6.6%</td></tr>
+          <tr><td>Total return</td><td style="text-align:right;color:#005500">+0.0%</td><td style="text-align:right;color:#005500">+0.0%</td></tr>
+          <tr><td>Leverage</td><td style="text-align:right">2.39x</td><td style="text-align:right">&mdash;</td></tr>
+          <tr><td>Positions</td><td style="text-align:right">5</td><td style="text-align:right">&mdash;</td></tr>
+          <tr><td>Max drawdown</td><td style="text-align:right;color:#555">+0.0%</td><td style="text-align:right">&mdash;</td></tr>
         </tbody>
       </table>
-<p style="margin-top:6px;font-size:0.78rem;color:#555">Account equity: <strong style="color:#000">$1,090,118&nbsp;USD</strong></p>
+<p style="margin-top:6px;font-size:0.78rem;color:#555">Account equity: <strong style="color:#000">$1,160,900&nbsp;USD</strong> &nbsp;&middot;&nbsp; IBKR paper trading account</p>
     </div>
   </div>
 </div>
@@ -302,39 +300,16 @@
   <h2>How to Invest</h2>
   <div class="body-text">
     <p>
-      The strategy is currently accessible to external investors exclusively through the
-      <strong>UJNU Darwin</strong> on the <strong>Darwinex Zero</strong> platform. Darwinex Zero
-      is a regulated environment where investors can follow the strategy in proportion to the
-      manager&rsquo;s own live trading account, with all positions independently verified
-      by Darwinex.
-    </p>
-    <p>
-      <strong>Fee structure:</strong> Darwinex Zero applies a 20&nbsp;% performance fee on net
-      positive performance above the high-water mark, of which 15&nbsp;% is retained by RR Capital
-      and 5&nbsp;% goes to Darwinex. There is no management fee. Standard futures transaction
-      costs are embedded at the broker level and included in all reported returns.
-    </p>
-    <p>
-      <strong>Risk normalization:</strong> Darwinex applies a VaR filter (6.5&nbsp;% monthly VaR
-      target) to all Darwin products. The performance published on the UJNU page reflects the
-      risk-normalized version of the strategy, which may differ from the underlying strategy
-      returns when actual portfolio volatility diverges materially from the target.
-    </p>
-    <p>
-      <strong>Future vehicle:</strong> We are actively working to establish an independent
-      regulated investment vehicle to offer direct exposure to the strategy&rsquo;s returns using
-      our own position-level risk framework &mdash; free from any platform-level normalization
-      and with our own risk measures rather than Darwinex&rsquo;s VaR filter. Details will be
-      published here when the vehicle is operational.
+      The strategy is currently in the track record building phase on a verified IBKR
+      paper trading account. Details on investment vehicles will be published when available.
     </p>
   </div>
-  <a class="plain-link" href="https://www.darwinexzero.com/darwin/UJNU/performance" target="_blank" rel="noopener">View UJNU live track record on Darwinex Zero &#8599;</a>
 </div>
 
 </div><!-- #page -->
 
 <div id="footer">
-  &copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-05-07 10:40
+  &copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-06-04 11:59
 </div>
 
 </body>
