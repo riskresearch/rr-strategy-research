@@ -3,74 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RR Capital &mdash; Performance Attribution</title>
+<title>Performance Attribution — ES Core | RR Capital</title>
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{background:#f7f7f7;color:#111;font-family:Verdana,Geneva,Arial,sans-serif;font-size:13px;line-height:1.5}
-  a{color:#00437c;text-decoration:none} a:hover{text-decoration:underline}
-  #dh{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #000;
-      padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-  #dh-title{font-family:Georgia,serif;font-size:1.05rem;font-weight:bold;text-transform:uppercase;letter-spacing:2px}
-  #dh-sub{font-size:0.78rem;color:#555;margin-top:2px}
-  #nav-links{font-size:0.78rem}
-  #nav-links a{margin:0 8px;color:#00437c;font-weight:bold;text-transform:uppercase;letter-spacing:0.3px}
-  #page{max-width:960px;margin:0 auto;padding:20px 20px 60px}
-  .intro{font-size:0.82rem;color:#555;max-width:860px;margin-bottom:28px;line-height:1.7}
-  .dash-section{margin-bottom:40px}
-  .s-title{font-family:Georgia,"Times New Roman",serif;font-size:0.95rem;font-weight:bold;
-           text-transform:uppercase;letter-spacing:1px;color:#000;
-           border-bottom:1px solid #aaa;padding-bottom:4px;margin-bottom:14px}
-  .notice{background:#fff;border:1px solid #ddd;border-left:4px solid #00437c;
-          padding:20px 24px;max-width:720px;line-height:1.8}
-  .notice p{margin-bottom:12px;font-size:0.85rem;color:#222}
-  .notice p:last-child{margin-bottom:0}
-  .notice .label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.6px;
-                  color:#00437c;font-weight:bold;margin-bottom:10px}
-  #footer{border-top:1px solid #ccc;padding-top:10px;font-size:0.72rem;color:#888;text-align:center;margin-top:20px}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #ffffff;
+    color: #1a1a2e;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  #page { max-width: 860px; margin: 0 auto; padding: 36px 28px 72px; }
+  #header {
+    text-align: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #c8d0dc;
+    margin-bottom: 28px;
+  }
+  #header::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: #00437c;
+    width: 48px;
+    margin: 0 auto 22px;
+  }
+  #header h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.0rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #0d1b2a;
+  }
+  #header p {
+    font-size: 0.78rem;
+    color: #6b7a8d;
+    margin-top: 6px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  #nav {
+    text-align: center;
+    margin-bottom: 36px;
+    font-size: 0.76rem;
+    letter-spacing: 0.8px;
+  }
+  #nav a {
+    color: #00437c;
+    text-decoration: none;
+    margin: 0 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  #nav a:hover { text-decoration: underline; }
+  .section { margin-bottom: 44px; }
+  .section h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.72rem;
+    font-weight: bold;
+    color: #00437c;
+    border-bottom: 1px solid #e0e6ee;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  hr { border: none; border-top: 1px solid #e8ecf2; margin: 40px 0; }
+  .body-text p { margin-bottom: 12px; color: #2c3e50; }
+  a { color: #00437c; }
+  a:hover { text-decoration: underline; }
+  .perf-sub { font-size: 0.8rem; color: #6b7a8d; font-style: italic; margin-top: -6px; margin-bottom: 18px; }
+  table { border-collapse: collapse; font-size: 0.875rem; width: 100%; }
+  th {
+    background: #f4f6f9;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #dde3ec;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #4a5568;
+  }
+  td { padding: 6px 10px; border: 1px solid #dde3ec; vertical-align: top; color: #2c3e50; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .num { text-align: right; font-family: "Courier New", Courier, monospace; }
+  .muted-cell { color: #a0aec0; font-style: italic; font-size: 0.82rem; }
+  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; }
+  .tbl-scroll table { min-width: 540px; }
+  .stats-row {
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 32px; align-items: start; margin-top: 18px;
+  }
+  .chart-box {
+    border: 1px solid #dde3ec;
+    margin-bottom: 18px;
+    padding: 10px 14px 4px;
+    background: #fafbfd;
+  }
+  .chart-box canvas { display: block; width: 100%; }
+  .col-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b7a8d;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  .sim-card {
+    background: #f4f6f9;
+    border: 1px solid #dde3ec;
+    border-left: 3px solid #6b7a8d;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+  }
+  .sim-card-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.76rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4a5568;
+    margin-bottom: 8px;
+  }
+  .sim-card p { font-size: 0.82rem; color: #4a5568; line-height: 1.65; }
+  #footer {
+    border-top: 1px solid #e0e6ee;
+    padding-top: 14px;
+    font-size: 0.72rem;
+    color: #8a9bb0;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  @media (max-width: 600px) {
+    .stats-row { grid-template-columns: 1fr; }
+    #header h1 { font-size: 1.6rem; }
+  }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 </head>
 <body>
-<div id="dh">
-  <div>
-    <div id="dh-title">RR Capital &mdash; Performance Attribution</div>
-    <div id="dh-sub">ES Core Relative Allocation &nbsp;|&nbsp; Live since 2026-06-04</div>
-  </div>
-  <div id="nav-links">
-    <a href="index.html">&#8592; Strategy</a>
-    &nbsp;
-    <a href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Research &#8599;</a>
-  </div>
-</div>
-
 <div id="page">
 
-<p class="intro">
-  Full performance attribution will be published here once the strategy has accumulated
-  a statistically meaningful live track record on the IBKR forward-testing account.
-</p>
+<div id="header">
+  <h1>RR Capital</h1>
+  <p>Quantitative Macro Strategies</p>
+</div>
 
-<div class="dash-section">
-  <div class="s-title">Attribution Pending</div>
-  <div class="notice">
-    <div class="label">Track Record Status</div>
+<div id="nav">
+  <a href="index.html">&larr; Back to Programs</a>
+  <a href="es_core_strategy.html">Strategy Document</a>
+  <a href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Research &#8599;</a>
+</div>
+
+<div class="section">
+  <h2>Performance Attribution &mdash; ES Core Relative Allocation</h2>
+  <p class="perf-sub">Phase 1: Production Verification &mdash; Live Operational Forward-Testing</p>
+
+  <div class="body-text" style="margin-bottom:18px">
     <p>
-      Performance attribution requires a minimum of 63 trading days of live data to
-      produce statistically meaningful results. The strategy has been running on a
-      verified IBKR forward-testing account since 2026-06-04.
+      The strategy has been running live since 2026-06-04 on a verified IBKR forward-testing
+      account, providing real-time production verification of the execution engine. The live
+      program is backed by a 24.7-year historical simulation (September 2001&ndash;May 2026)
+      demonstrating consistent risk-adjusted outperformance across multiple full market cycles.
     </p>
+  </div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th style="text-align:right">24-Year Simulation</th>
+          <th style="text-align:right">ES Buy &amp; Hold</th>
+          <th style="text-align:right">Live Inception</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Period</td>
+          <td class="num" style="white-space:nowrap">Sep 2001&ndash;May 2026</td>
+          <td class="num" style="white-space:nowrap">Sep 2001&ndash;May 2026</td>
+          <td class="num" style="white-space:nowrap">Jun 2026&ndash;present (11 days)</td>
+        </tr>
+        <tr>
+          <td>Total Return</td>
+          <td class="num">+5,035%</td>
+          <td class="num">+724%</td>
+          <td class="num">+0.5%</td>
+        </tr>
+        <tr>
+          <td>CAGR</td>
+          <td class="num">+17.3%</td>
+          <td class="num">+8.2%</td>
+          <td class="num muted-cell">Accumulating</td>
+        </tr>
+        <tr>
+          <td>Ann. Volatility</td>
+          <td class="num">21.1%</td>
+          <td class="num">18.9%</td>
+          <td class="num muted-cell">Accumulating</td>
+        </tr>
+        <tr>
+          <td>Sharpe Ratio</td>
+          <td class="num">0.86</td>
+          <td class="num">0.51</td>
+          <td class="num muted-cell">Accumulating</td>
+        </tr>
+        <tr>
+          <td>Sortino Ratio</td>
+          <td class="num">1.19</td>
+          <td class="num">0.73</td>
+          <td class="num muted-cell">Accumulating</td>
+        </tr>
+        <tr>
+          <td>Max Drawdown</td>
+          <td class="num">&minus;27.7%</td>
+          <td class="num">&minus;53.8%</td>
+          <td class="num">-8.0%</td>
+        </tr>
+        <tr>
+          <td>Avg. Gross Leverage</td>
+          <td class="num" style="white-space:nowrap">~1.5&ndash;3.0&times; dynamic</td>
+          <td class="num" style="white-space:nowrap">1.0&times; (unlevered)</td>
+          <td class="num" style="white-space:nowrap">1.21&times; (current)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sim-card">
+    <div class="sim-card-title">Simulation Integrity</div>
     <p>
-      Full attribution analysis &mdash; including monthly returns, drawdown decomposition,
-      rolling Sharpe and Sortino, and factor exposure versus SPY &mdash; will be published
-      here once the minimum track record threshold is reached.
+      Historical data is sourced directly from Norgate Data and is completely
+      survival-bias-free. All simulation results incorporate realistic execution drag:
+      round-turn commissions, exchange fees, and conservative per-contract slippage
+      assumptions are applied at every rebalance. The simulation runs on actual
+      front-month futures contracts with proper roll logic, not continuous adjusted series.
     </p>
-    <p>
-      <strong>Expected publication: October 2026.</strong>
-    </p>
+  </div>
+
+  <div class="stats-row">
+    <div>
+      <div class="col-label" style="margin-bottom:8px">Current Live Target Allocation</div>
+      <table>
+        <thead><tr><th>Asset</th><th style="text-align:right">Weight</th></tr></thead>
+        <tbody>
+          <tr><td>ES &mdash; S&amp;P 500</td><td class="num">52.1%</td></tr>
+          <tr><td>NQ &mdash; Nasdaq-100</td><td class="num">20.6%</td></tr>
+          <tr><td>RTY &mdash; Russell 2000</td><td class="num">11.8%</td></tr>
+          <tr><td>SI &mdash; Silver</td><td class="num">11.4%</td></tr>
+          <tr><td>GC &mdash; Gold</td><td class="num">4.1%</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px;font-size:0.76rem;color:#6b7a8d">
+        Account equity: <strong style="color:#0d1b2a">$1,166,842&nbsp;USD</strong><br>
+        IBKR forward-testing &nbsp;&middot;&nbsp; 1.21&times; leverage &nbsp;&middot;&nbsp; 5 positions
+      </p>
+    </div>
+    <div>
+      <div class="col-label" style="margin-bottom:8px">
+        Live Equity Curve &mdash; IBKR Forward-Testing Account (since 2026-06-04)
+      </div>
+      <div class="chart-box">
+        <canvas id="eqChart" style="width:100%"></canvas>
+        <script>
+        (function() {
+          var labels  = ["2026-06-04", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15"];
+          var eqRet   = [0.0, 0.16, -6.97, -5.32, -6.13, -7.88, -2.45, 0.51];
+          var hwmRet  = [0.0, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.51];
+          var spyRet  = [0.0, -2.58, -2.36, -2.65, -4.18, -2.55, -2.03, -0.32];
+          new Chart(document.getElementById('eqChart'), {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: '_hwm',
+                  data: hwmRet,
+                  borderColor: 'transparent',
+                  backgroundColor: 'rgba(204,51,17,0.13)',
+                  pointRadius: 0,
+                  fill: '+1',
+                  tension: 0.1,
+                  order: 3
+                },
+                {
+                  label: 'Strategy',
+                  data: eqRet,
+                  borderColor: '#00437c',
+                  borderWidth: 2,
+                  pointRadius: 3,
+                  pointBackgroundColor: '#00437c',
+                  fill: false,
+                  tension: 0.1,
+                  order: 1
+                },
+                {
+                  label: 'SPY (adj.)',
+                  data: spyRet,
+                  borderColor: '#8a9bb0',
+                  borderWidth: 1.5,
+                  borderDash: [5, 3],
+                  pointRadius: 0,
+                  fill: false,
+                  tension: 0.1,
+                  order: 2
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: {
+                  position: 'top',
+                  labels: {
+                    boxWidth: 12,
+                    font: { size: 10 },
+                    filter: function(i) { return i.text !== '_hwm'; }
+                  }
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function(ctx) {
+                      if (ctx.dataset.label === '_hwm') return null;
+                      var v = ctx.parsed.y;
+                      if (v === null || v === undefined) return null;
+                      return ctx.dataset.label + ': ' + (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  type: 'category',
+                  ticks: { maxTicksLimit: 8, font: { size: 10 } },
+                  grid: { display: false }
+                },
+                y: {
+                  ticks: {
+                    callback: function(v) {
+                      return (v >= 0 ? '+' : '') + v.toFixed(0) + '%';
+                    },
+                    font: { size: 10 }
+                  },
+                  grid: { color: 'rgba(0,0,0,0.04)' }
+                }
+              }
+            }
+          });
+        })();
+        </script>
+      </div>
+    </div>
   </div>
 </div>
 
 </div><!-- #page -->
-<div id="footer">&copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-06-04</div>
+
+<div id="footer">
+  &copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-06-15
+</div>
 
 </body>
 </html>
