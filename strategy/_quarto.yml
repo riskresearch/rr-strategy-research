@@ -1,0 +1,22 @@
+project:
+  type: default
+  output-dir: ../docs/strategy
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-title: "Contents"
+    number-sections: false
+    smooth-scroll: true
+    code-fold: true
+    fig-align: center
+    fig-width: 9
+    fig-height: 5
+    self-contained: true
+
+execute:
+  echo: false
+  warning: false
+  freeze: false

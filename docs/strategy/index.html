@@ -8,95 +8,233 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: #ffffff;
-    color: #000000;
+    color: #1a1a2e;
     font-family: Verdana, Geneva, Arial, sans-serif;
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.7;
   }
-  #page { max-width: 860px; margin: 0 auto; padding: 28px 24px 60px; }
+  #page { max-width: 860px; margin: 0 auto; padding: 36px 28px 72px; }
+
+  /* Header */
   #header {
     text-align: center;
-    padding-bottom: 18px;
-    border-bottom: 2px solid #000;
-    margin-bottom: 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #c8d0dc;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  #header::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: #00437c;
+    width: 48px;
+    margin: 0 auto 22px;
   }
   #header h1 {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 2.2rem;
+    font-size: 2.0rem;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #0d1b2a;
+  }
+  #header p {
+    font-size: 0.78rem;
+    color: #6b7a8d;
+    margin-top: 6px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
   }
-  #header p { font-size: 0.82rem; color: #444; margin-top: 4px; letter-spacing: 0.5px; }
-  #nav { text-align: center; margin-bottom: 28px; font-size: 0.82rem; }
+
+  /* Nav */
+  #nav {
+    text-align: center;
+    margin-bottom: 36px;
+    font-size: 0.76rem;
+    letter-spacing: 0.8px;
+  }
   #nav a {
-    color: #00437c; text-decoration: none; margin: 0 12px;
-    font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
+    color: #00437c;
+    text-decoration: none;
+    margin: 0 14px;
+    font-weight: bold;
+    text-transform: uppercase;
   }
   #nav a:hover { text-decoration: underline; }
-  .section { margin-bottom: 40px; }
+
+  /* Sections */
+  .section { margin-bottom: 44px; }
   .section h2 {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.1rem; font-weight: bold; color: #000;
-    border-bottom: 1px solid #aaa;
-    padding-bottom: 4px; margin-bottom: 14px;
-    text-transform: uppercase; letter-spacing: 1px;
+    font-size: 0.72rem;
+    font-weight: bold;
+    color: #00437c;
+    border-bottom: 1px solid #e0e6ee;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
-  hr { border: none; border-top: 1px solid #ccc; margin: 36px 0; }
-  .body-text p { margin-bottom: 10px; text-align: left; }
+
+  hr { border: none; border-top: 1px solid #e8ecf2; margin: 40px 0; }
+  .body-text p { margin-bottom: 12px; color: #2c3e50; }
   a { color: #00437c; }
   a:hover { text-decoration: underline; }
   .plain-link {
-    display: inline-block; color: #00437c;
-    font-weight: bold; text-decoration: underline;
-    margin-top: 10px; font-size: 0.88rem;
+    display: inline-block;
+    color: #00437c;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
   }
+
+  /* Tables */
   table { border-collapse: collapse; font-size: 0.875rem; width: 100%; }
   th {
-    background: #f0f0f0; text-align: left; padding: 6px 10px;
-    border: 1px solid #ccc; font-size: 0.8rem;
-    text-transform: uppercase; letter-spacing: 0.3px;
+    background: #f4f6f9;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #dde3ec;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #4a5568;
   }
-  td { padding: 5px 10px; border: 1px solid #ccc; vertical-align: top; }
-  tr:nth-child(even) td { background: #f9f9f9; }
+  td { padding: 6px 10px; border: 1px solid #dde3ec; vertical-align: top; color: #2c3e50; }
+  tr:nth-child(even) td { background: #f8fafc; }
   .num { text-align: right; font-family: "Courier New", Courier, monospace; }
+  .muted-cell { color: #a0aec0; font-style: italic; font-size: 0.82rem; }
+  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; }
+  .tbl-scroll table { min-width: 540px; }
+
+  /* Stats layout */
   .stats-row {
     display: grid; grid-template-columns: 280px 1fr;
     gap: 32px; align-items: start; margin-top: 18px;
   }
-  .chart-box { border: 1px solid #ccc; margin-bottom: 18px; padding: 10px 14px 4px; background: #fafafa; }
+  .chart-box {
+    border: 1px solid #dde3ec;
+    margin-bottom: 18px;
+    padding: 10px 14px 4px;
+    background: #fafbfd;
+  }
   .chart-box canvas { display: block; width: 100%; }
-  .chart-placeholder {
-    height: 180px; background: #f5f5f5;
-    display: flex; align-items: center; justify-content: center;
-    color: #999; font-size: 0.82rem;
-  }
   .col-label {
-    font-size: 0.78rem; text-transform: uppercase;
-    letter-spacing: 0.5px; color: #555;
-    margin-bottom: 6px; font-weight: bold;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b7a8d;
+    margin-bottom: 8px;
+    font-weight: bold;
   }
+
+  /* Sim integrity card */
+  .sim-card {
+    background: #f4f6f9;
+    border: 1px solid #dde3ec;
+    border-left: 3px solid #6b7a8d;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+  }
+  .sim-card-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.76rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4a5568;
+    margin-bottom: 8px;
+  }
+  .sim-card p { font-size: 0.82rem; color: #4a5568; line-height: 1.65; }
+  .perf-sub { font-size: 0.8rem; color: #6b7a8d; font-style: italic; margin-top: -6px; margin-bottom: 18px; }
+
+  /* Program cards */
+  .program-card {
+    border: 1px solid #dde3ec;
+    border-left: 3px solid #00437c;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+    background: #fafbfd;
+  }
+  .program-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: #0d1b2a;
+    margin-bottom: 6px;
+  }
+  .program-card .prog-meta {
+    font-size: 0.76rem;
+    color: #6b7a8d;
+    margin-bottom: 12px;
+    letter-spacing: 0.2px;
+  }
+  .program-card p { font-size: 0.85rem; color: #2c3e50; margin-bottom: 10px; }
+  .program-card .prog-stats {
+    display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 14px;
+  }
+  .prog-stat { font-size: 0.82rem; }
+  .prog-stat .lbl {
+    color: #6b7a8d;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .prog-stat .val {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: #0d1b2a;
+    font-size: 0.95rem;
+  }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid #00437c;
+    color: #00437c !important;
+    text-decoration: none !important;
+    padding: 6px 14px;
+    font-size: 0.76rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-right: 8px;
+    margin-top: 4px;
+  }
+  .btn-outline:hover { background: #00437c; color: #fff !important; }
+
+  /* CTA / Enquiries */
+  .btn-cta {
+    display: inline-block;
+    background: #00437c;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 10px 22px;
+    font-size: 0.78rem;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  .btn-cta:hover { background: #002f58; }
+
+  /* Footer */
   #footer {
-    border-top: 1px solid #ccc; padding-top: 12px;
-    font-size: 0.75rem; color: #666; text-align: center;
+    border-top: 1px solid #e0e6ee;
+    padding-top: 14px;
+    font-size: 0.72rem;
+    color: #8a9bb0;
+    text-align: center;
+    letter-spacing: 0.3px;
   }
-  /* Performance section */
-  .perf-sub { font-size: 0.82rem; color: #666; font-style: italic; margin-top: 2px; margin-bottom: 16px; }
-  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; }
-  .tbl-scroll table { min-width: 540px; }
-  .muted-cell { color: #aaa; font-style: italic; font-size: 0.82rem; }
-  .sim-card { background: #f7f7f7; border: 1px solid #ddd; border-left: 3px solid #555; padding: 14px 18px; margin-bottom: 20px; }
-  .sim-card-title { font-family: Georgia, "Times New Roman", serif; font-size: 0.82rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; color: #000; margin-bottom: 8px; }
-  .sim-card p { font-size: 0.82rem; color: #444; line-height: 1.65; }
-  /* CTA card */
-  .cta-card { border: 2px solid #000; padding: 22px 24px; margin-bottom: 20px; }
-  .cta-card h3 { font-family: Georgia, "Times New Roman", serif; font-size: 1.0rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #000; margin-bottom: 12px; }
-  .cta-card p { font-size: 0.88rem; line-height: 1.7; margin-bottom: 10px; }
-  .btn-cta { display: inline-block; background: #000; color: #fff !important; text-decoration: none !important; padding: 9px 20px; font-size: 0.82rem; font-weight: bold; letter-spacing: 0.3px; margin-top: 14px; }
-  .btn-cta:hover { background: #00437c; }
+
   @media (max-width: 600px) {
     .stats-row { grid-template-columns: 1fr; }
     #header h1 { font-size: 1.6rem; }
+    .program-card .prog-stats { gap: 16px; }
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
@@ -111,300 +249,94 @@
 
 <div id="nav">
   <a href="#about">About</a>
-  <a href="#strategy">ES Core Program</a>
-  <a href="attribution.html">Performance Attribution</a>
-  <a href="#invest">How to Invest</a>
-  <a href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Research &#8599;</a>
+  <a href="#research">Research</a>
+  <a href="#programs">Programs</a>
+  <a href="#enquiries">Enquiries</a>
 </div>
 
 <!-- ── About ── -->
 <div class="section" id="about">
-  <h2>About RR Capital</h2>
+  <h2>About</h2>
   <div class="body-text">
     <p>
-      RR Capital is a quantitative investment management firm specializing in systematic
-      futures strategies. Our focus is on building rules-based investment programs that
-      combine rigorous signal research, disciplined risk management, and transparent
-      execution across regulated U.S. futures exchanges.
+      RR Capital is an independent quantitative research initiative focused on systematic
+      strategies. Our focus is on building rules-based investment programs that combine
+      rigorous signal research, disciplined risk management, and transparent execution
+      across regulated U.S. futures exchanges.
     </p>
     <p>
       All strategies are developed entirely in-house, grounded in academic finance and
-      empirical market research. The conceptual research framework underlying each program
-      is documented in detail in our research publication. Live account performance is
-      reported without adjustment. We believe that long-term investor trust is built through
-      verifiable track records and honest communication of both returns and risks.
+      empirical market research. Live account performance is reported without adjustment.
+      We believe that long-term investor trust is built through verifiable track records
+      and honest communication of both returns and risks.
     </p>
   </div>
 </div>
 
 <hr>
 
-<!-- ── Strategy ── -->
-<div class="section" id="strategy">
-  <h2>ES Core Relative Allocation Program</h2>
+<!-- ── Research Framework ── -->
+<div class="section" id="research">
+  <h2>Research Framework</h2>
   <div class="body-text">
     <p>
-      <strong>ES Core Relative Allocation</strong> is a systematic long-only futures strategy
-      that trades six USD-denominated contracts on regulated U.S. exchanges: the E-mini S&amp;P
-      500 (ES), E-mini Nasdaq-100 (NQ), E-mini Russell 2000 (RTY), Gold (GC), Silver (SI), and
-      10-Year Treasury (ZN). Together these instruments span large-cap equity, growth-oriented
-      technology, domestic small-cap equity, real assets, and fixed income duration &mdash; each
-      representing a distinct economic exposure.
+      The conceptual foundation underlying each program is documented in an open research
+      publication. It covers where returns come from, how to size and combine risk premia,
+      how to estimate expected returns from current conditions rather than historical
+      averages, and how to evaluate whether an active program earns its place alongside
+      a passive core. The framework is structured in seven sections, from market prices
+      and expectations through signals, portfolio construction, and live program deployment.
     </p>
-    <p>
-      The architecture maintains a permanent allocation to ES as the equity core. A daily signal
-      evaluates the risk-adjusted performance of each alternative instrument relative to ES and
-      allocates up to 50&nbsp;% of the portfolio to the strongest-performing alternatives; the
-      remaining weight defaults back to ES. This ensures net long equity exposure at all times
-      while rotating dynamically toward the instruments outperforming on a risk-adjusted basis.
-    </p>
-    <p>
-      Position sizes are scaled by each instrument&rsquo;s recent downside volatility so that
-      every contract contributes a roughly equal level of realized risk. The portfolio targets
-      a realized negative volatility (downside semi-deviation) in the 10&ndash;20&nbsp;% range,
-      dynamically adjusting leverage as market conditions shift. The portfolio runs above
-      1&times; notional in low-volatility, high-conviction environments and contracts below
-      1&times; during high-volatility or weak-signal periods. Leverage is a structural
-      consequence of risk control, not a return-enhancement tool.
-      For a complete description of the signal architecture, position sizing rules, and
-      24.7-year simulation results, see the full research and methodology below.
-    </p>
-  </div>
-  <a class="plain-link" href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Full research and methodology &#8599;</a>
-</div>
-
-<hr>
-
-<!-- ── Live Performance ── -->
-<div class="section" id="performance">
-  <h2>Live Performance</h2>
-  <p class="perf-sub">Phase 1: Production Verification &mdash; Live Operational Forward-Testing</p>
-
-  <div class="body-text" style="margin-bottom:18px">
-    <p>
-      The strategy has been running live since 2026-06-04 on a verified IBKR forward-testing
-      account, providing real-time production verification of the execution engine. The live
-      program is backed by a 24.7-year historical simulation (September 2001&ndash;May 2026)
-      demonstrating consistent risk-adjusted outperformance across multiple full market cycles.
-    </p>
-  </div>
-
-  <!-- 1B. Simulation vs live comparison -->
-  <div class="tbl-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>Metric</th>
-          <th style="text-align:right">24-Year Simulation</th>
-          <th style="text-align:right">ES Buy &amp; Hold</th>
-          <th style="text-align:right">Live Inception</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Period</td>
-          <td class="num" style="white-space:nowrap">Sep 2001&ndash;May 2026</td>
-          <td class="num" style="white-space:nowrap">Sep 2001&ndash;May 2026</td>
-          <td id="li-period" class="num" style="white-space:nowrap">Jun 2026&ndash;present (3 days)</td>
-        </tr>
-        <tr>
-          <td>Total Return</td>
-          <td class="num">+5,035%</td>
-          <td class="num">+724%</td>
-          <td id="li-total-return" class="num muted-cell">Accumulating</td>
-        </tr>
-        <tr>
-          <td>CAGR</td>
-          <td class="num">+17.3%</td>
-          <td class="num">+8.2%</td>
-          <td id="li-cagr" class="num muted-cell">Accumulating</td>
-        </tr>
-        <tr>
-          <td>Ann. Volatility</td>
-          <td class="num">21.1%</td>
-          <td class="num">18.9%</td>
-          <td id="li-vol" class="num muted-cell">Accumulating</td>
-        </tr>
-        <tr>
-          <td>Sharpe Ratio</td>
-          <td class="num">0.86</td>
-          <td class="num">0.51</td>
-          <td id="li-sharpe" class="num muted-cell">Accumulating</td>
-        </tr>
-        <tr>
-          <td>Sortino Ratio</td>
-          <td class="num">1.19</td>
-          <td class="num">0.73</td>
-          <td id="li-sortino" class="num muted-cell">Accumulating</td>
-        </tr>
-        <tr>
-          <td>Max Drawdown</td>
-          <td class="num">&minus;27.7%</td>
-          <td class="num">&minus;53.8%</td>
-          <td id="li-max-dd" class="num muted-cell">Accumulating</td>
-        </tr>
-        <tr>
-          <td>Avg. Gross Leverage</td>
-          <td class="num" style="white-space:nowrap">~1.5&ndash;3.0&times; dynamic</td>
-          <td class="num" style="white-space:nowrap">1.0&times; (unlevered)</td>
-          <td id="li-leverage" class="num" style="white-space:nowrap">2.35&times; (current)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 1C. Simulation integrity -->
-  <div class="sim-card">
-    <div class="sim-card-title">Simulation Integrity</div>
-    <p>
-      Historical data is sourced directly from Norgate Data and is completely
-      survival-bias-free. All simulation results incorporate realistic execution drag:
-      round-turn commissions, exchange fees, and conservative per-contract slippage
-      assumptions are applied at every rebalance. The simulation runs on actual
-      front-month futures contracts with proper roll logic, not continuous adjusted series.
-    </p>
-  </div>
-
-  <!-- 1E + 1D. Equity curve and allocation side by side -->
-  <div class="stats-row">
-    <div>
-      <div class="col-label" style="margin-bottom:6px">Current Live Target Allocation</div>
-      <table>
-        <thead><tr><th>Asset</th><th style="text-align:right">Weight</th></tr></thead>
-        <tbody id="alloc-tbody">
-<tr><td>ES &mdash; S&amp;P 500</td><td class="num">50.0%</td></tr>
-<tr><td>NQ &mdash; Nasdaq-100</td><td class="num">22.9%</td></tr>
-<tr><td>RTY &mdash; Russell 2000</td><td class="num">10.1%</td></tr>
-<tr><td>GC &mdash; Gold</td><td class="num">4.6%</td></tr>
-<tr><td>SI &mdash; Silver</td><td class="num">12.3%</td></tr>
-</tbody>
-      </table>
-      <p id="live-meta" style="margin-top:10px;font-size:0.78rem;color:#555">Account equity: <strong style="color:#000">$1,079,945&nbsp;USD</strong><br>IBKR forward-testing account &nbsp;&middot;&nbsp; 2.35&times; leverage &nbsp;&middot;&nbsp; 5 positions</p>
-    </div>
-    <div>
-      <div class="col-label" style="margin-bottom:6px">Live Equity Curve &mdash; IBKR Forward-Testing Account (since 2026-06-04)</div>
-      <div class="chart-box"><canvas id="eqChart" style="width:100%"></canvas>
-<script id="chart-data">
-(function() {
-  var labels = ["2026-06-04", "2026-06-05", "2026-06-08"];
-  var eqRet  = [0.0, 0.16, -6.97];
-  var hwmRet = [0.0, 0.16, 0.16];
-  var spyRet = [0.0, -2.58, -2.58];
-  new Chart(document.getElementById('eqChart'), {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: '_hwm',
-          data: hwmRet,
-          borderColor: 'transparent',
-          backgroundColor: 'rgba(204,51,17,0.18)',
-          pointRadius: 0,
-          fill: '+1',
-          tension: 0.1,
-          order: 3
-        },
-        {
-          label: 'Strategy',
-          data: eqRet,
-          borderColor: '#0057b7',
-          borderWidth: 2,
-          pointRadius: 0,
-          fill: false,
-          tension: 0.1,
-          order: 1
-        },
-        {
-          label: 'SPY',
-          data: spyRet,
-          borderColor: '#e69f00',
-          borderWidth: 1.5,
-          borderDash: [5, 3],
-          pointRadius: 0,
-          fill: false,
-          tension: 0.1,
-          order: 2
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: {
-          position: 'top',
-          labels: {
-            boxWidth: 14,
-            font: { size: 11 },
-            filter: function(item) { return item.text !== '_hwm'; }
-          }
-        },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) {
-              if (ctx.dataset.label === '_hwm') return null;
-              var v = ctx.parsed.y;
-              return ctx.dataset.label + ': ' + (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          type: 'category',
-          ticks: { maxTicksLimit: 8, font: { size: 10 } },
-          grid: { display: false }
-        },
-        y: {
-          ticks: {
-            callback: function(v) { return (v >= 0 ? '+' : '') + v.toFixed(0) + '%'; },
-            font: { size: 10 }
-          },
-          grid: { color: 'rgba(0,0,0,0.06)' }
-        }
-      }
-    }
-  });
-})();
-</script></div>
-    </div>
+    <a class="plain-link" href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">View research framework &#8599;</a>
   </div>
 </div>
 
 <hr>
 
-<!-- ── How to Invest ── -->
-<div class="section" id="invest">
-  <h2>How to Invest</h2>
+<!-- ── Programs ── -->
+<div class="section" id="programs">
+  <h2>Active Programs</h2>
 
-  <div class="cta-card">
+  <div class="program-card">
+    <h3>ES Core Relative Allocation</h3>
     <p>
-      The program is currently open to discussions with early anchor allocators,
-      proprietary trading groups, and joint-venture partners interested in separately
-      managed accounts (SMA) or fund structures.
+      U.S. large-cap equity futures (ES) as a permanent core with dynamic allocation to
+      nine alternatives across equities, fixed income, real assets, and digital assets.
+      Downside volatility targeting and dynamic leverage in the 10&ndash;20&nbsp;% negative
+      volatility range.
+    </p>
+    <a class="btn-outline" href="es_core_strategy.html" target="_blank">Strategy document &rarr;</a>
+    <a class="btn-outline" href="attribution.html">Performance attribution &rarr;</a>
+  </div>
+
+  <p style="font-size:0.78rem;color:#8a9bb0;font-style:italic">
+    Additional programs will be listed here as they are developed and deployed.
+  </p>
+</div>
+
+<hr>
+
+<!-- ── Enquiries ── -->
+<div class="section" id="enquiries">
+  <h2>Enquiries</h2>
+  <div class="body-text">
+    <p>
+      Currently open to discussions with early anchor allocators, proprietary trading
+      groups, and joint-venture partners interested in separately managed accounts (SMA)
+      or fund structures.
     </p>
     <p>
-      If you would like to learn more about the strategy or discuss a potential
+      If you would like to learn more about any of the programs or discuss a potential
       arrangement, reach out directly.
     </p>
     <a class="btn-cta" href="mailto:jaroger20@gmail.com?subject=RR%20Capital%20%E2%80%94%20Enquiry">Get in Touch &rarr;</a>
-  </div>
-
-  <div class="body-text">
-    <p style="font-size:0.82rem;color:#666">
-      RR Capital is an independent quantitative research and trading operation.
-      All strategies are developed entirely in-house. The full research framework
-      is published openly at the link below.
-    </p>
-    <a class="plain-link" href="https://riskresearch.github.io/rr-strategy-research/" target="_blank" rel="noopener">Full research and methodology &#8599;</a>
   </div>
 </div>
 
 </div><!-- #page -->
 
 <div id="footer">
-  &copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-06-08 02:00
+  &copy; 2026 RR Capital &nbsp;&middot;&nbsp; Last updated: 2026-06-15
 </div>
 
 </body>

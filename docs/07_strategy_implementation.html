@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7. ES Core Relative Allocation: implementation and evidence – RR Strategy Research</title>
+<title>7. RR Capital Programs – RR Capital</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,16 +30,15 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">RR Strategy Research</span>
+    <span class="navbar-title">RR Capital</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -122,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./07_strategy_implementation.html" aria-current="page"> 
-<span class="menu-text">7. Strategy</span></a>
+<span class="menu-text">7. Programs</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -140,14 +136,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#instrument-universe-and-core-design" id="toc-instrument-universe-and-core-design" class="nav-link active" data-scroll-target="#instrument-universe-and-core-design">Instrument universe and core design</a></li>
-  <li><a href="#strategy-design-and-the-role-of-leverage" id="toc-strategy-design-and-the-role-of-leverage" class="nav-link" data-scroll-target="#strategy-design-and-the-role-of-leverage">Strategy design and the role of leverage</a></li>
-  <li><a href="#backtest-results" id="toc-backtest-results" class="nav-link" data-scroll-target="#backtest-results">Backtest results</a></li>
-  <li><a href="#parameter-robustness" id="toc-parameter-robustness" class="nav-link" data-scroll-target="#parameter-robustness">Parameter robustness</a></li>
-  <li><a href="#regime-decomposition" id="toc-regime-decomposition" class="nav-link" data-scroll-target="#regime-decomposition">Regime decomposition</a></li>
-  <li><a href="#return-sources" id="toc-return-sources" class="nav-link" data-scroll-target="#return-sources">Return sources</a></li>
-  <li><a href="#live-deployment" id="toc-live-deployment" class="nav-link" data-scroll-target="#live-deployment">Live deployment</a></li>
-  <li><a href="#the-framework-applied" id="toc-the-framework-applied" class="nav-link" data-scroll-target="#the-framework-applied">The framework applied</a></li>
+  <li><a href="#active-programs" id="toc-active-programs" class="nav-link active" data-scroll-target="#active-programs">Active programs</a></li>
   </ul>
 </nav>
     </div>
@@ -156,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">7. ES Core Relative Allocation: implementation and evidence</h1>
+<h1 class="title">7. RR Capital Programs</h1>
 </div>
 
 
@@ -173,444 +162,258 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The preceding six sections built a framework for evaluating investment return sources, constructing portfolios, and assessing whether active programs justify their place alongside a passive core. This section applies that framework to a specific systematic strategy — the ES Core Relative Allocation — documenting its instrument universe, design rationale, robustness evidence, and early live track record on Darwinex Zero.</p>
-<section id="instrument-universe-and-core-design" class="level2">
-<h2 class="anchored" data-anchor-id="instrument-universe-and-core-design">Instrument universe and core design</h2>
-<p>The strategy trades six futures contracts: ES (S&amp;P 500), NQ (Nasdaq-100), RTY (Russell 2000), GC (Gold), SI (Silver), and ZN (10-year Treasury). All six are USD-denominated and trade on regulated U.S. exchanges.</p>
-<p>The primary constraint shaping the universe is the Darwinex Zero platform, which is the live deployment environment. Darwinex Zero provides access to a $1 million account with investor capital at stake. Futures contracts carry large notional values, and the set of instruments practically tradeable within this infrastructure at the required position sizes is the binding constraint on universe construction. All contracts must be USD-denominated — mixing currency exposures would introduce a foreign exchange risk layer that is not part of the strategy’s design intent.</p>
-<p>Within those constraints, the universe was built around one organizing principle: each instrument should represent a distinct economic exposure that belongs in a long-term portfolio allocation. Short-term interest rate futures are not available on the platform. Commodity sub-sector contracts were excluded because they are not intended to be held as long-term risk premia — they are instruments designed for shorter-horizon positioning that would be inconsistent with the strategy’s long-term allocation framework.</p>
-<p>The three equity contracts each represent a meaningfully different segment of the U.S. economy. ES provides exposure to the broad U.S. equity market — large and mid-cap businesses across all sectors, weighted by market capitalization. NQ concentrates exposure in the Nasdaq-100, heavily weighted toward technology, software, semiconductors, and other innovation-driven businesses with long-duration earnings profiles. RTY provides exposure to U.S. small-cap domestically oriented businesses whose returns are more sensitive to domestic economic conditions and less correlated with global growth cycles than large-cap indices. Gold and silver provide real asset exposure — stores of value whose behavior differs from financial assets, particularly during currency stress and late-cycle environments. The ten-year Treasury provides duration — long-dated fixed income exposure that has historically served as a portfolio diversifier during equity stress in disinflationary regimes.</p>
-<p>A global equity futures contract would have been a natural addition — replacing ES as the core would have broadened geographic diversification and reduced the strategy’s dependence on U.S. equity specifically. This remains a design priority, but global equity futures are not currently available within the Darwinex Zero platform infrastructure.</p>
-<p><strong>Why ES is the core.</strong> U.S. large-cap equity has been the most reliably positive long-run risk premium available to investors — the equity risk premium is the foundation on which every other return source in the universe is measured and evaluated. ES is also the benchmark against which every alternative’s relative performance is assessed: the allocation signal measures how consistently each alternative is outperforming the equity core on a risk-adjusted basis, which requires a stable and liquid reference instrument. The permanent equity core ensures the strategy participates in the growth regime that historically accounts for the majority of compounded long-run return. The objective is strong long-run compounding — the design accepts bear market drawdowns as the necessary cost of sustained equity participation.</p>
-</section>
-<section id="strategy-design-and-the-role-of-leverage" class="level2">
-<h2 class="anchored" data-anchor-id="strategy-design-and-the-role-of-leverage">Strategy design and the role of leverage</h2>
-<p>The ES Core Relative Allocation maintains a permanent allocation to ES as the equity core and dynamically allocates up to 50 percent of the portfolio to the five alternative instruments based on their risk-adjusted performance relative to ES.</p>
-<p>The allocation process operates at daily frequency. The signal evaluates each instrument’s recent risk-adjusted performance history and determines both the size of each position and the proportion of the portfolio it receives. Strong-performing alternatives receive larger allocations; weak-performing alternatives are reduced toward zero. The ES core always holds the residual weight — ensuring net long equity exposure at all times. Allocations are smoothed to reduce unnecessary turnover, and a no-trade band prevents rebalancing when signal changes are small relative to the existing position.</p>
-<p>The strategy incorporates a dynamic volatility targeting mechanism. Position sizes are scaled in proportion to recent measured downside volatility, so that each instrument contributes a roughly consistent level of realized risk to the portfolio regardless of its current volatility regime. When an instrument becomes more volatile its position size is reduced; when it becomes less volatile the position expands. This mechanism ensures that the strategy’s overall risk profile remains relatively stable across different market conditions.</p>
-<p>Leverage is not an optional feature — it is structurally necessary. Futures contracts require margin rather than full capital, and the volatility targeting mechanism systematically determines how much notional exposure each dollar of capital should support. In high-conviction, low-volatility environments the strategy runs above 1x notional leverage; in uncertain or high-volatility environments it contracts toward or below 1x. The objective of dynamic leverage is not to maximize return at any given moment but to maintain a consistent risk profile across changing conditions. The strategy is a levered, dynamically sized futures program whose long-run return is the product of sustained participation in multiple risk premia — not a single static equity position.</p>
-<p>Specific signal parameters are not disclosed here. Publishing exact parameters would accelerate their decay as similar strategies adopted the same values — the adaptive markets logic from section 2 applies directly.</p>
-</section>
-<section id="backtest-results" class="level2">
-<h2 class="anchored" data-anchor-id="backtest-results">Backtest results</h2>
-<p>The strategy was backtested from 2002 to March 2026 using Yahoo Finance continuous futures data. All signals are lagged one day to prevent look-ahead bias. The common analysis start date is 2003-08-18, reflecting the warm-up period required for the longest signal windows to initialize.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Metric</th>
-<th>Strategy</th>
-<th>ES benchmark</th>
-<th>ES-only (levered)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Total return</td>
-<td>3,699%</td>
-<td>601%</td>
-<td>2,250%</td>
-</tr>
-<tr class="even">
-<td>CAGR</td>
-<td>16.8%</td>
-<td>8.6%</td>
-<td>14.3%</td>
-</tr>
-<tr class="odd">
-<td>Ann. volatility</td>
-<td>22.3%</td>
-<td>19.0%</td>
-<td>23.4%</td>
-</tr>
-<tr class="even">
-<td>Sharpe ratio</td>
-<td><strong>0.807</strong></td>
-<td>0.530</td>
-<td>0.689</td>
-</tr>
-<tr class="odd">
-<td>Sortino ratio</td>
-<td><strong>1.095</strong></td>
-<td>0.745</td>
-<td>0.936</td>
-</tr>
-<tr class="even">
-<td>Max drawdown</td>
-<td><strong>−30.2%</strong></td>
-<td>−57.1%</td>
-<td>−42.4%</td>
-</tr>
-</tbody>
-</table>
-<p>The strategy produces a Sharpe of 0.807 and Sortino of 1.095 over the full backtest period, compared to 0.530 and 0.745 for the ES buy-and-hold benchmark. The maximum drawdown of −30.2% compares favorably to −57.1% for the benchmark and −42.4% for the levered ES-only alternative.</p>
-<p>The comparison against the levered ES-only alternative is the more informative benchmark. It isolates the contribution of tactical allocation: the ES-only levered alternative applies the same dynamic leverage but holds only ES, producing a CAGR of 14.3% and Sharpe of 0.689. The additional 2.5 percentage points of CAGR and 0.118 Sharpe points above that baseline reflect the value of rotating across the alternative instruments rather than concentrating in a single equity contract.</p>
-</section>
-<section id="parameter-robustness" class="level2">
-<h2 class="anchored" data-anchor-id="parameter-robustness">Parameter robustness</h2>
-<p>A strategy that performs well only at its exact design parameters is not a robust investment program but a result specific to one set of choices. Two complementary analyses test whether the strategy holds beyond its baseline configuration.</p>
-<p>A one-at-a-time sensitivity analysis tested each of the six key design parameters across five values ranging from −50% to +50% of the baseline. The Sharpe ratio remained above 0.75 for four of the six parameters across the full tested range. Two parameters — the EMA smoothing span and the no-trade band — showed essentially no sensitivity. The most sensitive parameter was the signal lookback window, which showed a clear directional pattern: shorter windows consistently outperformed longer ones.</p>
-<p>The Monte Carlo analysis tested 50 randomly sampled combinations across the full six-dimensional parameter space simultaneously, evaluated over a common analysis start date to ensure fair comparison. The Sharpe threshold of 0.70 was chosen as a conservative minimum — it represents a level at which the strategy would still produce meaningful risk-adjusted return well above the passive equity benchmark’s Sharpe of 0.53, justifying the operational complexity of a futures-based program. 52% of combinations exceeded this threshold, and the baseline configuration sat at the 98th percentile of the distribution.</p>
-<div id="fe3b7a20" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07_strategy_implementation_files/figure-html/cell-3-output-1.png" width="883" height="448" class="figure-img"></p>
-<figcaption>Distribution of Sharpe ratios across 50 randomly sampled parameter combinations evaluated over a common start date (2003-08-18). The baseline configuration (dashed line, Sharpe 0.807) sits at the 98th percentile. 52% of combinations exceed the Sharpe 0.70 threshold. Source: Author calculations.</figcaption>
-</figure>
+<p>The framework developed in sections 1–6 is applied through a set of systematic trading programs. Each program is documented independently — with its own backtest evidence, robustness analysis, and live deployment record — so that the framework document remains a stable reference while individual program documentation evolves with the live track record.</p>
+<section id="active-programs" class="level2">
+<h2 class="anchored" data-anchor-id="active-programs">Active programs</h2>
+<div class="rr-program-card">
+  <h3 class="anchored">ES Core Relative Allocation</h3>
+  <div class="rr-meta">Systematic futures &nbsp;·&nbsp; 10 instruments &nbsp;·&nbsp; Live: IBKR (June 2026) &nbsp;·&nbsp; External: <a href="https://www.darwinexzero.com/darwin/UJNU/performance" target="_blank">UJNU @ Darwinex Zero</a></div>
+  <p>
+    U.S. large-cap equity futures (ES) as a permanent core with dynamic allocation to nine
+    alternatives across equities, fixed income, real assets, and digital assets.
+    Downside volatility targeting and dynamic leverage. Hypothetical Sharpe 0.813 over
+    the 2001–2026 backtest period.
+  </p>
+  <a class="rr-btn" href="../strategy/es_core_strategy.html" target="_blank">View strategy document →</a>
 </div>
-</div>
-</div>
-<p>The most important robustness finding is the dominant sensitivity to the signal lookback window — correlation of −0.77 between window length and Sharpe across the Monte Carlo sample. The current baseline may not be optimal here, and a shorter window is a candidate for future revision once the live deployment provides sufficient out-of-sample evidence.</p>
-<div id="5971624e" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07_strategy_implementation_files/figure-html/cell-4-output-1.png" width="595" height="499" class="figure-img"></p>
-<figcaption>Monte Carlo equity paths — 50 parameter combinations over the common analysis period from 2003-08-18. Black = baseline. Color = Sharpe ratio (green = higher, red = lower). The 5th–95th percentile band is shaded. All combinations produce positive compounded returns throughout the sample. Source: Author calculations.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="regime-decomposition" class="level2">
-<h2 class="anchored" data-anchor-id="regime-decomposition">Regime decomposition</h2>
-<p>The strategy’s performance varies substantially across macro conditions. Each trading day in the backtest is classified into one of four regimes using publicly available data: Equity Bear (trailing 12-month market return below −10% or VIX above 30, taking priority over all other conditions), Inflation (CPI year-on-year above 4% and rising), Equity Bull (trailing 12-month return above 15%), and Neutral (all remaining days). The priority ordering ensures that bear conditions are correctly identified even when they coincide with elevated inflation.</p>
-<div id="c3c49b47" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07_strategy_implementation_files/figure-html/cell-5-output-1.png" width="614" height="499" class="figure-img"></p>
-<figcaption>Macro regime classification across the backtest period, 2003–2026. Top panel: strategy equity curve with regime shading. Panels below: Fama-French market factor 12-month return with S&amp;P 500 shown for reference where available, VIX, and CPI year-on-year. Source: Fama-French Data Library, FRED (VIXCLS, CPIAUCSL), author calculations.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Regime</th>
-<th>Days</th>
-<th>% Sample</th>
-<th>CAGR</th>
-<th>Sharpe</th>
-<th>Max DD</th>
-<th>Win rate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Equity Bull</td>
-<td>837</td>
-<td>14.1%</td>
-<td>+82.2%</td>
-<td>3.27</td>
-<td>−21.8%</td>
-<td>58.9%</td>
-</tr>
-<tr class="even">
-<td>Equity Bear</td>
-<td>657</td>
-<td>11.0%</td>
-<td>−39.1%</td>
-<td>−2.03</td>
-<td>−22.5%</td>
-<td>46.9%</td>
-</tr>
-<tr class="odd">
-<td>Inflation</td>
-<td>575</td>
-<td>9.7%</td>
-<td>+7.5%</td>
-<td>0.34</td>
-<td>−28.8%</td>
-<td>53.2%</td>
-</tr>
-<tr class="even">
-<td>Neutral</td>
-<td>3884</td>
-<td>65.2%</td>
-<td>+19.9%</td>
-<td>0.90</td>
-<td>−24.5%</td>
-<td>56.9%</td>
-</tr>
-</tbody>
-</table>
-<p>The strategy earns its return across two complementary regimes. The Neutral regime — 65% of all trading days — produces a Sharpe of 0.90 and a CAGR of 19.9%, forming the backbone of compounded long-run performance. Equity Bull periods produce an exceptional Sharpe of 3.27 as the dynamic leverage mechanism amplifies equity participation during strong trending conditions. Together these two regimes account for 79% of the sample and all positive contribution.</p>
-<p>The Equity Bear regime is the strategy’s primary structural weakness. During the 657 bear-regime days the strategy lost at an annualized rate of −39.1% with a Sharpe of −2.03. This is a direct consequence of the backward-looking signal design: the allocation mechanism requires sustained relative underperformance before it reduces equity exposure materially. In sharp, rapid bear markets the strategy experiences full equity drawdown before the signal has time to rotate. This is not a parameter optimization problem — it is a structural feature of any signal that measures performance over a multi-month lookback window. An investor in this strategy must accept that bear market losses are the cost of sustained equity participation across the 79% of conditions when the strategy is designed to perform.</p>
-<div id="533f22e5" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="07_strategy_implementation_files/figure-html/cell-6-output-1.png" width="754" height="499" class="figure-img"></p>
-<figcaption>Strategy performance by macro regime: annualized CAGR, Sharpe ratio, maximum drawdown, and daily win rate. The Neutral regime (grey) is the backbone of long-run return. Bear regime losses (red) are structural — a consequence of backward-looking signal design rather than a parameter flaw. Source: FRED, author calculations.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The Inflation regime produces a mediocre 7.5% CAGR and 0.34 Sharpe. Understanding why requires distinguishing between two things the strategy does with gold. Gold carries a persistent and meaningful beta throughout the backtest — the signal allocates to it whenever it outperforms ES on a risk-adjusted basis over the measurement window, which occurs during equity stress, late-cycle environments, and some inflation periods. However during inflation episodes where equity continues to perform adequately in nominal terms — as in 2021, when rising inflation coincided with continued equity gains — the signal stays in equity because ES is still outperforming gold on the backward-looking measurement. The strategy responds to realized relative performance, not to inflation forecasts. Gold therefore appears when equity stress and inflation coincide but is underallocated when inflation rises without immediate equity deterioration. This is a known constraint of any reactive signal design, not a contradiction in the return sources.</p>
-</section>
-<section id="return-sources" class="level2">
-<h2 class="anchored" data-anchor-id="return-sources">Return sources</h2>
-<p>The strategy’s return comes from three sources.</p>
-<p>The dominant source is equity market exposure. The strategy maintains permanent net long equity through its ES core, and this exposure to the equity risk premium is the foundation of its long-run return. This is structural beta — the return available to any investor with sustained equity participation.</p>
-<p>The second source is real asset exposure, primarily through gold. The allocation signal carries a persistent gold beta throughout the backtest, reflecting the signal’s tendency to rotate toward gold during equity stress and late-cycle environments when gold outperforms ES on a risk-adjusted basis. This is a reactive rather than predictive allocation — the strategy does not anticipate gold’s outperformance but responds to it as it emerges.</p>
-<p>The third source is the dynamic allocation signal itself — the incremental return above a static long equity and gold position. Full-sample analysis estimates this contribution at approximately 6 percentage points of annualized return with a t-statistic that is meaningful but not conclusive given the backtest length. This is the component that requires ongoing validation in live deployment and that cannot be fully attributed to known systematic factors.</p>
-<p>The strategy is a leveraged equity program with a real asset overlay and a tactical rotation mechanism. Its market exposure is dynamic — averaging approximately 1.25 times the equity market across the backtest, rising above 2.0 during high-conviction trending environments and contracting toward 0.2 during weak signal periods. It is not a market-neutral or low-beta program.</p>
-</section>
-<section id="live-deployment" class="level2">
-<h2 class="anchored" data-anchor-id="live-deployment">Live deployment</h2>
-<p>The ES Core Relative Allocation has been deployed live on Darwinex Zero under the ticker UJNU since 5 March 2026. The live track record is available at <a href="https://www.darwinexzero.com/darwin/UJNU/performance">https://www.darwinexzero.com/darwin/UJNU/performance</a>.</p>
-<p>Darwinex Zero applies a VaR normalization filter to all strategy returns, standardizing the published track record to a target monthly VaR of 6.5%. The published performance will therefore differ from the underlying strategy returns whenever the strategy’s actual volatility diverges materially from that target. Investors comparing the published DARWIN performance to the backtest results in this document should account for this normalization. Direct replication of the underlying strategy outside of Darwinex Zero would require a regulated fund structure with futures execution infrastructure. For individual investors, Darwinex Zero is currently the only accessible vehicle for participating in the strategy’s performance.</p>
-<p>At the time of writing the live track record is approximately eight weeks old — insufficient for any statistical inference about performance quality. What it confirms is that the implementation is functioning as designed. The appropriate evaluation horizon is a minimum of 24 months across at least two distinct macro regimes. The regime classification framework above provides the diagnostic lens for interpreting that performance as it accumulates.</p>
-</section>
-<section id="the-framework-applied" class="level2">
-<h2 class="anchored" data-anchor-id="the-framework-applied">The framework applied</h2>
-<p>Every design decision in the ES Core Relative Allocation traces directly to a specific section of this framework. The return source taxonomy from section 3 explains what the strategy harvests. The portfolio construction principles from section 4 explain how exposures are sized and combined. The expected return framework from section 5 explains how to evaluate whether current conditions justify the positions. The cost hierarchy from section 6 explains where the strategy sits in a broader portfolio.</p>
-<p>The standards are stated in advance. The evidence is presented honestly. The gaps are acknowledged. What remains is the live record.</p>
+<hr>
+<p><em>Additional programs will be listed here as they are developed and deployed.</em></p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -618,161 +421,185 @@ ul.task-list li input[type="checkbox"] {
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 
 
