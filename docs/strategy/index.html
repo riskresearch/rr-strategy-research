@@ -35,17 +35,26 @@
     font-family: Georgia, "Times New Roman", serif;
     font-size: 2.0rem;
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     text-transform: uppercase;
     color: #0d1b2a;
+    display: block;
+    width: 230px;
+    margin: 0 auto;
+    text-align: justify;
+    text-align-last: justify;
   }
   #header p {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 0.78rem;
     color: #2c3e50;
-    margin-top: 6px;
+    margin: 8px auto 0;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    display: block;
+    width: 230px;
+    text-align: justify;
+    text-align-last: justify;
   }
 
   /* Nav */
@@ -300,10 +309,12 @@
   <div class="program-card">
     <h3>ES Core Relative Allocation</h3>
     <p>
-      U.S. large-cap equity futures (ES) as a permanent core with dynamic allocation to
-      nine alternatives across equities, fixed income, real assets, and digital assets.
-      Downside volatility targeting and dynamic leverage in the 10&ndash;20&nbsp;% negative
-      volatility range.
+      U.S. large-cap equity futures (ES) form a permanent equity core, with dynamic
+      allocation of up to half the portfolio to nine alternatives across equities, fixed
+      income, real assets, and digital assets based on their risk-adjusted performance
+      relative to the core. Position sizing uses downside-volatility targeting and dynamic
+      leverage in the 10&ndash;20&nbsp;% negative-volatility range, so each instrument
+      contributes a comparable level of risk while the equity core always holds the residual.
     </p>
     <a class="btn-outline" href="es_core_strategy.html" target="_blank">Strategy document &rarr;</a>
     <a class="btn-outline" href="attribution.html">Performance attribution &rarr;</a>
@@ -314,11 +325,10 @@
     <p>
       A tax-efficient strategy built around a permanent equity core that is never sold,
       with a capital-efficient futures sleeve that dynamically increases or reduces risk.
-      Realised sleeve gains are periodically swept into additional core shares. By holding
-      the underlying indefinitely rather than selling to de-risk, the program defers
-      capital-gains realisation while still managing exposure through the overlay. It can be
-      deployed with a physical equity core (a broad global or U.S. equity ETF, USD or EUR),
-      or as a futures-only implementation through a dedicated investment vehicle.
+      By holding the underlying indefinitely rather than selling to de-risk, the program
+      defers capital-gains realisation while still managing exposure through the overlay. It
+      can be deployed with a physical equity core (a broad global or U.S. equity ETF, USD or
+      EUR), or as a futures-only implementation through a dedicated investment vehicle.
     </p>
     <a class="btn-outline" href="es_core_gtvp_strategy.html" target="_blank">Strategy document &rarr;</a>
     <a class="btn-outline" href="attribution_gtvp.html">Performance attribution &rarr;</a>
