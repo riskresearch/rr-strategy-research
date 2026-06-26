@@ -32,17 +32,26 @@
     font-family: Georgia, "Times New Roman", serif;
     font-size: 2.0rem;
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     text-transform: uppercase;
     color: #0d1b2a;
+    display: block;
+    width: 230px;
+    margin: 0 auto;
+    text-align: justify;
+    text-align-last: justify;
   }
   #header p {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 0.78rem;
     color: #2c3e50;
-    margin-top: 6px;
+    margin: 8px auto 0;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    display: block;
+    width: 230px;
+    text-align: justify;
+    text-align-last: justify;
   }
   #nav {
     text-align: center;
@@ -159,14 +168,13 @@
 
 <div class="section">
   <h2>Performance Attribution &mdash; ES Core Relative Allocation</h2>
-  <p class="perf-sub">Phase 1: Production Verification &mdash; Live Operational Forward-Testing</p>
 
   <div class="body-text" style="margin-bottom:18px">
     <p>
       The strategy has been running live since 2026-06-04 on a verified IBKR forward-testing
-      account, providing real-time production verification of the execution engine. The live
-      program is backed by a 24.7-year historical simulation (September 2001&ndash;May 2026)
-      demonstrating consistent risk-adjusted outperformance across multiple full market cycles.
+      account, providing real-time production verification of the execution engine. The table
+      below compares the live program against a buy-and-hold position in the S&amp;P 500 over
+      the same live period.
     </p>
   </div>
 
@@ -182,37 +190,37 @@
       <tbody>
         <tr>
           <td>Period</td>
-          <td class="num" style="white-space:nowrap">Sep 2001&ndash;May 2026</td>
+          <td class="num" style="white-space:nowrap">Jun 2026&ndash;present (22 days)</td>
           <td class="num" style="white-space:nowrap">Jun 2026&ndash;present (22 days)</td>
         </tr>
         <tr>
           <td>Total Return</td>
-          <td class="num">+724%</td>
+          <td class="num">-2.9%</td>
           <td class="num">-0.4%</td>
         </tr>
         <tr>
           <td>CAGR</td>
-          <td class="num">+8.2%</td>
+          <td class="num muted-cell">Accumulating</td>
           <td class="num muted-cell">Accumulating</td>
         </tr>
         <tr>
           <td>Ann. Volatility</td>
-          <td class="num">18.9%</td>
+          <td class="num muted-cell">Accumulating</td>
           <td class="num muted-cell">Accumulating</td>
         </tr>
         <tr>
           <td>Sharpe Ratio</td>
-          <td class="num">0.51</td>
+          <td class="num muted-cell">Accumulating</td>
           <td class="num muted-cell">Accumulating</td>
         </tr>
         <tr>
           <td>Sortino Ratio</td>
-          <td class="num">0.73</td>
+          <td class="num muted-cell">Accumulating</td>
           <td class="num muted-cell">Accumulating</td>
         </tr>
         <tr>
           <td>Max Drawdown</td>
-          <td class="num">&minus;53.8%</td>
+          <td class="num">-4.2%</td>
           <td class="num">-8.0%</td>
         </tr>
         <tr>
@@ -253,7 +261,7 @@
           var labels  = ["2026-06-04", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-19", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26"];
           var eqRet   = [0.0, 0.16, -6.97, -5.32, -6.13, -7.88, -2.45, 0.51, 2.39, 0.93, -0.32, 1.02, 0.68, -0.97, -0.24, -0.38];
           var hwmRet  = [0.0, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.51, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39];
-          var spyRet  = [0.0, -2.58, -2.36, -2.65, -4.18, -2.55, -2.03, -0.3, -0.89, -2.13, -1.11, -1.11, -2.86, -2.9, -2.76, -3.24];
+          var spyRet  = [0.0, -2.58, -2.36, -2.65, -4.18, -2.55, -2.03, -0.3, -0.89, -2.13, -1.11, -1.11, -2.86, -2.9, -2.76, -2.86];
           new Chart(document.getElementById('eqChart'), {
             type: 'line',
             data: {
