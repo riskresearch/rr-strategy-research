@@ -3168,7 +3168,7 @@ Warning
 <p>A strategy that performs well only at its exact design parameters is not a robust investment program but a result specific to one set of choices.</p>
 <p>The Monte Carlo analysis tested 50 randomly sampled combinations across the key design parameters using Latin Hypercube sampling, evaluated over a common analysis start date to ensure fair comparison. The Sharpe threshold of 0.70 was chosen as a conservative minimum — it represents a level at which the strategy would still produce meaningful risk-adjusted return well above the passive equity benchmark’s Sharpe of 0.50. Of 50 combinations, 23 (46%) exceeded the threshold. The mean Sharpe across all combinations was 0.595 and the median was 0.687. The baseline configuration achieved a Sharpe of 0.818, placing it at the 80th percentile of the distribution.</p>
 <p>The histogram below shows the full distribution of Sharpe ratios across the 50 combinations. The baseline (dashed line) sits comfortably above the median and above the threshold, but the wide spread — from −0.27 to 1.05 — confirms that parameter choice materially affects outcomes. The equity paths chart shows that all combinations produce positive compounded returns over the full period, but with significant dispersion in the growth trajectory.</p>
-<div id="d5fc3e22" class="cell" data-execution_count="2">
+<div id="920ee1b3" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3178,7 +3178,7 @@ Warning
 </div>
 </div>
 </div>
-<div id="a7492100" class="cell" data-execution_count="3">
+<div id="11f7f5ae" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3244,7 +3244,7 @@ Warning
 <p>The Sharpe ratio increases monotonically with the cap across the full tested range. Higher caps allow the volatility-targeting mechanism to scale more aggressively in low-volatility environments, producing meaningfully higher CAGR at the cost of proportionally higher realised volatility. Notably, the worst drawdown does not increase monotonically — the 0.20 and 0.25 levels produce identical maximum drawdowns of −27.8%, while the 0.15 level actually produces a worse drawdown (−35.1%) than the baseline despite lower average leverage, reflecting the impact of unfavourable timing when the cap binds at an inopportune moment.</p>
 <p>The baseline of 0.20 is conservative relative to what the historical data supports. This was chosen deliberately: a margin of safety between the backtested optimum and the live parameter is standard practice for systematic programs, reflecting the difference between in-sample and out-of-sample performance. Whether a higher cap would outperform in live deployment depends on whether the historical relationship between volatility and subsequent returns persists — which cannot be known in advance.</p>
 <p>The bar chart below compares the four key metrics across all five levels. The equity paths and drawdown chart illustrates how the growth trajectory and risk profile shift as the cap rises.</p>
-<div id="47834f7b" class="cell" data-execution_count="4">
+<div id="85c7d3a0" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3254,7 +3254,7 @@ Warning
 </div>
 </div>
 </div>
-<div id="873ee55f" class="cell" data-execution_count="5">
+<div id="4cc587d4" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3269,7 +3269,7 @@ Warning
 <h2 class="anchored" data-anchor-id="regime-decomposition">Regime decomposition</h2>
 <p>Each trading day in the backtest is classified into one of four regimes using publicly available data: Equity Bear (trailing 12-month market return below −10% or VIX above 30), Inflation (CPI year-on-year above 4% and rising), Equity Bull (trailing 12-month return above 15%), and Neutral (all remaining days). The priority ordering ensures that bear conditions are correctly identified even when they coincide with elevated inflation.</p>
 <p>The timeline chart below shows how regimes are distributed across the full backtest period, alongside the underlying macro indicators used for classification.</p>
-<div id="2ff8f03a" class="cell" data-execution_count="6">
+<div id="6bdad684" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3332,7 +3332,7 @@ Warning
 </table>
 <p>The strategy’s return is concentrated in Equity Bull periods (Sharpe 1.48) and Neutral periods (Sharpe 1.07), which together account for 74% of the sample. The Equity Bear regime is the strategy’s primary structural weakness — during 1,051 bear days the strategy lost at an annualized rate of −24.5%. This is a direct consequence of the backward-looking signal design: the allocation mechanism requires sustained relative underperformance before it reduces equity exposure materially. The strategy is not a drawdown-defense product.</p>
 <p>The chart below summarises Sharpe ratio, CAGR, maximum drawdown, and win rate for each regime.</p>
-<div id="7bf43e1a" class="cell" data-execution_count="7">
+<div id="787ca675" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
