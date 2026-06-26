@@ -1,0 +1,52 @@
+---
+title: "ES Core GTVP — Strategy Document"
+subtitle: "RR Capital | Version 1.0 | June 2026"
+---
+
+## Concept: Buy, Borrow, Die
+
+ES Core GTVP is a tax-aware implementation of a permanent equity-core strategy. The name refers to the "Grow, Tax-deferred, Via Pledging" structure — operationally a *Buy, Borrow, Die* approach: acquire a broad equity position, hold it indefinitely, borrow against it rather than selling to manage exposure, and never trigger a discretionary capital-gains realisation on the core.
+
+The economic insight is that selling an appreciated asset is expensive. Each sale crystallises a tax liability that permanently removes capital from the compounding base. A strategy that can adjust its market exposure *without* selling the underlying retains more capital working over time, all else equal. GTVP is designed around that principle: the core is bought once and pledged as collateral, while a separate, capital-efficient overlay does the work of raising and lowering risk.
+
+This is a deliberately different objective from the ES Core Relative Allocation program. That program seeks risk-adjusted outperformance through tactical rotation across a multi-asset futures universe. GTVP seeks **tax-efficient long-run compounding of a single equity core**, using derivatives only as an overlay to shape the risk profile — not to rotate between asset classes.
+
+## Architecture: physical core plus futures overlay
+
+The program is a two-asset hybrid.
+
+**The physical core (spot leg).** At inception, a fixed fraction of capital is committed to a physical equity position — a broad, low-cost equity ETF. This can be a global equity ETF or a U.S. equity ETF, denominated in either USD or EUR, depending on the investor's domicile and reporting currency. The core is purchased once and is **never sold under any circumstance**: this is a hard structural invariant of the program, not a discretionary guideline. The share count of the core only ever grows.
+
+**The futures overlay (satellite leg).** On top of the 1× physical baseline, a futures sleeve adjusts the program's net market exposure. The sleeve is sized as an overlay: when the risk signal calls for more than 1× exposure the futures leg goes long, adding notional on top of the core; when it calls for less, the futures leg goes short against the core, reducing net exposure. When the signal is neutral the overlay is flat and the program simply holds its physical core. The overlay is sized relative to total equity, so it cannot generate runaway exposure as the core grows.
+
+Because the overlay uses exchange-traded equity-index futures, it is highly capital-efficient — a small amount of margin controls the notional needed to shift exposure — and it leaves the physical core untouched. Adjusting risk therefore never requires selling a single core share.
+
+## The reinvestment sweep
+
+Exchange-traded futures mark to market daily, so gains in the overlay accumulate as real cash in the futures account rather than as unrealised paper gains. At a fixed frequency (monthly), any positive cash balance in the futures sleeve above a target cash buffer is swept into **additional core shares** at that day's closing price, net of transaction costs.
+
+This is the mechanism that turns overlay profits into a permanently larger physical core. Over time the core compounds not only through its own market appreciation but also through the reinvested proceeds of the overlay. Losses, by contrast, are simply left in the futures ledger — which is permitted to run negative, representing a margin debit against the pledged core rather than a forced sale. A target cash buffer (a fixed fraction of total equity) is maintained as a cushion so that ordinary day-to-day overlay losses do not immediately push the ledger into a margin debit.
+
+## Margin, financing, and the cash buffer
+
+When the futures ledger is negative, the program is effectively borrowing against the pledged core — this is the "Borrow" in Buy, Borrow, Die. That borrowing carries a financing cost: margin interest accrues daily on the negative balance at the prevailing short-term rate plus a broker spread. The strategy models this cost explicitly using the Federal Funds Effective Rate as the base, so that simulated returns reflect the real economics of carrying a margin debit rather than an idealised cost-free leverage assumption.
+
+The cash buffer serves two purposes: it reduces how often the ledger has to go into a financing-cost-bearing debit, and it preserves a liquidity cushion against adverse overlay moves. The sweep only reinvests cash *above* this buffer.
+
+## Tax rationale and honest limitations
+
+::: {.callout-note}
+RR Capital does not provide tax advice. The discussion below describes the structural rationale of the program. Whether and how these mechanics benefit any particular investor depends entirely on that investor's jurisdiction, account type, and individual circumstances, and should be confirmed with a qualified tax professional.
+:::
+
+The structural tax argument is straightforward: because the core is never sold, the program does not generate discretionary realised capital gains on the core position over its life. Exposure is managed through the futures overlay instead. In jurisdictions where holding-period and realisation rules make deferral valuable, retaining the core indefinitely and borrowing against it — rather than selling to de-risk — can keep more capital compounding.
+
+Two honest caveats apply. First, the futures overlay itself is not tax-free: in most jurisdictions futures generate their own taxable results, and the treatment of those results (and of margin interest) varies by domicile. The program defers realisation on the *core*, not on the entire structure. Second, **GTVP is not a drawdown-defense product.** The physical core is held through bear markets by design, and the overlay reduces but does not eliminate equity-market risk. In a fast bear market the program will take meaningful drawdowns alongside the equity market. The tax efficiency is a feature of how exposure is *managed*, not a reduction in market risk.
+
+## Live deployment
+
+::: {.callout-warning}
+The live ES Core GTVP account is in its first days of operation at the time of writing. There is no live track record yet, and none should be inferred. A dedicated performance attribution page will be developed as the account accumulates an out-of-sample history. As with any systematic program, a meaningful evaluation requires a substantial live sample spanning more than one market environment.
+:::
+
+ES Core GTVP is deployed as a live program running the same logic described here: a physical equity core, a capital-efficient futures overlay sized off total equity, periodic reinvestment of overlay proceeds into additional core shares, and explicit modelling of margin financing. Performance figures and attribution will be published on the dedicated attribution page as live data accumulates.
