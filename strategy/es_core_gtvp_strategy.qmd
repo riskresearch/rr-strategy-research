@@ -1,11 +1,11 @@
 ---
-title: "ES Core GTVP Allocation — Strategy Document"
+title: "S&P500 Core GTVP Allocation (SCGA) — Strategy Document"
 subtitle: "RR Capital | Version 1.0 | June 2026"
 ---
 
 ## Concept: a permanent, tax-efficient equity core
 
-ES Core GTVP Allocation is a tax-aware implementation of a permanent equity-core strategy. The objective is straightforward: hold a broad equity core indefinitely, never selling it, and adjust market exposure through a separate, capital-efficient overlay rather than by trading the core itself.
+S&P500 Core GTVP Allocation (SCGA) is a tax-aware implementation of a permanent equity-core strategy. The objective is straightforward: hold a broad equity core indefinitely, never selling it, and adjust market exposure through a separate, capital-efficient overlay rather than by trading the core itself.
 
 The economic insight is that selling an appreciated asset is expensive. Each sale crystallises a tax liability that permanently removes capital from the compounding base. A strategy that can raise and lower its market exposure *without* selling the underlying retains more capital working over time, all else equal. GTVP is designed around that principle: the core is bought once and held, while a capital-efficient sleeve does the work of increasing or reducing risk.
 
@@ -46,7 +46,7 @@ One honest caveat applies: the futures overlay itself is not tax-free. In most j
 ## Live deployment
 
 ::: {.callout-warning}
-The live ES Core GTVP Allocation account is in its first days of operation at the time of writing. There is no live track record yet, and none should be inferred. A dedicated performance attribution page will be developed as the account accumulates an out-of-sample history. As with any systematic program, a meaningful evaluation requires a substantial live sample spanning more than one market environment.
+The live S&P500 Core GTVP Allocation (SCGA) account is in its first days of operation at the time of writing. There is no live track record yet, and none should be inferred. A dedicated performance attribution page will be developed as the account accumulates an out-of-sample history. As with any systematic program, a meaningful evaluation requires a substantial live sample spanning more than one market environment.
 :::
 
-ES Core GTVP Allocation is deployed as a live program running the same logic described here: a physical equity core, a capital-efficient futures overlay sized off total equity, and periodic reinvestment of overlay proceeds into additional core shares. Performance figures and attribution will be published on the dedicated attribution page as live data accumulates.
+S&P500 Core GTVP Allocation (SCGA) is deployed as a live program running the same logic described here: a physical equity core, a capital-efficient futures overlay sized off total equity, and periodic reinvestment of overlay proceeds into additional core shares. Performance figures and attribution will be published on the dedicated attribution page as live data accumulates.

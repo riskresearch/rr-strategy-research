@@ -1,5 +1,5 @@
 ---
-title: "ES Core Relative Allocation — Strategy Document"
+title: "S&P500 Core Relative Allocation (SCRA) — Strategy Document"
 subtitle: "RR Capital | Version 1.0 | June 2026"
 ---
 
@@ -39,7 +39,7 @@ Bitcoin provides exposure to a distinct return source — a non-sovereign, fixed
 
 ## Strategy design and the role of leverage
 
-The ES Core Relative Allocation maintains a permanent allocation to ES as the equity core and dynamically allocates up to 50 percent of the portfolio to the nine alternative instruments based on their risk-adjusted performance relative to ES.
+The S&P500 Core Relative Allocation (SCRA) maintains a permanent allocation to ES as the equity core and dynamically allocates up to 50 percent of the portfolio to the nine alternative instruments based on their risk-adjusted performance relative to ES.
 
 The allocation process operates at daily frequency. The signal evaluates each instrument's recent risk-adjusted performance history and determines both the size of each position and the proportion of the portfolio it receives. Strong-performing alternatives receive larger allocations; weak-performing alternatives are reduced toward zero. The ES core always holds the residual weight — ensuring net long equity exposure at all times. Allocations are smoothed to reduce unnecessary turnover, and a no-trade band prevents rebalancing when signal changes are small relative to the existing position.
 
@@ -161,6 +161,6 @@ show("fig_regime_performance.png", "regime_decomposition")
 The IBKR forward test referenced here is days old at the time of writing. It is not evidence of strategy validity. The paper's own standard for meaningful evaluation is a minimum of 24 months across at least two distinct macro regimes.
 :::
 
-The ES Core Relative Allocation is deployed live at Interactive Brokers as the complete reference implementation — the full ten-instrument universe, running the same logic as the backtested engine with real capital. This forward test began in June 2026.
+The S&P500 Core Relative Allocation (SCRA) is deployed live at Interactive Brokers as the complete reference implementation — the full ten-instrument universe, running the same logic as the backtested engine with real capital. This forward test began in June 2026.
 
 A forward test of days provides no statistical information about performance quality. Substantive evaluation requires accumulation of out-of-sample data across multiple macro regimes. The paper's own standard is 24 months of live data spanning at least two distinct regime episodes.
