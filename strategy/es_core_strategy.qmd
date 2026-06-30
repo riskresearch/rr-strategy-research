@@ -1,6 +1,6 @@
 ---
 title: "S&P500 Core Relative Allocation (SCRA) — Strategy Document"
-subtitle: "RR Capital | Version 1.0 | June 2026"
+subtitle: "Core 1 Asset Management | Version 1.0 | June 2026"
 ---
 
 ```{python}
