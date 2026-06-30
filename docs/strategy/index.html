@@ -33,15 +33,28 @@
     margin: 0 auto 22px;
   }
   #header h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.55rem;
-    font-weight: bold;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+    margin: 0 auto;
     color: #0d1b2a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  #header h1 .brand-1 {
     display: block;
     width: fit-content;
     margin: 0 auto;
+    font-size: 2.95rem;
+    letter-spacing: 2px;
+    line-height: 1.0;
+    white-space: nowrap;
+  }
+  #header h1 .brand-2 {
+    display: block;
+    width: fit-content;
+    margin: 3px auto 0;
+    font-size: 1.06rem;
+    letter-spacing: 2px;
+    line-height: 1.1;
     white-space: nowrap;
   }
   #header p {
@@ -241,7 +254,7 @@
 
   @media (max-width: 600px) {
     .stats-row { grid-template-columns: 1fr; }
-    #header h1 { font-size: 1.6rem; }
+    #header h1 .brand-1 { font-size: 2.1rem; }
     .program-card .prog-stats { gap: 16px; }
   }
 </style>
@@ -251,8 +264,8 @@
 <div id="page">
 
 <div id="header">
-  <h1>Core 1 Asset Management</h1>
-  <p>Quantitative Macro Strategies</p>
+  <h1><span class="brand-1">Core 1</span><span class="brand-2">Asset Management</span></h1>
+  <p>Risk-Adjusted Macro Programs</p>
 </div>
 
 <div id="nav">
