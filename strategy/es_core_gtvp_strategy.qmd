@@ -1,6 +1,6 @@
 ---
 title: "S&P500 Core GTVP Allocation (SCGA) — Strategy Document"
-subtitle: "Core 1 Asset Management | Version 1.0 | June 2026"
+subtitle: "Core One Asset Management | Version 1.0 | June 2026"
 ---
 
 ## Concept: a permanent, tax-efficient equity core
@@ -36,7 +36,7 @@ Because the core is held indefinitely and never sold, it can serve as standing c
 ## Tax rationale and honest limitations
 
 ::: {.callout-note}
-Core 1 Asset Management does not provide tax advice. The discussion below describes the structural rationale of the program. Whether and how these mechanics benefit any particular investor depends entirely on that investor's jurisdiction, account type, and individual circumstances, and should be confirmed with a qualified tax professional.
+Core One Asset Management does not provide tax advice. The discussion below describes the structural rationale of the program. Whether and how these mechanics benefit any particular investor depends entirely on that investor's jurisdiction, account type, and individual circumstances, and should be confirmed with a qualified tax professional.
 :::
 
 The structural tax argument is straightforward: because the core is never sold, the program does not generate discretionary realised capital gains on the core position over its life. Exposure is managed through the futures overlay instead. In jurisdictions where holding-period and realisation rules make deferral valuable, retaining the core indefinitely rather than selling to de-risk can keep more capital compounding.
