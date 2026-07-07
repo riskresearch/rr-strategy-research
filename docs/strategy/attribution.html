@@ -54,17 +54,6 @@
     line-height: 1.1;
     white-space: nowrap;
   }
-  #header p {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.80rem;
-    color: #2c3e50;
-    margin: 8px auto 0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
-    width: fit-content;
-    white-space: nowrap;
-  }
   #nav {
     text-align: center;
     margin-bottom: 36px;
@@ -95,7 +84,6 @@
   .body-text p { margin-bottom: 12px; color: #2c3e50; }
   a { color: #00437c; }
   a:hover { text-decoration: underline; }
-  .perf-sub { font-size: 0.8rem; color: #6b7a8d; font-style: italic; margin-top: -6px; margin-bottom: 18px; }
   table { border-collapse: collapse; font-size: 0.875rem; width: 100%; }
   th {
     background: #f4f6f9;
@@ -113,17 +101,7 @@
   .muted-cell { color: #a0aec0; font-style: italic; font-size: 0.82rem; }
   .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; }
   .tbl-scroll table { min-width: 540px; }
-  .stats-row {
-    display: grid; grid-template-columns: 280px 1fr;
-    gap: 32px; align-items: start; margin-top: 18px;
-  }
-  .chart-box {
-    border: 1px solid #dde3ec;
-    margin-bottom: 18px;
-    padding: 10px 14px 4px;
-    background: #fafbfd;
-  }
-  .chart-box canvas { display: block; width: 100%; }
+  .alloc-wrap { max-width: 460px; margin-bottom: 28px; }
   .col-label {
     font-size: 0.72rem;
     text-transform: uppercase;
@@ -132,23 +110,13 @@
     margin-bottom: 8px;
     font-weight: bold;
   }
-  .sim-card {
-    background: #f4f6f9;
+  .chart-box {
     border: 1px solid #dde3ec;
-    border-left: 3px solid #6b7a8d;
-    padding: 14px 18px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    padding: 14px 16px 6px;
+    background: #fafbfd;
   }
-  .sim-card-title {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.76rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #4a5568;
-    margin-bottom: 8px;
-  }
-  .sim-card p { font-size: 0.82rem; color: #4a5568; line-height: 1.65; }
+  .chart-holder { position: relative; width: 100%; height: 440px; }
   #footer {
     border-top: 1px solid #e0e6ee;
     padding-top: 14px;
@@ -158,8 +126,8 @@
     letter-spacing: 0.3px;
   }
   @media (max-width: 600px) {
-    .stats-row { grid-template-columns: 1fr; }
     #header h1 .brand-1 { font-size: 2.1rem; }
+    .chart-holder { height: 320px; }
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
@@ -182,10 +150,11 @@
 
   <div class="body-text" style="margin-bottom:18px">
     <p>
-      The strategy has been running live since 2026-06-04 on a verified IBKR forward-testing
-      account, providing real-time production verification of the execution engine. The table
-      below compares the live program against a buy-and-hold position in the S&amp;P 500 over
-      the same live period.
+      The program has been running live since 2026-07-07 in a verified Interactive
+      Brokers Financial Advisor paper sub-account. The public track record begins at this
+      cutover; earlier development history is not carried over. The table below compares the
+      live program against a buy-and-hold position in the S&amp;P 500 over the same period.
+      Metrics that require a longer window are shown as <em>Accumulating</em>.
     </p>
   </div>
 
@@ -201,13 +170,13 @@
       <tbody>
         <tr>
           <td>Period</td>
-          <td class="num" style="white-space:nowrap">Jun 2026&ndash;present (33 days)</td>
-          <td class="num" style="white-space:nowrap">Jun 2026&ndash;present (33 days)</td>
+          <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (0 days)</td>
+          <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (0 days)</td>
         </tr>
         <tr>
           <td>Total Return</td>
-          <td class="num">-1.4%</td>
-          <td class="num">+0.4%</td>
+          <td class="num">+0.0%</td>
+          <td class="num">+0.0%</td>
         </tr>
         <tr>
           <td>CAGR</td>
@@ -231,132 +200,88 @@
         </tr>
         <tr>
           <td>Max Drawdown</td>
-          <td class="num">-4.2%</td>
-          <td class="num">-8.0%</td>
+          <td class="num">0.0%</td>
+          <td class="num">0.0%</td>
         </tr>
         <tr>
           <td>Avg. Gross Leverage</td>
           <td class="num" style="white-space:nowrap">1.0&times; (unlevered)</td>
-          <td class="num" style="white-space:nowrap">1.14&times; (current)</td>
+          <td class="num" style="white-space:nowrap">1.13&times; (current)</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="stats-row">
-    <div>
-      <div class="col-label" style="margin-bottom:8px">Current Live Target Allocation</div>
-      <table>
-        <thead><tr><th>Asset</th><th style="text-align:right">Weight</th></tr></thead>
-        <tbody>
-          <tr><td>ES &mdash; S&amp;P 500</td><td class="num">50.2%</td></tr>
-          <tr><td>RTY &mdash; Russell 2000</td><td class="num">21.3%</td></tr>
-          <tr><td>NQ &mdash; Nasdaq-100</td><td class="num">18.4%</td></tr>
-          <tr><td>SI &mdash; Silver</td><td class="num">8.4%</td></tr>
-          <tr><td>GC &mdash; Gold</td><td class="num">1.7%</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:10px;font-size:0.76rem;color:#6b7a8d">
-        Account equity: <strong style="color:#0d1b2a">$1,165,817&nbsp;USD</strong><br>
-        IBKR forward-testing &nbsp;&middot;&nbsp; 1.14&times; leverage &nbsp;&middot;&nbsp; 5 positions
-      </p>
-    </div>
-    <div>
-      <div class="col-label" style="margin-bottom:8px">
-        Live Equity Curve &mdash; IBKR Forward-Testing Account (since 2026-06-04)
-      </div>
-      <div class="chart-box">
-        <canvas id="eqChart" style="width:100%"></canvas>
-        <script>
-        (function() {
-          var labels  = ["2026-06-04", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-19", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26", "2026-06-29", "2026-06-30", "2026-07-01", "2026-07-02"];
-          var eqRet   = [0.0, 0.16, -6.97, -5.32, -6.13, -7.88, -2.45, 0.51, 2.39, 0.93, -0.32, 1.02, 0.68, -0.97, -0.24, -0.38, -0.51, -0.01, 0.8, 0.42];
-          var hwmRet  = [0.0, 0.16, 0.16, 0.16, 0.16, 0.16, 0.16, 0.51, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39, 2.39];
-          var spyRet  = [0.0, -2.58, -2.36, -2.65, -4.18, -2.55, -2.03, -0.3, -0.89, -2.13, -1.11, -1.11, -2.86, -2.9, -2.76, -3.46, -1.87, -1.11, -1.24, -1.37];
-          new Chart(document.getElementById('eqChart'), {
-            type: 'line',
-            data: {
-              labels: labels,
-              datasets: [
-                {
-                  label: '_hwm',
-                  data: hwmRet,
-                  borderColor: 'transparent',
-                  backgroundColor: 'rgba(204,51,17,0.13)',
-                  pointRadius: 0,
-                  fill: '+1',
-                  tension: 0.1,
-                  order: 3
-                },
-                {
-                  label: 'Strategy',
-                  data: eqRet,
-                  borderColor: '#00437c',
-                  borderWidth: 2,
-                  pointRadius: 3,
-                  pointBackgroundColor: '#00437c',
-                  fill: false,
-                  tension: 0.1,
-                  order: 1
-                },
-                {
-                  label: 'SPY (adj.)',
-                  data: spyRet,
-                  borderColor: '#8a9bb0',
-                  borderWidth: 1.5,
-                  borderDash: [5, 3],
-                  pointRadius: 0,
-                  fill: false,
-                  tension: 0.1,
-                  order: 2
-                }
-              ]
-            },
-            options: {
-              responsive: true,
-              interaction: { mode: 'index', intersect: false },
-              plugins: {
-                legend: {
-                  position: 'top',
-                  labels: {
-                    boxWidth: 12,
-                    font: { size: 10 },
-                    filter: function(i) { return i.text !== '_hwm'; }
-                  }
-                },
-                tooltip: {
-                  callbacks: {
-                    label: function(ctx) {
-                      if (ctx.dataset.label === '_hwm') return null;
-                      var v = ctx.parsed.y;
-                      if (v === null || v === undefined) return null;
-                      return ctx.dataset.label + ': ' + (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
-                    }
-                  }
-                }
-              },
-              scales: {
-                x: {
-                  type: 'category',
-                  ticks: { maxTicksLimit: 8, font: { size: 10 } },
-                  grid: { display: false }
-                },
-                y: {
-                  ticks: {
-                    callback: function(v) {
-                      return (v >= 0 ? '+' : '') + v.toFixed(0) + '%';
-                    },
-                    font: { size: 10 }
-                  },
-                  grid: { color: 'rgba(0,0,0,0.04)' }
-                }
-              }
-            }
-          });
-        })();
-        </script>
-      </div>
-    </div>
+  <div class="alloc-wrap">
+    <div class="col-label">Current Live Target Allocation</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Ticker</th>
+          <th style="text-align:right">Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr><td>S&amp;P 500</td><td>ES</td><td class="num">50.1%</td></tr>
+          <tr><td>Russell 2000</td><td>RTY</td><td class="num">22.0%</td></tr>
+          <tr><td>Nasdaq-100</td><td>NQ</td><td class="num">17.4%</td></tr>
+          <tr><td>Silver</td><td>SI</td><td class="num">8.5%</td></tr>
+          <tr><td>Gold</td><td>GC</td><td class="num">2.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-label">Live Equity Curve &mdash; since 2026-07-07</div>
+  <div class="chart-box">
+    <div class="chart-holder"><canvas id="eqChart"></canvas></div>
+    <script>
+    (function() {
+      var labels  = ["2026-07-07"];
+      var eqRet   = [0.0];
+      var hwmRet  = [0.0];
+      var spyRet  = [0.0];
+      new Chart(document.getElementById('eqChart'), {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            { label: '_hwm', data: hwmRet, borderColor: 'transparent',
+              backgroundColor: 'rgba(204,51,17,0.13)', pointRadius: 0, fill: '+1',
+              tension: 0.1, order: 3 },
+            { label: 'Strategy', data: eqRet, borderColor: '#00437c', borderWidth: 2,
+              pointRadius: 4, pointBackgroundColor: '#00437c', fill: false,
+              tension: 0.1, order: 1 },
+            { label: 'SPY (adj.)', data: spyRet, borderColor: '#8a9bb0', borderWidth: 1.5,
+              borderDash: [5, 3], pointRadius: 0, fill: false, tension: 0.1, order: 2 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top',
+              labels: { boxWidth: 12, font: { size: 11 },
+                        filter: function(i) { return i.text !== '_hwm'; } } },
+            tooltip: { callbacks: { label: function(ctx) {
+              if (ctx.dataset.label === '_hwm') return null;
+              var v = ctx.parsed.y;
+              if (v === null || v === undefined) return null;
+              return ctx.dataset.label + ': ' + (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+            } } }
+          },
+          scales: {
+            x: { type: 'category', ticks: { maxTicksLimit: 10, font: { size: 11 } },
+                 grid: { display: false } },
+            y: { ticks: { callback: function(v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; },
+                          font: { size: 11 } },
+                 grid: { color: 'rgba(0,0,0,0.04)' } }
+          }
+        }
+      });
+    })();
+    </script>
   </div>
 </div>
 
