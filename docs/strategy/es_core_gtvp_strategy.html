@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>S&amp;P500 Core GTVP Allocation (SCGA) — Strategy Document</title>
+<title>S&amp;P 500 Core GTVP Allocation (SCGA) — Strategy Document</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3055,12 +3055,16 @@ vertical-align: -.125em;
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#concept-a-permanent-tax-efficient-equity-core" id="toc-concept-a-permanent-tax-efficient-equity-core" class="nav-link active" data-scroll-target="#concept-a-permanent-tax-efficient-equity-core">Concept: a permanent, tax-efficient equity core</a></li>
-  <li><a href="#architecture-physical-core-plus-futures-overlay" id="toc-architecture-physical-core-plus-futures-overlay" class="nav-link" data-scroll-target="#architecture-physical-core-plus-futures-overlay">Architecture: physical core plus futures overlay</a></li>
-  <li><a href="#the-reinvestment-sweep" id="toc-the-reinvestment-sweep" class="nav-link" data-scroll-target="#the-reinvestment-sweep">The reinvestment sweep</a></li>
-  <li><a href="#optional-liquidity-against-the-core" id="toc-optional-liquidity-against-the-core" class="nav-link" data-scroll-target="#optional-liquidity-against-the-core">Optional liquidity against the core</a></li>
-  <li><a href="#tax-rationale-and-honest-limitations" id="toc-tax-rationale-and-honest-limitations" class="nav-link" data-scroll-target="#tax-rationale-and-honest-limitations">Tax rationale and honest limitations</a></li>
-  <li><a href="#live-deployment" id="toc-live-deployment" class="nav-link" data-scroll-target="#live-deployment">Live deployment</a></li>
+  <li><a href="#program-summary" id="toc-program-summary" class="nav-link active" data-scroll-target="#program-summary">1. Program summary</a></li>
+  <li><a href="#investment-thesis-source-of-return" id="toc-investment-thesis-source-of-return" class="nav-link" data-scroll-target="#investment-thesis-source-of-return">2. Investment thesis / source of return</a></li>
+  <li><a href="#universe-instruments" id="toc-universe-instruments" class="nav-link" data-scroll-target="#universe-instruments">3. Universe &amp; instruments</a></li>
+  <li><a href="#methodology-conceptual" id="toc-methodology-conceptual" class="nav-link" data-scroll-target="#methodology-conceptual">4. Methodology (conceptual)</a></li>
+  <li><a href="#risk-management" id="toc-risk-management" class="nav-link" data-scroll-target="#risk-management">5. Risk management</a></li>
+  <li><a href="#portfolio-construction-constraints" id="toc-portfolio-construction-constraints" class="nav-link" data-scroll-target="#portfolio-construction-constraints">6. Portfolio construction &amp; constraints</a></li>
+  <li><a href="#execution-operations" id="toc-execution-operations" class="nav-link" data-scroll-target="#execution-operations">7. Execution &amp; operations</a></li>
+  <li><a href="#capacity-minimum-investment" id="toc-capacity-minimum-investment" class="nav-link" data-scroll-target="#capacity-minimum-investment">8. Capacity &amp; minimum investment</a></li>
+  <li><a href="#track-record" id="toc-track-record" class="nav-link" data-scroll-target="#track-record">9. Track record</a></li>
+  <li><a href="#key-risks-disclaimers" id="toc-key-risks-disclaimers" class="nav-link" data-scroll-target="#key-risks-disclaimers">10. Key risks &amp; disclaimers</a></li>
   </ul>
 </nav>
 </div>
@@ -3068,8 +3072,8 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">S&amp;P500 Core GTVP Allocation (SCGA) — Strategy Document</h1>
-<p class="subtitle lead">Core One Asset Management | Version 1.0 | June 2026</p>
+<h1 class="title">S&amp;P 500 Core GTVP Allocation (SCGA) — Strategy Document</h1>
+<p class="subtitle lead">Core One Asset Management | Version 1.1 | July 2026</p>
 </div>
 
 
@@ -3086,49 +3090,49 @@ vertical-align: -.125em;
 </header>
 
 
-<section id="concept-a-permanent-tax-efficient-equity-core" class="level2">
-<h2 class="anchored" data-anchor-id="concept-a-permanent-tax-efficient-equity-core">Concept: a permanent, tax-efficient equity core</h2>
-<p>S&amp;P500 Core GTVP Allocation (SCGA) is a tax-aware implementation of a permanent equity-core strategy. The objective is straightforward: hold a broad equity core indefinitely, never selling it, and adjust market exposure through a separate, capital-efficient overlay rather than by trading the core itself.</p>
-<p>The economic insight is that selling an appreciated asset is expensive. Each sale crystallises a tax liability that permanently removes capital from the compounding base. A strategy that can raise and lower its market exposure <em>without</em> selling the underlying retains more capital working over time, all else equal. GTVP is designed around that principle: the core is bought once and held, while a capital-efficient sleeve does the work of increasing or reducing risk.</p>
-<p>GTVP seeks <strong>tax-efficient long-run compounding of a single equity core</strong>, using derivatives only as an overlay to shape the risk profile — not to rotate between asset classes.</p>
+<section id="program-summary" class="level2">
+<h2 class="anchored" data-anchor-id="program-summary">1. Program summary</h2>
+<p>S&amp;P 500 Core GTVP (SCGA) is a tax-aware, long-biased program that holds a permanent physical S&amp;P 500 core — a UCITS ETF that is never sold — and manages market exposure through a capital-efficient S&amp;P 500 futures overlay. The objective is to compound with the U.S. equity market while deferring capital-gains realization on the core and adjusting risk through the overlay rather than by trading the underlying. Net exposure is held within a controlled range around a fully-invested equity baseline.</p>
 </section>
-<section id="architecture-physical-core-plus-futures-overlay" class="level2">
-<h2 class="anchored" data-anchor-id="architecture-physical-core-plus-futures-overlay">Architecture: physical core plus futures overlay</h2>
-<p>The reference implementation is a two-asset hybrid.</p>
-<p><strong>The physical core (spot leg).</strong> At inception, a fixed fraction of capital is committed to a physical equity position — a broad, low-cost equity ETF. This can be a global equity ETF or a U.S. equity ETF, denominated in either USD or EUR, depending on the investor’s domicile and reporting currency. The core is purchased once and is <strong>never sold under any circumstance</strong>: this is a hard structural invariant of the program, not a discretionary guideline. The share count of the core only ever grows.</p>
-<p><strong>The futures overlay (risk sleeve).</strong> On top of the 1× physical baseline, a futures sleeve adjusts the program’s net market exposure. The sleeve is sized as an overlay: when the risk signal calls for more than 1× exposure the futures leg goes long, adding notional on top of the core; when it calls for less, the futures leg goes short against the core, reducing net exposure. When the signal is neutral the overlay is flat and the program simply holds its physical core. The overlay is sized relative to total equity, so it cannot generate runaway exposure as the core grows.</p>
-<p>Because the overlay uses exchange-traded equity-index futures, it is highly capital-efficient — a small amount of margin controls the notional needed to shift exposure — and it leaves the physical core untouched. Adjusting risk therefore never requires selling a single core share.</p>
-<p><strong>Deployment options.</strong> The program can be deployed in two ways. The first is the physical-core hybrid described above: a held spot ETF plus the futures sleeve. The second is a futures-only implementation that replicates the same exposure profile without a physical ETF leg — this requires a dedicated investment vehicle to hold and manage the structure, and is appropriate for investors who cannot or prefer not to custody the physical core directly. Both express the same underlying strategy; the choice depends on the investor’s structure, domicile, and operational preferences.</p>
+<section id="investment-thesis-source-of-return" class="level2">
+<h2 class="anchored" data-anchor-id="investment-thesis-source-of-return">2. Investment thesis / source of return</h2>
+<p>The program rests on two ideas. The first is the equity risk premium — the durable, long-run compensation for owning productive corporate assets — which the physical core captures directly and permanently. The second is that <em>not selling</em> is itself a source of after-tax return: every disposal of an appreciated asset crystallizes a tax liability that permanently leaves the compounding base, so a structure that raises and lowers market exposure through derivatives — instead of selling the underlying — keeps more capital working over time. Holding the core indefinitely and shaping risk with a capital-efficient overlay is therefore both an investment decision and an after-tax efficiency decision. These are structural effects, not a market forecast.</p>
 </section>
-<section id="the-reinvestment-sweep" class="level2">
-<h2 class="anchored" data-anchor-id="the-reinvestment-sweep">The reinvestment sweep</h2>
-<p>Exchange-traded futures mark to market daily, so gains in the overlay accumulate as real cash in the futures account rather than as unrealised paper gains. At a fixed frequency (monthly), any positive cash balance in the futures sleeve above a target cash buffer is swept into <strong>additional core shares</strong> at that day’s closing price, net of transaction costs.</p>
-<p>This is the mechanism that turns overlay profits into a permanently larger physical core. Over time the core compounds not only through its own market appreciation but also through the reinvested proceeds of the overlay. Losses, by contrast, simply remain in the futures cash ledger and are recovered by subsequent overlay gains before any further sweep occurs. A target cash buffer (a fixed fraction of total equity) is maintained as a cushion so that ordinary day-to-day overlay losses are absorbed without disturbing the core.</p>
+<section id="universe-instruments" class="level2">
+<h2 class="anchored" data-anchor-id="universe-instruments">3. Universe &amp; instruments</h2>
+<p>The physical core is a broad, low-cost S&amp;P 500 UCITS ETF (for example, CSPX) listed on the London Stock Exchange and denominated in U.S. dollars. A UCITS ETF is chosen for its regulatory suitability, low ongoing cost, and appropriateness for an indefinite hold. Exposure is adjusted with S&amp;P 500 futures — the standard E-mini (ES) and the Micro E-mini (MES) — which provide deep liquidity and capital-efficient, precise control of net exposure without disturbing the core.</p>
+<p>The program can be deployed as the physical-core hybrid described here, or, for investors who cannot or prefer not to custody the ETF directly, as a futures-only implementation that replicates the same exposure profile through a dedicated investment vehicle.</p>
 </section>
-<section id="optional-liquidity-against-the-core" class="level2">
-<h2 class="anchored" data-anchor-id="optional-liquidity-against-the-core">Optional liquidity against the core</h2>
-<p>Because the core is held indefinitely and never sold, it can serve as standing collateral should the investor need liquidity for an external purpose — for example, financing a real-estate purchase — without liquidating the equity position and triggering a taxable event. This is an optional facility the structure can accommodate, not a requirement of the strategy or a source of its returns. The program itself does not rely on borrowing to function; the sleeve is what manages risk.</p>
+<section id="methodology-conceptual" class="level2">
+<h2 class="anchored" data-anchor-id="methodology-conceptual">4. Methodology (conceptual)</h2>
+<p>The approach has three elements, described in mechanism only.</p>
+<p><strong>Core discipline.</strong> The physical core is purchased once and held; its share count only ever grows. It is never sold to manage risk.</p>
+<p><strong>Overlay philosophy.</strong> A futures overlay sits on top of the fully-invested core and moves net exposure up or down around it, guided by the same risk-adjusted, downside-volatility-aware philosophy used across the firm’s programs — adding exposure in calm, favorable conditions and reducing it when conditions deteriorate. The overlay is sized relative to total equity so it cannot run away as the core compounds.</p>
+<p><strong>Reinvestment.</strong> Because listed futures settle in cash daily, realized overlay gains accumulate as real cash rather than paper gains; at a regular cadence, cash above a maintained buffer is swept into additional core shares, compounding the permanent position. Overlay losses are carried in the futures cash ledger against that buffer rather than forcing any sale of the core.</p>
+<p>Specific signal windows, thresholds, target-exposure levels, and sweep parameters are proprietary and are not disclosed.</p>
 </section>
-<section id="tax-rationale-and-honest-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="tax-rationale-and-honest-limitations">Tax rationale and honest limitations</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Core One Asset Management does not provide tax advice. The discussion below describes the structural rationale of the program. Whether and how these mechanics benefit any particular investor depends entirely on that investor’s jurisdiction, account type, and individual circumstances, and should be confirmed with a qualified tax professional.</p>
-</div>
-</div>
-<p>The structural tax argument is straightforward: because the core is never sold, the program does not generate discretionary realised capital gains on the core position over its life. Exposure is managed through the futures overlay instead. In jurisdictions where holding-period and realisation rules make deferral valuable, retaining the core indefinitely rather than selling to de-risk can keep more capital compounding.</p>
-<p>One honest caveat applies: the futures overlay itself is not tax-free. In most jurisdictions futures generate their own taxable results, and the treatment of those results varies by domicile. The program defers realisation on the <em>core</em>, not on the entire structure. The tax efficiency is a feature of how the core is held and how exposure is <em>managed</em>.</p>
+<section id="risk-management" class="level2">
+<h2 class="anchored" data-anchor-id="risk-management">5. Risk management</h2>
+<p>The defining risk discipline is the <strong>never-sell Spot Core</strong>: the physical position is a hard structural invariant and is never trimmed to manage risk. Risk is instead managed by the overlay, which reduces net exposure in adverse conditions — but the overlay reduces equity risk, it does not eliminate it, and the program participates in bear markets. A maintained cash buffer absorbs ordinary day-to-day overlay losses before any margin borrowing against the pledged core is required. Net exposure and gross leverage are both bounded. As with all of the firm’s programs, this is a risk-managed equity strategy, <strong>not</strong> a drawdown-defense product.</p>
 </section>
-<section id="live-deployment" class="level2">
-<h2 class="anchored" data-anchor-id="live-deployment">Live deployment</h2>
+<section id="portfolio-construction-constraints" class="level2">
+<h2 class="anchored" data-anchor-id="portfolio-construction-constraints">6. Portfolio construction &amp; constraints</h2>
+<p>The portfolio is a fixed majority allocation to the physical core plus an adjustable futures overlay, with a maintained cash floor held as a buffer (a defined minimum fraction of total equity). Net index exposure is kept within a defined range around the fully-invested baseline, and gross leverage is bounded. Optional collateralized borrowing against the never-sold core can be made available for an investor’s external liquidity needs, but it is a facility of the structure — not a driver of the program’s returns. Constraints are stated as policies and ranges; exact values are not published.</p>
+</section>
+<section id="execution-operations" class="level2">
+<h2 class="anchored" data-anchor-id="execution-operations">7. Execution &amp; operations</h2>
+<p>The program is executed systematically once per trading day by a fully automated engine. Orders are generated by fixed rules from the prior session’s closing data and routed to Interactive Brokers; there is no discretionary intervention in the trade loop. Futures are traded on regulated exchanges operated by CME Group (CME, CBOT, COMEX), and the physical core is held in a UCITS ETF listed on the London Stock Exchange. Positions are held at a regulated prime broker with independent daily mark-to-market pricing and segregated custody. Reconciliation, monitoring, and alerting run continuously, and the same engine that trades the account is the reference implementation of the strategy — there is no separate, more-favorable “model” track record.</p>
+</section>
+<section id="capacity-minimum-investment" class="level2">
+<h2 class="anchored" data-anchor-id="capacity-minimum-investment">8. Capacity &amp; minimum investment</h2>
+<p>The program is offered through separately managed accounts. The suggested minimum for an effective deployment is approximately <strong>US$500,000</strong> — enough for positions to be expressed in whole contracts with acceptable granularity and for execution and financing costs to remain proportionate. Capacity is large: the markets traded are among the most liquid listed instruments in the world, so the strategy can scale materially before market impact becomes a consideration. New accounts are onboarded so that client positioning stays aligned with the manager’s own live account.</p>
+</section>
+<section id="track-record" class="level2">
+<h2 class="anchored" data-anchor-id="track-record">9. Track record</h2>
+<p>The program runs live in a verified Interactive Brokers Financial Advisor sub-account, and the public track record begins at the migration to that structure — reported without adjustment, with no earlier development history stitched in. Live performance, current positioning, and a same-period benchmark comparison are published on the program’s performance-attribution page: <strong><a href="attribution_gtvp.html">SCGA performance attribution</a></strong>. Because the live sample currently spans only a short period, statistics that require a longer window are shown as <em>accumulating</em> rather than annualized.</p>
+</section>
+<section id="key-risks-disclaimers" class="level2">
+<h2 class="anchored" data-anchor-id="key-risks-disclaimers">10. Key risks &amp; disclaimers</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3139,10 +3143,9 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The live S&amp;P500 Core GTVP Allocation (SCGA) account is in its first days of operation at the time of writing. There is no live track record yet, and none should be inferred. A dedicated performance attribution page will be developed as the account accumulates an out-of-sample history. As with any systematic program, a meaningful evaluation requires a substantial live sample spanning more than one market environment.</p>
+<p>This program uses leverage and can experience meaningful drawdowns; it is designed for long-horizon investors who can tolerate equity-like volatility. It is not a drawdown-defense product and will participate in falling markets. The futures overlay generates its own taxable results, and the tax treatment of the structure depends entirely on an investor’s jurisdiction and circumstances — nothing here is tax advice. Systematic models can underperform, and any model is a simplification that may behave unexpectedly in conditions unlike those that informed its design. Live and simulated results are not a guarantee of future performance; past performance — whether hypothetical or actual — does not predict future results. Nothing in this document is investment, legal, or tax advice, nor an offer to sell or a solicitation to buy any security or fund interest. All figures are in U.S. dollars unless stated otherwise.</p>
 </div>
 </div>
-<p>S&amp;P500 Core GTVP Allocation (SCGA) is deployed as a live program running the same logic described here: a physical equity core, a capital-efficient futures overlay sized off total equity, and periodic reinvestment of overlay proceeds into additional core shares. Performance figures and attribution will be published on the dedicated attribution page as live data accumulates.</p>
 </section>
 
 </main>
