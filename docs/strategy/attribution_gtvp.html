@@ -7,123 +7,37 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #ffffff;
-    color: #1a1a2e;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  #page { max-width: 860px; margin: 0 auto; padding: 36px 28px 72px; }
-  #header {
-    text-align: center;
-    padding-bottom: 22px;
-    border-bottom: 1px solid #c8d0dc;
-    margin-bottom: 28px;
-  }
-  #header::before {
-    content: '';
-    display: block;
-    height: 3px;
-    background: #00437c;
-    width: 48px;
-    margin: 0 auto 22px;
-  }
-  #header h1 {
-    margin: 0 auto;
-    color: #0d1b2a;
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  #header h1 .brand-1 {
-    display: block;
-    width: fit-content;
-    margin: 0 auto;
-    font-size: 2.32rem;
-    letter-spacing: 2px;
-    line-height: 1.0;
-    white-space: nowrap;
-  }
-  #header h1 .brand-2 {
-    display: block;
-    width: fit-content;
-    margin: 3px auto 0;
-    font-size: 1.06rem;
-    letter-spacing: 2px;
-    line-height: 1.1;
-    white-space: nowrap;
-  }
-  #header p {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.80rem;
-    color: #2c3e50;
-    margin: 8px auto 0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
-    width: fit-content;
-    white-space: nowrap;
-  }
-  #nav {
-    text-align: center;
-    margin-bottom: 36px;
-    font-size: 0.76rem;
-    letter-spacing: 0.8px;
-  }
-  #nav a {
-    color: #00437c;
-    text-decoration: none;
-    margin: 0 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  #nav a:hover { text-decoration: underline; }
-  .section { margin-bottom: 44px; }
-  .section h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.72rem;
-    font-weight: bold;
-    color: #00437c;
-    border-bottom: 1px solid #e0e6ee;
-    padding-bottom: 6px;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  .body-text p { margin-bottom: 12px; color: #2c3e50; }
-  a { color: #00437c; }
-  a:hover { text-decoration: underline; }
-  .perf-sub { font-size: 0.8rem; color: #6b7a8d; font-style: italic; margin-top: -6px; margin-bottom: 18px; }
-  .placeholder-card {
-    background: #f4f6f9;
-    border: 1px solid #dde3ec;
-    border-left: 3px solid #6b7a8d;
-    padding: 28px 30px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .placeholder-card .pc-title {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #4a5568;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-  }
-  .placeholder-card p { font-size: 0.85rem; color: #4a5568; max-width: 560px; margin: 0 auto 10px; }
-  #footer {
-    border-top: 1px solid #e0e6ee;
-    padding-top: 14px;
-    font-size: 0.72rem;
-    color: #8a9bb0;
-    text-align: center;
-    letter-spacing: 0.3px;
-  }
-  @media (max-width: 600px) {
-    #header h1 .brand-1 { font-size: 2.1rem; }
-  }
+  body { background:#ffffff; color:#1a1a2e; font-family:Georgia,"Times New Roman",serif; font-size:14px; line-height:1.7; }
+  #page { max-width:860px; margin:0 auto; padding:36px 28px 72px; }
+  #header { text-align:center; padding-bottom:22px; border-bottom:1px solid #c8d0dc; margin-bottom:28px; }
+  #header::before { content:''; display:block; height:3px; background:#00437c; width:48px; margin:0 auto 22px; }
+  #header h1 { margin:0 auto; color:#0d1b2a; font-family:Georgia,"Times New Roman",serif; font-weight:bold; text-transform:uppercase; }
+  #header h1 .brand-1 { display:block; width:fit-content; margin:0 auto; font-size:2.32rem; letter-spacing:2px; line-height:1.0; white-space:nowrap; }
+  #header h1 .brand-2 { display:block; width:fit-content; margin:3px auto 0; font-size:1.06rem; letter-spacing:2px; line-height:1.1; white-space:nowrap; }
+  #nav { text-align:center; margin-bottom:36px; font-size:0.76rem; letter-spacing:0.8px; }
+  #nav a { color:#00437c; text-decoration:none; margin:0 14px; font-weight:bold; text-transform:uppercase; }
+  #nav a:hover { text-decoration:underline; }
+  .section { margin-bottom:44px; }
+  .section h2 { font-family:Georgia,"Times New Roman",serif; font-size:0.72rem; font-weight:bold; color:#00437c; border-bottom:1px solid #e0e6ee; padding-bottom:6px; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px; }
+  .body-text p { margin-bottom:12px; color:#2c3e50; }
+  a { color:#00437c; } a:hover { text-decoration:underline; }
+  table { border-collapse:collapse; font-size:0.875rem; width:100%; }
+  th { background:#f4f6f9; text-align:left; padding:7px 10px; border:1px solid #dde3ec; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.4px; color:#4a5568; }
+  td { padding:6px 10px; border:1px solid #dde3ec; vertical-align:top; color:#2c3e50; }
+  tr:nth-child(even) td { background:#f8fafc; }
+  .num { text-align:right; font-family:"Courier New",Courier,monospace; }
+  .muted-cell { color:#a0aec0; font-style:italic; font-size:0.82rem; }
+  .tbl-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:20px; }
+  .tbl-scroll table { min-width:540px; }
+  .alloc-wrap { max-width:520px; margin-bottom:10px; }
+  .overlay-note { font-size:0.78rem; color:#6b7a8d; margin:0 0 28px; }
+  .col-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color:#6b7a8d; margin-bottom:8px; font-weight:bold; }
+  .chart-box { border:1px solid #dde3ec; margin-bottom:18px; padding:14px 16px 6px; background:#fafbfd; }
+  .chart-holder { position:relative; width:100%; height:440px; }
+  #footer { border-top:1px solid #e0e6ee; padding-top:14px; font-size:0.72rem; color:#8a9bb0; text-align:center; letter-spacing:0.3px; }
+  @media (max-width:600px) { #header h1 .brand-1 { font-size:2.1rem; } .chart-holder { height:320px; } }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 </head>
 <body>
 <div id="page">
@@ -140,35 +54,94 @@
 
 <div class="section">
   <h2>Performance Attribution &mdash; S&amp;P500 Core GTVP Allocation (SCGA)</h2>
-  <p class="perf-sub">Phase 1: Production Verification &mdash; Live Operational Forward-Testing</p>
 
-  <div class="placeholder-card">
-    <div class="pc-title">Live track record accumulating</div>
+  <div class="body-text" style="margin-bottom:18px">
     <p>
-      The S&amp;P500 Core GTVP Allocation (SCGA) account is in its first days of live operation. A full performance
-      attribution &mdash; live equity curve, current core and overlay positioning, and a
-      comparison against the physical equity benchmark &mdash; will be published here as the
-      account accumulates a meaningful out-of-sample history.
-    </p>
-    <p>
-      In the interim, the program&rsquo;s design and methodology are documented in full in the
-      <a href="es_core_gtvp_strategy.html">strategy document</a>.
+      The program has been running live since 2026-07-07 in a verified Interactive
+      Brokers Financial Advisor paper sub-account. The public track record begins at this
+      cutover; earlier development history is not carried over. The table below compares the
+      live program against a buy-and-hold position in the S&amp;P 500 over the same period.
+      Metrics that require a longer window are shown as <em>Accumulating</em>.
     </p>
   </div>
 
-  <div class="body-text">
-    <p style="font-size:0.82rem;color:#6b7a8d">
-      As with any systematic program, a short live sample provides no statistical information
-      about performance quality. Substantive evaluation requires out-of-sample data spanning
-      more than one market environment.
-    </p>
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th style="text-align:right">SPY Buy &amp; Hold</th>
+          <th style="text-align:right">S&amp;P500 Core GTVP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Period</td>
+            <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (1 trading day)</td>
+            <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (1 trading day)</td></tr>
+        <tr><td>Total Return</td>
+            <td class="num">+0.0%</td>
+            <td class="num">+0.0%</td></tr>
+        <tr><td>CAGR</td><td class="num muted-cell">Accumulating</td><td class="num muted-cell">Accumulating</td></tr>
+        <tr><td>Ann. Volatility</td><td class="num muted-cell">Accumulating</td><td class="num muted-cell">Accumulating</td></tr>
+        <tr><td>Sharpe Ratio</td><td class="num muted-cell">Accumulating</td><td class="num muted-cell">Accumulating</td></tr>
+        <tr><td>Sortino Ratio</td><td class="num muted-cell">Accumulating</td><td class="num muted-cell">Accumulating</td></tr>
+        <tr><td>Max Drawdown</td>
+            <td class="num">0.0%</td>
+            <td class="num">0.0%</td></tr>
+        <tr><td>Net S&amp;P 500 Exposure</td>
+            <td class="num" style="white-space:nowrap">1.0&times; (unlevered)</td>
+            <td class="num" style="white-space:nowrap">1.20&times; (current)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alloc-wrap">
+    <div class="col-label">Current Live Positioning</div>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Ticker</th><th style="text-align:right">Weight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Spot Core &mdash; iShares Core S&amp;P 500 UCITS ETF</td><td>CSPX</td><td class="num">79.9%</td></tr>
+        <tr><td>Cash &amp; margin reserve</td><td>&mdash;</td><td class="num">20.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="overlay-note">
+    Plus an S&amp;P 500 futures overlay (ES/MES) of ~40% notional, bringing
+    net index exposure to ~1.20&times;. The physical spot core is never sold; the
+    overlay adjusts exposure without disturbing it.
+  </p>
+
+  <div class="col-label">Live Equity Curve &mdash; since 2026-07-07</div>
+  <div class="chart-box">
+    <div class="chart-holder"><canvas id="eqChart"></canvas></div>
+    <script>
+    (function() {
+      var labels = ["2026-07-07"], eqRet = [0.0], hwmRet = [0.0], spyRet = [0.0];
+      new Chart(document.getElementById('eqChart'), {
+        type: 'line',
+        data: { labels: labels, datasets: [
+          { label:'_hwm', data:hwmRet, borderColor:'transparent', backgroundColor:'rgba(204,51,17,0.13)', pointRadius:0, fill:'+1', tension:0.1, order:3 },
+          { label:'Strategy', data:eqRet, borderColor:'#00437c', borderWidth:2, pointRadius:4, pointBackgroundColor:'#00437c', fill:false, tension:0.1, order:1 },
+          { label:'SPY (adj.)', data:spyRet, borderColor:'#8a9bb0', borderWidth:1.5, borderDash:[5,3], pointRadius:0, fill:false, tension:0.1, order:2 }
+        ]},
+        options: { responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+          plugins:{ legend:{position:'top',labels:{boxWidth:12,font:{size:11},filter:function(i){return i.text!=='_hwm';}}},
+            tooltip:{callbacks:{label:function(ctx){ if(ctx.dataset.label==='_hwm')return null; var v=ctx.parsed.y; if(v==null)return null; return ctx.dataset.label+': '+(v>=0?'+':'')+v.toFixed(2)+'%';}}}},
+          scales:{ x:{type:'category',ticks:{maxTicksLimit:10,font:{size:11}},grid:{display:false}},
+            y:{ticks:{callback:function(v){return (v>=0?'+':'')+v.toFixed(1)+'%';},font:{size:11}},grid:{color:'rgba(0,0,0,0.04)'}}}
+        }
+      });
+    })();
+    </script>
   </div>
 </div>
 
 </div><!-- #page -->
 
 <div id="footer">
-  &copy; 2026 Core One Asset Management &nbsp;&middot;&nbsp; Performance attribution &mdash; coming soon
+  &copy; 2026 Core One Asset Management &nbsp;&middot;&nbsp; Last updated: 2026-07-07
 </div>
 
 </body>
