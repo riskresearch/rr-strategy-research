@@ -3060,11 +3060,9 @@ vertical-align: -.125em;
   <li><a href="#universe-instruments" id="toc-universe-instruments" class="nav-link" data-scroll-target="#universe-instruments">3. Universe &amp; instruments</a></li>
   <li><a href="#methodology-conceptual" id="toc-methodology-conceptual" class="nav-link" data-scroll-target="#methodology-conceptual">4. Methodology (conceptual)</a></li>
   <li><a href="#risk-management" id="toc-risk-management" class="nav-link" data-scroll-target="#risk-management">5. Risk management</a></li>
-  <li><a href="#portfolio-construction-constraints" id="toc-portfolio-construction-constraints" class="nav-link" data-scroll-target="#portfolio-construction-constraints">6. Portfolio construction &amp; constraints</a></li>
-  <li><a href="#execution-operations" id="toc-execution-operations" class="nav-link" data-scroll-target="#execution-operations">7. Execution &amp; operations</a></li>
-  <li><a href="#capacity-minimum-investment" id="toc-capacity-minimum-investment" class="nav-link" data-scroll-target="#capacity-minimum-investment">8. Capacity &amp; minimum investment</a></li>
-  <li><a href="#track-record" id="toc-track-record" class="nav-link" data-scroll-target="#track-record">9. Track record</a></li>
-  <li><a href="#key-risks-disclaimers" id="toc-key-risks-disclaimers" class="nav-link" data-scroll-target="#key-risks-disclaimers">10. Key risks &amp; disclaimers</a></li>
+  <li><a href="#capacity-minimum-investment" id="toc-capacity-minimum-investment" class="nav-link" data-scroll-target="#capacity-minimum-investment">6. Capacity &amp; minimum investment</a></li>
+  <li><a href="#track-record" id="toc-track-record" class="nav-link" data-scroll-target="#track-record">7. Track record</a></li>
+  <li><a href="#key-risks-disclaimers" id="toc-key-risks-disclaimers" class="nav-link" data-scroll-target="#key-risks-disclaimers">8. Key risks &amp; disclaimers</a></li>
   </ul>
 </nav>
 </div>
@@ -3073,7 +3071,7 @@ vertical-align: -.125em;
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">S&amp;P 500 Core GTVP Allocation (SCGA) — Strategy Document</h1>
-<p class="subtitle lead">Core One Asset Management | Version 1.1 | July 2026</p>
+<p class="subtitle lead">Core One Asset Management | July 2026</p>
 </div>
 
 
@@ -3109,30 +3107,21 @@ vertical-align: -.125em;
 <p><strong>Core discipline.</strong> The physical core is purchased once and held; its share count only ever grows. It is never sold to manage risk.</p>
 <p><strong>Overlay philosophy.</strong> A futures overlay sits on top of the fully-invested core and moves net exposure up or down around it, guided by the same risk-adjusted, downside-volatility-aware philosophy used across the firm’s programs — adding exposure in calm, favorable conditions and reducing it when conditions deteriorate. The overlay is sized relative to total equity so it cannot run away as the core compounds.</p>
 <p><strong>Reinvestment.</strong> Because listed futures settle in cash daily, realized overlay gains accumulate as real cash rather than paper gains; at a regular cadence, cash above a maintained buffer is swept into additional core shares, compounding the permanent position. Overlay losses are carried in the futures cash ledger against that buffer rather than forcing any sale of the core.</p>
-<p>Specific signal windows, thresholds, target-exposure levels, and sweep parameters are proprietary and are not disclosed.</p>
 </section>
 <section id="risk-management" class="level2">
 <h2 class="anchored" data-anchor-id="risk-management">5. Risk management</h2>
-<p>The defining risk discipline is the <strong>never-sell Spot Core</strong>: the physical position is a hard structural invariant and is never trimmed to manage risk. Risk is instead managed by the overlay, which reduces net exposure in adverse conditions — but the overlay reduces equity risk, it does not eliminate it, and the program participates in bear markets. A maintained cash buffer absorbs ordinary day-to-day overlay losses before any margin borrowing against the pledged core is required. Net exposure and gross leverage are both bounded. As with all of the firm’s programs, this is a risk-managed equity strategy, <strong>not</strong> a drawdown-defense product.</p>
-</section>
-<section id="portfolio-construction-constraints" class="level2">
-<h2 class="anchored" data-anchor-id="portfolio-construction-constraints">6. Portfolio construction &amp; constraints</h2>
-<p>The portfolio is a fixed majority allocation to the physical core plus an adjustable futures overlay, with a maintained cash floor held as a buffer (a defined minimum fraction of total equity). Net index exposure is kept within a defined range around the fully-invested baseline, and gross leverage is bounded. Optional collateralized borrowing against the never-sold core can be made available for an investor’s external liquidity needs, but it is a facility of the structure — not a driver of the program’s returns. Constraints are stated as policies and ranges; exact values are not published.</p>
-</section>
-<section id="execution-operations" class="level2">
-<h2 class="anchored" data-anchor-id="execution-operations">7. Execution &amp; operations</h2>
-<p>The program is executed systematically once per trading day by a fully automated engine. Orders are generated by fixed rules from the prior session’s closing data and routed to Interactive Brokers; there is no discretionary intervention in the trade loop. Futures are traded on regulated exchanges operated by CME Group (CME, CBOT, COMEX), and the physical core is held in a UCITS ETF listed on the London Stock Exchange. Positions are held at a regulated prime broker with independent daily mark-to-market pricing and segregated custody. Reconciliation, monitoring, and alerting run continuously, and the same engine that trades the account is the reference implementation of the strategy — there is no separate, more-favorable “model” track record.</p>
+<p>The defining risk discipline is the <strong>never-sell Spot Core</strong>: the physical position is a hard structural invariant and is never trimmed to manage risk. Risk is instead managed by the overlay, which reduces net exposure in adverse conditions — but the overlay reduces equity risk, it does not eliminate it, and the program participates in bear markets. A maintained cash buffer absorbs ordinary day-to-day overlay losses before any margin borrowing against the pledged core is required. Net exposure and gross leverage are both bounded.</p>
 </section>
 <section id="capacity-minimum-investment" class="level2">
-<h2 class="anchored" data-anchor-id="capacity-minimum-investment">8. Capacity &amp; minimum investment</h2>
-<p>The program is offered through separately managed accounts. The suggested minimum for an effective deployment is approximately <strong>US$500,000</strong> — enough for positions to be expressed in whole contracts with acceptable granularity and for execution and financing costs to remain proportionate. Capacity is large: the markets traded are among the most liquid listed instruments in the world, so the strategy can scale materially before market impact becomes a consideration. New accounts are onboarded so that client positioning stays aligned with the manager’s own live account.</p>
+<h2 class="anchored" data-anchor-id="capacity-minimum-investment">6. Capacity &amp; minimum investment</h2>
+<p>The program is offered through separately managed accounts. The suggested minimum for an effective deployment is approximately <strong>US$500,000</strong> — enough for positions to be expressed in whole contracts with acceptable granularity and for execution and financing costs to remain proportionate. Capacity is large: the markets traded are among the most liquid listed instruments in the world, so the strategy can scale materially before market impact becomes a consideration. New accounts are onboarded so that client positioning stays aligned with the manager’s own live account. We are also open to structuring additional, more tax-efficient vehicles for investors who require them.</p>
 </section>
 <section id="track-record" class="level2">
-<h2 class="anchored" data-anchor-id="track-record">9. Track record</h2>
-<p>The program runs live in a verified Interactive Brokers Financial Advisor sub-account, and the public track record begins at the migration to that structure — reported without adjustment, with no earlier development history stitched in. Live performance, current positioning, and a same-period benchmark comparison are published on the program’s performance-attribution page: <strong><a href="attribution_gtvp.html">SCGA performance attribution</a></strong>. Because the live sample currently spans only a short period, statistics that require a longer window are shown as <em>accumulating</em> rather than annualized.</p>
+<h2 class="anchored" data-anchor-id="track-record">7. Track record</h2>
+<p>The program runs live in a verified Interactive Brokers Financial Advisor sub-account, and the public track record is reported without adjustment. Live performance, current positioning, and a same-period benchmark comparison are published on the program’s performance-attribution page: <strong><a href="attribution_gtvp.html">SCGA performance attribution</a></strong>. Because the live sample currently spans only a short period, statistics that require a longer window are shown as <em>accumulating</em> rather than annualized.</p>
 </section>
 <section id="key-risks-disclaimers" class="level2">
-<h2 class="anchored" data-anchor-id="key-risks-disclaimers">10. Key risks &amp; disclaimers</h2>
+<h2 class="anchored" data-anchor-id="key-risks-disclaimers">8. Key risks &amp; disclaimers</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
