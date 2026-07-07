@@ -163,31 +163,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The framework developed in sections 1–6 is applied through a set of systematic trading programs. Each program is documented independently — with its own backtest evidence, robustness analysis, and live deployment record — so that the framework document remains a stable reference while individual program documentation evolves with the live track record.</p>
+<p>The framework developed in sections 1–6 is applied through a set of systematic trading programs. Each program is documented independently — with its own methodology and live track record — so that the framework document remains a stable reference while individual program documentation evolves with the live record.</p>
 <section id="active-programs" class="level2">
 <h2 class="anchored" data-anchor-id="active-programs">Active programs</h2>
+<style>
+  .rr-program-card { border:1px solid #dde3ec; border-left:3px solid #00437c; border-radius:4px; padding:18px 20px; margin-bottom:18px; background:#fafbfd; }
+  .rr-program-card h3 { margin:0 0 8px; color:#0d1b2a; }
+  .rr-program-card p { margin:0 0 14px; color:#333; }
+  .rr-btn { display:inline-block; padding:6px 14px; margin:0 8px 6px 0; border:1px solid #00437c; color:#00437c; text-decoration:none; font-size:0.85rem; border-radius:3px; }
+  .rr-btn:hover { background:#00437c; color:#fff; }
+</style>
 <div class="rr-program-card">
-  <h3 class="anchored">S&amp;P500 Core Relative Allocation (SCRA)</h3>
-  <div class="rr-meta">Systematic futures &nbsp;·&nbsp; 10 instruments &nbsp;·&nbsp; Live: IBKR (June 2026)</div>
+  <h3 class="anchored">S&amp;P 500 Core Relative Allocation (SCRA)</h3>
   <p>
-    U.S. large-cap equity futures (ES) as a permanent core with dynamic allocation to nine
-    alternatives across equities, fixed income, real assets, and digital assets.
-    Downside volatility targeting and dynamic leverage. Hypothetical Sharpe 0.813 over
-    the 2001–2026 backtest period.
+    A systematic futures program built around a permanent U.S. large-cap equity core, with
+    dynamic tilts into a diversified set of liquid markets — equities, rates, real assets, and
+    digital assets — when they outperform the core on a risk-adjusted basis. Downside-volatility
+    targeting and dynamic leverage; always net long equity.
   </p>
-  <a class="rr-btn" href="../strategy/es_core_strategy.html" target="_blank">View strategy document →</a>
+  <a class="rr-btn" href="strategy/es_core_strategy.html" target="_blank">View strategy document →</a>
+  <a class="rr-btn" href="strategy/attribution.html" target="_blank">Performance attribution →</a>
 </div>
 
 <div class="rr-program-card">
-  <h3 class="anchored">S&amp;P500 Core GTVP Allocation (SCGA)</h3>
-  <div class="rr-meta">Tax-efficient equity core &nbsp;·&nbsp; Physical core or futures-only &nbsp;·&nbsp; Live: IBKR (June 2026)</div>
+  <h3 class="anchored">S&amp;P 500 Core GTVP Allocation (SCGA)</h3>
   <p>
-    A tax-aware strategy: a permanent equity core that is never sold, with a capital-efficient
-    futures sleeve that raises or reduces risk and periodically sweeps realised gains into
-    additional core shares. Deployable with a physical equity core (a broad global or U.S.
-    equity ETF, USD or EUR) or as a futures-only implementation through a dedicated vehicle.
+    A tax-aware strategy: a permanent physical S&amp;P 500 core (a UCITS ETF that is never sold),
+    with a capital-efficient futures overlay that raises or reduces risk and periodically sweeps
+    realised gains into additional core shares. Deployable as a physical-core hybrid or a
+    futures-only implementation through a dedicated vehicle.
   </p>
-  <a class="rr-btn" href="../strategy/es_core_gtvp_strategy.html" target="_blank">View strategy document →</a>
+  <a class="rr-btn" href="strategy/es_core_gtvp_strategy.html" target="_blank">View strategy document →</a>
+  <a class="rr-btn" href="strategy/attribution_gtvp.html" target="_blank">Performance attribution →</a>
 </div>
 
 

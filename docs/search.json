@@ -256,13 +256,13 @@
     "href": "07_strategy_implementation.html",
     "title": "7. Core One Asset Management Programs",
     "section": "",
-    "text": "The framework developed in sections 1–6 is applied through a set of systematic trading programs. Each program is documented independently — with its own backtest evidence, robustness analysis, and live deployment record — so that the framework document remains a stable reference while individual program documentation evolves with the live track record."
+    "text": "The framework developed in sections 1–6 is applied through a set of systematic trading programs. Each program is documented independently — with its own methodology and live track record — so that the framework document remains a stable reference while individual program documentation evolves with the live record."
   },
   {
     "objectID": "07_strategy_implementation.html#active-programs",
     "href": "07_strategy_implementation.html#active-programs",
     "title": "7. Core One Asset Management Programs",
     "section": "Active programs",
-    "text": "Active programs\n\n  S&P500 Core Relative Allocation (SCRA)\n  Systematic futures  ·  10 instruments  ·  Live: IBKR (June 2026)\n  \n    U.S. large-cap equity futures (ES) as a permanent core with dynamic allocation to nine\n    alternatives across equities, fixed income, real assets, and digital assets.\n    Downside volatility targeting and dynamic leverage. Hypothetical Sharpe 0.813 over\n    the 2001–2026 backtest period.\n  \n  View strategy document →\n\n\n\n  S&P500 Core GTVP Allocation (SCGA)\n  Tax-efficient equity core  ·  Physical core or futures-only  ·  Live: IBKR (June 2026)\n  \n    A tax-aware strategy: a permanent equity core that is never sold, with a capital-efficient\n    futures sleeve that raises or reduces risk and periodically sweeps realised gains into\n    additional core shares. Deployable with a physical equity core (a broad global or U.S.\n    equity ETF, USD or EUR) or as a futures-only implementation through a dedicated vehicle.\n  \n  View strategy document →"
+    "text": "Active programs\n\n\n  S&P 500 Core Relative Allocation (SCRA)\n  \n    A systematic futures program built around a permanent U.S. large-cap equity core, with\n    dynamic tilts into a diversified set of liquid markets — equities, rates, real assets, and\n    digital assets — when they outperform the core on a risk-adjusted basis. Downside-volatility\n    targeting and dynamic leverage; always net long equity.\n  \n  View strategy document →\n  Performance attribution →\n\n\n\n  S&P 500 Core GTVP Allocation (SCGA)\n  \n    A tax-aware strategy: a permanent physical S&P 500 core (a UCITS ETF that is never sold),\n    with a capital-efficient futures overlay that raises or reduces risk and periodically sweeps\n    realised gains into additional core shares. Deployable as a physical-core hybrid or a\n    futures-only implementation through a dedicated vehicle.\n  \n  View strategy document →\n  Performance attribution →"
   }
 ]
