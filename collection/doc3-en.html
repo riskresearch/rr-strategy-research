@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCGA and SCRA — Quantitative Futures Programs · Institutional Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#22303c; --muted:#5d6b77; --core:#2e5f7f; --brass:#8a6a2b;
+  --hair:#dfe3e7; --paper:#ffffff; --wash:#f6f8f9; --warn:#a4463f; }
+* { box-sizing:border-box; } html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.65 "Source Serif 4", Georgia, serif; }
+.page { max-width:1120px; margin:0 auto; padding:0 24px; display:grid; grid-template-columns:255px minmax(0,1fr); gap:56px; }
+nav.toc { position:sticky; top:0; align-self:start; padding:44px 0 40px; font-family:"Source Sans 3",sans-serif; font-size:13.5px; max-height:100vh; overflow-y:auto; }
+nav.toc .toc-title { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); margin-bottom:14px; }
+nav.toc a { display:block; color:var(--muted); text-decoration:none; padding:4px 0 4px 12px; border-left:2px solid var(--hair); line-height:1.4; }
+nav.toc a:hover { color:var(--core); border-left-color:var(--core); }
+main { padding:44px 0 90px; min-width:0; }
+.kicker { font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); }
+h1 { font-size:40px; line-height:1.12; font-weight:700; margin:10px 0 6px; letter-spacing:-.01em; }
+.subtitle { font-size:20px; color:var(--muted); font-weight:400; margin:0 0 34px; line-height:1.4; }
+h2 { font-size:26px; margin:58px 0 6px; letter-spacing:-.005em; scroll-margin-top:20px; }
+h2 .no { font-family:"IBM Plex Mono",monospace; font-size:15px; color:var(--brass); margin-right:10px; }
+h2::after { content:""; display:block; width:44px; height:2px; background:var(--brass); margin-top:10px; }
+h3 { font-size:19px; margin:34px 0 4px; }
+p { margin:14px 0; } a { color:var(--core); } strong { font-weight:600; }
+.plate { margin:34px 0; padding:22px 22px 14px; border:1px solid var(--hair); background:#fff; }
+.plate-eyebrow { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); margin-bottom:12px; }
+figcaption { font-family:"Source Sans 3",sans-serif; font-size:13.5px; color:var(--muted); margin-top:12px; line-height:1.5; }
+figcaption strong { color:var(--ink); } .src { display:block; margin-top:3px; font-size:12.5px; }
+table { border-collapse:collapse; width:100%; margin:26px 0; font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.45; }
+th { text-align:left; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border-bottom:2px solid var(--ink); padding:8px 10px; }
+td { border-bottom:1px solid var(--hair); padding:10px; vertical-align:top; }
+td:first-child { font-weight:600; }
+.callout { border:1px solid var(--hair); border-left:3px solid var(--warn); background:#fbf7f6; padding:16px 22px; margin:28px 0; font-size:15.5px; }
+.callout .lbl { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--warn); display:block; margin-bottom:6px; }
+.note { font-size:14px; color:var(--muted); font-family:"Source Sans 3",sans-serif; }
+ol.refs { font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.6; padding-left:20px; }
+ol.refs li { margin:8px 0; }
+.ficha { border:1px solid var(--hair); margin:22px 0; }
+.ficha summary { background:var(--wash); padding:12px 18px; font-family:"Source Sans 3",sans-serif; font-weight:700; font-size:16px; cursor:pointer; list-style:none; position:relative; }
+.ficha summary::after { content:"+"; position:absolute; right:18px; top:10px; color:var(--brass); font-weight:700; font-size:18px; }
+.ficha[open] summary { border-bottom:1px solid var(--hair); }
+.ficha[open] summary::after { content:"2"; }
+.ficha summary::-webkit-details-marker { display:none; }
+.ficha dl { display:grid; grid-template-columns:200px 1fr; margin:0; font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.5; }
+.ficha dt { padding:9px 18px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass); border-bottom:1px solid var(--hair); }
+.ficha dd { margin:0; padding:9px 18px 9px 0; border-bottom:1px solid var(--hair); }
+.ficha dt:last-of-type, .ficha dd:last-of-type { border-bottom:none; }
+.calc { border:1px solid var(--hair); background:var(--wash); padding:24px 26px; margin:30px 0; font-family:"Source Sans 3",sans-serif; }
+.calc h4 { margin:0 0 4px; font-size:17px; }
+.calc .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; margin:18px 0; }
+.calc label { display:block; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.calc input[type=number] { width:100%; padding:8px 10px; border:1px solid var(--hair); font:600 15px "Source Sans 3",sans-serif; color:var(--ink); background:#fff; }
+.calc input[type=range] { width:100%; accent-color:var(--core); }
+.calc .val { font-weight:700; color:var(--core); }
+.calc .out { background:#fff; border:1px solid var(--hair); padding:16px 20px; margin-top:14px; }
+.calc .out .big { font-size:24px; font-weight:700; color:var(--core); }
+.calc .bar { display:flex; height:26px; margin:10px 0 4px; border:1px solid var(--hair); overflow:hidden; font-size:11.5px; color:#fff; font-weight:700; }
+.calc .bar div { display:flex; align-items:center; justify-content:center; white-space:nowrap; overflow:hidden; }
+.calc .legend { font-size:12.5px; color:var(--muted); }
+@media (max-width:900px) { .page { grid-template-columns:1fr; gap:0; } nav.toc { position:static; max-height:none; border-bottom:1px solid var(--hair); padding:28px 0 18px; } h1 { font-size:31px; } .calc .grid { grid-template-columns:1fr; } .ficha dl { grid-template-columns:1fr; } .ficha dt { border-bottom:none; padding-bottom:0; } .ficha dd { padding-left:18px; } }
+@media print { nav.toc { display:none; } .page { grid-template-columns:1fr; } }
+.params{border:1px solid var(--core);background:#f4f8fb;padding:18px 22px;margin:22px 0;font-family:"Source Sans 3",sans-serif;}
+.params .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--core);margin-bottom:10px;}
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <a href="#s1">1. Purpose and audience</a>
+  <a href="#s2">2. Philosophy</a>
+  <a href="#s3">3. Access structure and vehicle</a>
+  <a href="#s4">4. SCGA — S&amp;P 500 Core GTVP</a>
+  <a href="#s5">5. SCRA — S&amp;P 500 Core Relative Allocation</a>
+  <a href="#s6">6. Summary of terms</a>
+  <a href="#s7">7. Process and next step</a>
+  <a href="#refs">References</a>
+</nav>
+<main>
+
+<div class="kicker">Institutional document · Reserved for qualified investors · July 2026</div>
+<h1>SCGA and SCRA</h1>
+<p class="subtitle">Two quantitative futures programs built around a permanent equity core: sources of return, mechanics, risk management, and access structure — including the establishment of dedicated investment vehicles</p>
+
+<h2 id="s1"><span class="no">1.</span>Purpose and audience</h2>
+<p>This document presents the two programs of Core One Asset Management — <strong>SCGA</strong> (S&amp;P 500 Core GTVP Allocation) and <strong>SCRA</strong> (S&amp;P 500 Core Relative Allocation) — for evaluation by qualified and professional investors. Both are <strong>quantitative programs executed by algorithms</strong>: investment decisions are generated by rules formalized in advance, developed entirely in-house on the basis of academic finance and empirical market research; signal evaluation is daily, execution is systematic — with no manager discretion over the signals — and a no-trade discipline means the portfolio is only traded when the change indicated by the model is material, containing turnover and costs.</p>
+<p>One prior delimitation: this document is informational in nature and does not constitute a public offering, a solicitation to buy, or investment advice; the definitive terms of any investment will be established exclusively in the corresponding contractual documentation.</p>
+
+<h2 id="s2"><span class="no">2.</span>Philosophy: manage the risk, don't replace the index</h2>
+<p>Traditional active management is organized around one objective: to beat a benchmark by <em>abandoning</em> it — through security selection, arbitrage, alternative assets, or the usual hedge-fund strategies. The long-run evidence on that approach is adverse and consistent: most such programs underperform the index they attempt to beat, because the set of active managers constitutes the market itself and, after costs, necessarily falls behind. The problem is not a lack of talent, but the framing: the attempt is made to win on the terrain — predicting the direction of prices — where the edge is scarcest and least persistent.</p>
+<p>These programs invert the framing. Rather than forgoing the equity premium in order to try to beat it from outside, <strong>they retain exposure to the benchmark as a permanent position and apply quantitative capability to the variable that is genuinely manageable systematically: volatility and risk</strong>. The primary source of return remains the structural equity premium — the most reliable over the long run; the added value comes not from guessing what will rise, but from sizing exposure to the market regime, so that realized risk stays within a controlled band and compounding is less penalized by drawdowns. It is, in essence, the logic of a hedge fund applied not to replacing the index, but to owning it more efficiently.</p>
+
+<h2 id="s3"><span class="no">3.</span>Access structure and vehicle</h2>
+<p><strong>Current status: separately managed accounts.</strong> Both programs are offered through separately managed accounts (SMA) at Interactive Brokers, with a suggested minimum of approximately <strong>US$500,000</strong> per program — the amount above which positions can be expressed in whole contracts with acceptable granularity and execution and financing costs remain proportionate. Capacity is large: the markets traded are among the most liquid listed instruments in the world, so the strategies can scale materially before market impact becomes a consideration.</p>
+<p><strong>Objective: the dedicated investment vehicle.</strong> The SMA structure is appropriate for the current phase — maximum transparency and verifiability, account by account. Efficient implementation at scale requires, however, the establishment of <strong>dedicated collective investment vehicles</strong>, designed jurisdiction by jurisdiction: a vehicle restores part of the tax deferral on the futures activity — which in individual accounts is taxed annually in most European jurisdictions — professionalizes administration, custody, and audit, and mutualizes execution costs among participants. The establishment of these vehicles is the objective of the current phase, and the firm is open to conversations with <strong>early anchor allocators, proprietary trading groups, and joint-venture partners</strong>, in both managed accounts and fund structures.</p>
+<p class="params">Both programs launch calibrated to a <strong>target negative volatility of 10%–20% annualized</strong> and a <strong>maximum leverage of 300%</strong>. These two parameters are adjustable per investor: a mandate can be set to lower volatility and lower maximum leverage, a more defensive profile, or keep the launch values, according to its risk tolerance and horizon. The rest of the mechanics is common to both configurations.</p>
+
+<h2 id="s4"><span class="no">4.</span>SCGA — S&amp;P 500 Core GTVP Allocation</h2>
+<p><strong>Strategy.</strong> <a href="https://riskresearch.github.io/rr-strategy-research/strategy/attribution_gtvp.html">SCGA</a> is a tax-aware, long-biased program that holds a permanent physical equity core — a UCITS ETF — and manages market exposure through a capital-efficient <strong>futures sleeve</strong> (in the literature, an <em>overlay</em>). The objective is to compound with the equity market while deferring the realization of capital gains on the core, adjusting risk through the futures sleeve rather than by trading the underlying. Net exposure is held within a controlled, configurable range around an equity baseline.</p>
+<p><strong>Source of return.</strong> Two, both structural. The first is the <strong>equity premium</strong> — the long-run compensation for owning productive corporate assets — which the physical core captures directly and permanently. The second is <strong>tax</strong>: every sale of an appreciated asset crystallizes a tax liability that permanently leaves the compounding base; by adjusting exposure with derivatives instead of selling the underlying, the deferred tax remains invested and compounding in the participant's favor. Holding the core indefinitely and shaping risk with the futures sleeve is, at once, an investment decision and an after-tax efficiency decision.</p>
+<p><strong>Universe and instruments.</strong> The physical core is a broad, low-cost UCITS ETF — for example, CSPX on the S&amp;P 500, listed on the London Stock Exchange and denominated in dollars — chosen for its regulatory suitability, low ongoing cost, and appropriateness for an indefinite hold. Exposure is adjusted with the S&amp;P 500 E-mini (ES) and Micro E-mini (MES) futures, and their sizing is calibrated continuously against the <strong>correlation levels between the future and the spot selected as the core</strong>, so that each adjustment faithfully reflects the portfolio's effective exposure. The primary formulation of the program is the one described here: an S&amp;P 500 spot core and an ES/MES futures sleeve. Secondarily, the same objective can be implemented <em>entirely with futures</em> — always through an investment vehicle that permits it — and on a <em>global index</em> instead of the S&amp;P 500; these are instrumentation variants that do not alter the thesis.</p>
+<figure class="plate"><div class="plate-eyebrow">Figure 1</div><svg xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto" data-w="535.456375pt" data-h="286.056pt" viewBox="0 0 535.456375 286.056" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-01T10:36:38.177163</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}.params{border:1px solid var(--core);background:#f4f8fb;padding:18px 22px;margin:22px 0;font-family:"Source Sans 3",sans-serif;}
+.params .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--core);margin-bottom:10px;}
+</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 286.056 
+L 535.456375 286.056 
+L 535.456375 0 
+L 0 0 
+L 0 286.056 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 30.392187 117.156 
+L 165.428187 117.156 
+L 165.428187 46.008 
+L 30.392187 46.008 
+z
+" clip-path="url(#p07b2cc1df1)" style="fill: #8a9aa6"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 198.164187 117.156 
+L 349.568187 117.156 
+L 349.568187 46.008 
+L 198.164187 46.008 
+z
+" clip-path="url(#p07b2cc1df1)" style="fill: #b08a3e"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 382.304188 117.156 
+L 505.064188 117.156 
+L 505.064188 46.008 
+L 382.304188 46.008 
+z
+" clip-path="url(#p07b2cc1df1)" style="fill: #7a868f"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 112.232187 249.75 
+L 423.224187 249.75 
+L 423.224187 168.9 
+L 112.232187 168.9 
+z
+" clip-path="url(#p07b2cc1df1)" style="fill: #2e5f7f"/>
+   </g>
+   <g id="text_1">
+    <text style="font-style: italic; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="267.728187" y="16.902" transform="rotate(-0 267.728187 16.902)">Net exposure moves within a configurable band — defensive in adverse regimes, up to ~300% in favorable ones</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="97.910187" y="61.703375" transform="rotate(-0 97.910187 61.703375)">MARKET REGIME</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(58.117125 83.555981)">downside volatility;</text>
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(55.347062 92.738187)">favorable or adverse</text>
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(76.817609 101.920394)">conditions</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="273.866187" y="61.703375" transform="rotate(-0 273.866187 61.703375)">FUTURES SLEEVE (ES/MES)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(233.561812 83.72475)">sets NET EXPOSURE</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(216.168687 92.683)">from defensive up to ~300%</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(217.585562 101.64125)">· max leverage configurable</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="443.684188" y="61.537812" transform="rotate(-0 443.684188 61.537812)">CASH BUFFER</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(401.632922 88.147084)">absorbs the sleeve's</text>
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(412.715734 97.329291)">ordinary losses</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="267.728187" y="184.871312" transform="rotate(-0 267.728187 184.871312)">PHYSICAL CORE — EQUITY ETF</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="267.728187" y="220.701937" transform="rotate(-0 267.728187 220.701937)">permanent position: never sold; its share count only grows</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 167.43023 81.582 
+Q 181.79738 81.582 194.263872 81.582 
+" style="fill: none; stroke: #22303c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 190.263872 79.582 
+L 194.263872 81.582 
+L 190.263872 83.582 
+z
+" style="fill: #22303c; stroke: #22303c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 351.57023 81.582 
+Q 365.93738 81.582 378.403872 81.582 
+" style="fill: none; stroke: #22303c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 374.403872 79.582 
+L 378.403872 81.582 
+L 374.403872 83.582 
+z
+" style="fill: #22303c; stroke: #22303c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 234.992187 119.155143 
+Q 234.992187 143.027148 234.992187 164.998496 
+" style="fill: none; stroke: #22303c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 236.992187 160.998496 
+L 234.992187 164.998496 
+L 232.992187 160.998496 
+z
+" style="fill: #22303c; stroke: #22303c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-style: italic; font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(30.392187 140.699584)">realized gains from the futures sleeve</text>
+    <text style="font-style: italic; font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(30.392187 149.881791)">are swept periodically into more core shares</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 183.792361 144.507816 
+Q 205.32627 143.027926 226.86018 141.548036 
+" style="fill: none; stroke-dasharray: 0.9,1.485; stroke-dashoffset: 0; stroke: #22303c; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #a4463f" x="271.820187" y="131.709" transform="rotate(-0 271.820187 131.709)">net exposure: 0% —— 100% —— ~300%</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p07b2cc1df1">
+   <rect x="22.208187" y="7.2" width="491.04" height="271.656"/>
+  </clipPath>
+ </defs>
+</svg><figcaption><strong>SCGA mechanics: the regime model governs the futures sleeve, which sets net exposure within a configurable band — defensive in adverse regimes, up to ~300% in favorable ones; the cash buffer absorbs the sleeve's ordinary losses, and realized gains are swept into more core shares, which are never sold.</strong> <span class="src">Source: SCGA strategy document, Core One Asset Management (July 2026).</span></figcaption></figure>
+<p><strong>Mechanics.</strong> Three elements. <em>Core discipline</em>: the physical position is bought and held permanently; its share count can only grow. <em>Futures sleeve</em>: it sits on top of the fully-invested core and moves net exposure up or down around it — adding exposure in calm, favorable conditions and reducing it when conditions deteriorate, with a size bounded relative to total capital. <em>Reinvestment</em>: because futures settle in cash daily, realized sleeve gains accumulate as real cash; on a regular cadence, cash above a maintained buffer is directed to the purchase of additional core shares. Sleeve losses are carried against that buffer, without affecting the physical position.</p>
+<p><strong>Risk management.</strong> Risk is managed exclusively through the futures sleeve, which reduces net exposure in adverse conditions — reduces it, does not eliminate it: the program participates in bear markets. The cash buffer absorbs the sleeve's ordinary losses before any margin borrowing against the pledged core is required, and both net exposure and gross leverage are bounded.</p>
+
+<h2 id="s5"><span class="no">5.</span>SCRA — S&amp;P 500 Core Relative Allocation</h2>
+<p><strong>Strategy.</strong> <a href="https://riskresearch.github.io/rr-strategy-research/strategy/attribution.html">SCRA</a> is a long-biased futures program built around a permanent U.S. large-cap equity core, with dynamic tilts of a capped portion of the portfolio into a diversified set of liquid futures markets when they outperform the core on a risk-adjusted basis. The objective is to build an efficient product that, on a risk-adjusted basis, significantly outperforms equities — capturing their premium while quantitative management keeps realized risk within a controlled band through the cycle. The tactical sleeve rotates around the core, not in its place.</p>
+<p><strong>Source of return.</strong> Three, documented and structural. The first is the <strong>equity premium</strong>, which the program captures permanently by remaining net long equity at all times. The second is <strong>diversification across genuinely different premia</strong>: the duration of the rates curve, precious metals, and digital assets respond to the economic cycle differently from equities, and combining them under a common risk budget improves return per unit of risk. The third is the <strong>persistence of relative leadership</strong>: when a market outperforms the others in a sustained, risk-adjusted way, it tends to keep doing so for a time, because institutional capital reallocates slowly; tilting the portfolio toward that leadership adds return without abandoning the equity anchor.</p>
+<p><strong>Universe and instruments.</strong> Ten regulated, USD-denominated futures contracts, spanning four economic roles: equity indices (S&amp;P 500, Nasdaq-100, Russell 2000), real assets (gold, silver), the U.S. rates curve (2-, 5-, and 10-year notes and the long bond), and digital assets (bitcoin). Each instrument represents a distinct macroeconomic exposure that belongs in a long-horizon allocation; short-term positioning vehicles and narrow sub-sector contracts are deliberately excluded. The S&amp;P 500 is the permanent core and the benchmark against which every alternative's relative performance is judged.</p>
+<figure class="plate"><div class="plate-eyebrow">Figure 2</div><svg xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto" data-w="494.28pt" data-h="286.056pt" viewBox="0 0 494.28 286.056" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-25T15:43:31.988419</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}.params{border:1px solid var(--core);background:#f4f8fb;padding:18px 22px;margin:22px 0;font-family:"Source Sans 3",sans-serif;}
+.params .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--core);margin-bottom:10px;}
+</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 286.056 
+L 494.28 286.056 
+L 494.28 0 
+L 0 0 
+L 0 286.056 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.198 199.346927 
+L 179.157 199.346927 
+L 179.157 80.083317 
+L 15.198 80.083317 
+z
+" clip-path="url(#pfec88f94b9)" style="fill: #2e5f7f"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 271.134 70.144683 
+L 479.082 70.144683 
+L 479.082 18.795073 
+L 271.134 18.795073 
+z
+" clip-path="url(#pfec88f94b9)" style="fill: #5a7d94"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 271.134 129.776488 
+L 479.082 129.776488 
+L 479.082 78.426878 
+L 271.134 78.426878 
+z
+" clip-path="url(#pfec88f94b9)" style="fill: #b08a3e"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 271.134 189.408293 
+L 479.082 189.408293 
+L 479.082 138.058683 
+L 271.134 138.058683 
+z
+" clip-path="url(#pfec88f94b9)" style="fill: #8a9aa6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 271.134 249.040098 
+L 479.082 249.040098 
+L 479.082 197.690488 
+L 271.134 197.690488 
+z
+" clip-path="url(#pfec88f94b9)" style="fill: #6b4a47"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 15.198 283.825317 
+L 479.082 283.825317 
+L 479.082 257.984868 
+L 15.198 257.984868 
+z
+" clip-path="url(#pfec88f94b9)" style="fill: #eef1f3; stroke: #d9dde1; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="97.1775" y="96.894749" transform="rotate(-0 97.1775 96.894749)">S&amp;P 500 CORE</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(39.237016 132.766581)">permanent residual weight</text>
+    <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(55.157094 142.3967)">· program is always</text>
+    <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(64.580813 152.026819)">net long equity</text>
+    <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(49.377625 161.656937)">· benchmark for every</text>
+    <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(54.485891 171.287056)">relative comparison</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="35.247786" transform="rotate(-0 375.108 35.247786)">EQUITIES</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="56.6712" transform="rotate(-0 375.108 56.6712)">Nasdaq-100 · Russell 2000</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="94.879591" transform="rotate(-0 375.108 94.879591)">REAL ASSETS</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="116.303005" transform="rotate(-0 375.108 116.303005)">Gold · Silver</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="154.511396" transform="rotate(-0 375.108 154.511396)">TREASURY CURVE</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="175.934809" transform="rotate(-0 375.108 175.934809)">2y · 5y · 10y notes · long bond</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="214.143201" transform="rotate(-0 375.108 214.143201)">DIGITAL ASSETS</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="375.108" y="235.566614" transform="rotate(-0 375.108 235.566614)">Bitcoin</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 181.096578 116.03595 
+Q 225.146717 104.929596 267.462284 94.260579 
+" style="fill: none; stroke: #22303c; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 263.094707 93.299185 
+L 267.462284 94.260579 
+L 264.072623 97.177803 
+z
+" style="fill: #22303c; stroke: #22303c; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-style: italic; font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(171.846563 79.183306)">risk-adjusted leadership</text>
+    <text style="font-style: italic; font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(188.468859 88.365512)">earns allocation</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 269.211263 175.602747 
+Q 225.144641 162.905021 182.796935 150.702598 
+" style="fill: none; stroke: #22303c; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 186.086784 153.731936 
+L 182.796935 150.702598 
+L 187.194316 149.888322 
+z
+" style="fill: #22303c; stroke: #22303c; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-style: italic; font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(188.131469 185.195404)">relative weakness</text>
+    <text style="font-style: italic; font-size: 8.2px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(186.834203 194.37761)">reverts to the core</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 8.8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="247.14" y="273.333343" transform="rotate(-0 247.14 273.333343)">downside-volatility sizing · bounded dynamic leverage · daily evaluation with a no-trade band</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfec88f94b9">
+   <rect x="7.2" y="7.2" width="479.88" height="271.656"/>
+  </clipPath>
+ </defs>
+</svg><figcaption><strong>SCRA mechanics: each alternative market is continuously assessed against the core; persistent risk-adjusted leadership earns allocation and relative weakness reverts to the core, under a common risk budget and bounded dynamic leverage.</strong> <span class="src">Source: SCRA strategy document, Core One Asset Management (July 2026).</span></figcaption></figure>
+<p><strong>Mechanics.</strong> Three elements. <em>Signal</em>: each alternative market is continuously assessed on its recent risk-adjusted performance relative to the core; markets that persistently outperform it earn allocation, and those that do not revert toward the core — the intent is to tilt toward durable leadership, not to predict direction. <em>Sizing</em>: positions are scaled by their recent downside volatility, so that each contributes a comparable amount of risk, and overall exposure is set by a dynamic-leverage mechanism that expands in calm, high-conviction conditions and contracts in stressed or weak-signal conditions. <em>Cadence</em>: signals are evaluated every trading day, and the portfolio is only traded when the implied change is material.</p>
+<p><strong>Risk management.</strong> Risk is managed at the position and portfolio level. Each position is sized to a comparable risk contribution through downside-volatility targeting, so that no single market can dominate the outcome. The equity core always holds the residual weight; gross leverage is bounded, and the tactical sleeve is capped so it cannot rotate away from the equity anchor.</p>
+
+<h2 id="s6"><span class="no">6.</span>Summary of terms</h2>
+<p>The indicative terms of both programs are summarized below. Performance metrics (return, volatility, Sharpe and Sortino ratios, maximum drawdown) are published, as the track record accumulates a sample, on each program's page within the Core One Asset Management website: <a href="https://riskresearch.github.io/rr-strategy-research/strategy/attribution_gtvp.html">SCGA</a> and <a href="https://riskresearch.github.io/rr-strategy-research/strategy/attribution.html">SCRA</a>.</p>
+<table>
+<tr><th></th><th>SCGA</th><th>SCRA</th></tr>
+<tr><td>Strategy type</td><td>Quantitative; permanent physical core + futures sleeve</td><td>Quantitative; futures core + capped relative rotation</td></tr>
+<tr><td>Instruments</td><td>UCITS ETF (core) · ES/MES futures</td><td>10 USD futures: 3 indices, gold, silver, 4 points of the Treasury curve, bitcoin</td></tr>
+<tr><td>Bias</td><td>Net long equity at all times</td><td>Net long equity at all times</td></tr>
+<tr><td>Current structure</td><td colspan="2">Separately managed accounts (SMA) at Interactive Brokers</td></tr>
+<tr><td>Suggested minimum</td><td colspan="2">≈ US$500,000 per program</td></tr>
+<tr><td>Base currency</td><td colspan="2">U.S. dollar</td></tr>
+<tr><td>Participant liquidity</td><td colspan="2">Daily in the SMA structure; per prospectus in the dedicated vehicle</td></tr>
+<tr><td>Economic terms</td><td colspan="2">To be established in the contractual documentation</td></tr>
+</table>
+<p class="note">Definitive performance metrics are published and updated on the Core One website as the track record accumulates a statistically significant sample.</p>
+
+<h2 id="s7"><span class="no">7.</span>Process and next step</h2>
+<p>The evaluation process we propose to a qualified investor consists of two steps. First, <strong>documentary review</strong>: the research framework and the full strategy documents are public — <a href="https://riskresearch.github.io/rr-strategy-research/">RR Strategy Research framework</a>, <a href="https://riskresearch.github.io/rr-strategy-research/strategy/es_core_gtvp_strategy.html">SCGA document</a>, and <a href="https://riskresearch.github.io/rr-strategy-research/strategy/es_core_strategy.html">SCRA document</a>. Second, the <strong>individual conversation</strong>, in which the fit of the programs within the investor's wealth and jurisdiction and the specific terms of participation are analyzed — including, for those who require it, that of the dedicated vehicle. The programs complement an already-constituted wealth core; they do not replace it. Enquiries may be directed to <a href="mailto:jaroger20@gmail.com?subject=Core%20One%20Asset%20Management%20%E2%80%94%20Institutional%20enquiry">Core One Asset Management</a>.</p>
+
+<p class="note">Legal disclaimer. This document is addressed exclusively to qualified or professional investors and is informational in nature. It does not constitute a public offering of securities or units, a solicitation to buy, investment, legal, or tax advice, or a personalized recommendation. Any investment in the programs described will be governed exclusively by their definitive contractual documentation, which will prevail over this document in the event of discrepancy. The programs use leverage and may record significant losses, including drawdowns comparable to or greater than those of the equity market; quantitative models may underperform and behave unexpectedly outside the conditions that informed their design; simulation results have inherent limitations and past performance, actual or simulated, is no guarantee or reliable indication of future results, and tax treatment depends on each investor's jurisdiction and circumstances. Distribution of this document may be restricted in certain jurisdictions; it is the recipient's responsibility to inform themselves of and observe such restrictions.</p>
+
+<h2 id="refs">References</h2>
+<ol class="refs">
+<li>Core One Asset Management — <a href="https://riskresearch.github.io/rr-strategy-research/strategy/index.html">active programs</a> and <a href="https://riskresearch.github.io/rr-strategy-research/">RR Strategy Research framework</a>, 2026.</li>
+<li><a href="https://riskresearch.github.io/rr-strategy-research/strategy/es_core_gtvp_strategy.html">S&amp;P 500 Core GTVP Allocation (SCGA) — strategy document</a>.</li>
+<li><a href="https://riskresearch.github.io/rr-strategy-research/strategy/es_core_strategy.html">S&amp;P 500 Core Relative Allocation (SCRA) — strategy document</a>.</li>
+<li>CME Group — <a href="https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.html">E-mini and Micro E-mini S&amp;P 500 futures</a>.</li>
+</ol>
+
+</main>
+</div>
+</body>
+</html>
