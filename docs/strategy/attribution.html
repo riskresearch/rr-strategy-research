@@ -175,13 +175,13 @@
       <tbody>
         <tr>
           <td>Period</td>
-          <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (21 trading days)</td>
-          <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (21 trading days)</td>
+          <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (22 trading days)</td>
+          <td class="num" style="white-space:nowrap">Jul 2026&ndash;present (22 trading days)</td>
         </tr>
         <tr>
           <td>Total Return</td>
-          <td class="num">+1.3%</td>
-          <td class="num">-1.5%</td>
+          <td class="num">+3.2%</td>
+          <td class="num">+1.4%</td>
         </tr>
         <tr>
           <td>CAGR</td>
@@ -211,7 +211,7 @@
         <tr>
           <td>Avg. Gross Leverage</td>
           <td class="num" style="white-space:nowrap">1.0&times; (unlevered)</td>
-          <td class="num" style="white-space:nowrap">1.67&times; (current)</td>
+          <td class="num" style="white-space:nowrap">1.82&times; (current)</td>
         </tr>
       </tbody>
     </table>
@@ -228,11 +228,11 @@
         </tr>
       </thead>
       <tbody>
-          <tr><td>S&amp;P 500</td><td>ES</td><td class="num">51.6%</td></tr>
-          <tr><td>Russell 2000</td><td>RTY</td><td class="num">28.7%</td></tr>
-          <tr><td>Silver</td><td>SI</td><td class="num">9.5%</td></tr>
-          <tr><td>Gold</td><td>GC</td><td class="num">5.1%</td></tr>
-          <tr><td>Nasdaq-100</td><td>NQ</td><td class="num">5.0%</td></tr>
+          <tr><td>S&amp;P 500</td><td>ES</td><td class="num">51.3%</td></tr>
+          <tr><td>Russell 2000</td><td>RTY</td><td class="num">29.3%</td></tr>
+          <tr><td>Silver</td><td>SI</td><td class="num">9.7%</td></tr>
+          <tr><td>Gold</td><td>GC</td><td class="num">4.9%</td></tr>
+          <tr><td>Nasdaq-100</td><td>NQ</td><td class="num">4.7%</td></tr>
       </tbody>
     </table>
   </div>
@@ -242,10 +242,10 @@
     <div class="chart-holder"><canvas id="eqChart"></canvas></div>
     <script>
     (function() {
-      var labels  = ["2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-03", "2026-08-04"];
-      var eqRet   = [0.0, -0.84, -1.4, -0.22, -0.59, -1.68, -0.56, -0.08, -1.41, -2.97, -3.17, -1.57, -2.65, -4.2, -3.09, -4.17, -3.85, -6.21, -3.77, -3.15, -1.46];
-      var hwmRet  = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
-      var spyRet  = [0.0, -0.31, 0.53, 0.97, 0.2, 0.55, 0.95, 0.4, -0.59, -0.75, 0.08, -0.04, -1.27, -1.17, -1.15, -0.92, -2.44, -0.81, -0.09, 1.33, 1.33];
+      var labels  = ["2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24", "2026-07-27", "2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-03", "2026-08-04", "2026-08-05"];
+      var eqRet   = [0.0, -0.84, -1.4, -0.22, -0.59, -1.68, -0.56, -0.08, -1.41, -2.97, -3.17, -1.57, -2.65, -4.2, -3.09, -4.17, -3.85, -6.21, -3.77, -3.15, -1.46, 1.37];
+      var hwmRet  = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.37];
+      var spyRet  = [0.0, -0.31, 0.53, 0.97, 0.2, 0.55, 0.95, 0.4, -0.59, -0.75, 0.08, -0.04, -1.27, -1.17, -1.15, -0.92, -2.44, -0.81, -0.09, 1.33, 3.16, 3.16];
       new Chart(document.getElementById('eqChart'), {
         type: 'line',
         data: {
@@ -293,7 +293,7 @@
 </div><!-- #page -->
 
 <div id="footer">
-  &copy; 2026 Core One Asset Management &nbsp;&middot;&nbsp; Last updated: 2026-08-04
+  &copy; 2026 Core One Asset Management &nbsp;&middot;&nbsp; Last updated: 2026-08-05
 </div>
 
 </body>
