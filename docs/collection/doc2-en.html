@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth Architecture — Structure, Taxation, and Financing of Long-Term Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#22303c; --muted:#5d6b77; --core:#2e5f7f; --brass:#8a6a2b;
+  --hair:#dfe3e7; --paper:#ffffff; --wash:#f6f8f9; --warn:#a4463f; }
+* { box-sizing:border-box; } html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.65 "Source Serif 4", Georgia, serif; }
+.page { max-width:1120px; margin:0 auto; padding:0 24px; display:grid; grid-template-columns:255px minmax(0,1fr); gap:56px; }
+nav.toc { position:sticky; top:0; align-self:start; padding:44px 0 40px; font-family:"Source Sans 3",sans-serif; font-size:13.5px; max-height:100vh; overflow-y:auto; }
+nav.toc .toc-title { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); margin-bottom:14px; }
+nav.toc a { display:block; color:var(--muted); text-decoration:none; padding:4px 0 4px 12px; border-left:2px solid var(--hair); line-height:1.4; }
+nav.toc a:hover { color:var(--core); border-left-color:var(--core); }
+main { padding:44px 0 90px; min-width:0; }
+.kicker { font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); }
+h1 { font-size:40px; line-height:1.12; font-weight:700; margin:10px 0 6px; letter-spacing:-.01em; }
+.subtitle { font-size:20px; color:var(--muted); font-weight:400; margin:0 0 34px; line-height:1.4; }
+h2 { font-size:26px; margin:58px 0 6px; letter-spacing:-.005em; scroll-margin-top:20px; }
+h2 .no { font-family:"IBM Plex Mono",monospace; font-size:15px; color:var(--brass); margin-right:10px; }
+h2::after { content:""; display:block; width:44px; height:2px; background:var(--brass); margin-top:10px; }
+h3 { font-size:19px; margin:34px 0 4px; }
+p { margin:14px 0; } a { color:var(--core); } strong { font-weight:600; }
+.plate { margin:34px 0; padding:22px 22px 14px; border:1px solid var(--hair); background:#fff; }
+.plate-eyebrow { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); margin-bottom:12px; }
+figcaption { font-family:"Source Sans 3",sans-serif; font-size:13.5px; color:var(--muted); margin-top:12px; line-height:1.5; }
+figcaption strong { color:var(--ink); } .src { display:block; margin-top:3px; font-size:12.5px; }
+table { border-collapse:collapse; width:100%; margin:26px 0; font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.45; }
+th { text-align:left; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border-bottom:2px solid var(--ink); padding:8px 10px; }
+td { border-bottom:1px solid var(--hair); padding:10px; vertical-align:top; }
+td:first-child { font-weight:600; }
+.callout { border:1px solid var(--hair); border-left:3px solid var(--warn); background:#fbf7f6; padding:16px 22px; margin:28px 0; font-size:15.5px; }
+.callout .lbl { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--warn); display:block; margin-bottom:6px; }
+.note { font-size:14px; color:var(--muted); font-family:"Source Sans 3",sans-serif; }
+ol.refs { font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.6; padding-left:20px; }
+ol.refs li { margin:8px 0; }
+.ficha { border:1px solid var(--hair); margin:22px 0; }
+.ficha summary { background:var(--wash); padding:12px 18px; font-family:"Source Sans 3",sans-serif; font-weight:700; font-size:16px; cursor:pointer; list-style:none; position:relative; }
+.ficha summary::after { content:"+"; position:absolute; right:18px; top:10px; color:var(--brass); font-weight:700; font-size:18px; }
+.ficha[open] summary { border-bottom:1px solid var(--hair); }
+.ficha[open] summary::after { content:"2"; }
+.ficha summary::-webkit-details-marker { display:none; }
+.ficha dl { display:grid; grid-template-columns:200px 1fr; margin:0; font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.5; }
+.ficha dt { padding:9px 18px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass); border-bottom:1px solid var(--hair); }
+.ficha dd { margin:0; padding:9px 18px 9px 0; border-bottom:1px solid var(--hair); }
+.ficha dt:last-of-type, .ficha dd:last-of-type { border-bottom:none; }
+.calc { border:1px solid var(--hair); background:var(--wash); padding:24px 26px; margin:30px 0; font-family:"Source Sans 3",sans-serif; }
+.calc h4 { margin:0 0 4px; font-size:17px; }
+.calc .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; margin:18px 0; }
+.calc label { display:block; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.calc input[type=number] { width:100%; padding:8px 10px; border:1px solid var(--hair); font:600 15px "Source Sans 3",sans-serif; color:var(--ink); background:#fff; }
+.calc input[type=range] { width:100%; accent-color:var(--core); }
+.calc .val { font-weight:700; color:var(--core); }
+.calc .out { background:#fff; border:1px solid var(--hair); padding:16px 20px; margin-top:14px; }
+.calc .out .big { font-size:24px; font-weight:700; color:var(--core); }
+.calc .bar { display:flex; height:26px; margin:10px 0 4px; border:1px solid var(--hair); overflow:hidden; font-size:11.5px; color:#fff; font-weight:700; }
+.calc .bar div { display:flex; align-items:center; justify-content:center; white-space:nowrap; overflow:hidden; }
+.calc .legend { font-size:12.5px; color:var(--muted); }
+@media (max-width:900px) { .page { grid-template-columns:1fr; gap:0; } nav.toc { position:static; max-height:none; border-bottom:1px solid var(--hair); padding:28px 0 18px; } h1 { font-size:31px; } .calc .grid { grid-template-columns:1fr; } .ficha dl { grid-template-columns:1fr; } .ficha dt { border-bottom:none; padding-bottom:0; } .ficha dd { padding-left:18px; } }
+@media print { nav.toc { display:none; } .page { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <a href="#s1">1. Purpose and scope</a>
+  <a href="#s2">2. Overview of asset classes</a>
+  <a href="#s3">3. The comparative taxation of wealth</a>
+  <a href="#s4">4. The core and its maintenance</a>
+  <a href="#s5">5. Liquidity without selling: credit on the core</a>
+      <a href="#s6">6. Advanced strategies: a note</a>
+  <a href="#refs">References</a>
+</nav>
+<main>
+
+<h1>Wealth Architecture</h1>
+<p class="subtitle">Structure, taxation, and financing of long-term capital: how to organize a wealth of some size around a global equity core — what role to assign each asset class, how to optimize the tax burden, and how to obtain liquidity without interrupting compounding</p>
+
+<h2 id="s1"><span class="no">1.</span>Purpose and scope</h2>
+<p>This document is addressed to the investor who already knows the foundations of long-term investing, developed in our foundations document, and whose wealth situation presents dimensions beyond the basic portfolio: a larger capital, real-estate assets, liquidity needs, or estate planning. It examines, on comparable terms, the full set of asset classes, the taxation that determines how to hold each one, the specification of the core, the obtaining of liquidity through credit on the portfolio, and the available financing structures. The claims rest on the public sources cited at the end; tax and market parameters are presented as indicative ranges subject to professional verification.</p>
+
+<h2 id="s2"><span class="no">2.</span>Overview of asset classes</h2>
+<p>The starting point is an inventory of the asset classes evaluated by homogeneous criteria. Each asset class is examined here in the dimensions that determine the long-run outcome: its structural role (foundation or satellite), the nature of its return (an asset without cash flow does not compound internally), its historical real return in long samples — also expressed as a multiplier per decade — its taxation, its measurable frictions, and its net advantages and disadvantages. The cards — expandable — are organized by proximity to the core role: first listed productive assets, then real assets, next private markets, and finally speculative ones.</p>
+<h3>Listed productive assets</h3><details class="ficha"><summary>Listed equities (stocks)</summary><dl><dt>Structural role</dt><dd>The candidate foundational layer: fractional ownership of thousands of productive companies across every sector and geography.</dd><dt>Cash flow or growth</dt><dd>Both: reinvested earnings (growth) and <a href="https://www.investopedia.com/terms/d/dividend.asp">dividends</a>. Corporate revenues reprice with the nominal economy — the structural answer to inflation.</dd><dt>Historical real return</dt><dd>≈5.2% p.a. for the world index 1900–2024 (≈×1.66 per decade); U.S. ≈6.6% (≈×1.90 per decade).</dd><dt>Taxation</dt><dd>The most malleable of all: with the right vehicle (an accumulating fund/ETF), nothing is taxed while unsold — see section 3.</dd><dt>Frictions and constraints</dt><dd>Minimal: costs of a few basis points (<a href="https://www.investopedia.com/terms/e/expenseratio.asp">TER</a> 0.10–0.25% in global ETFs), liquidity in seconds, divisible to the euro.</dd><dt>Advantages</dt><dd>Highest long-run real premium; instant diversification; no operational management; universal access with no minimums.</dd><dt>Disadvantages</dt><dd>Visible volatility: 30–50% drawdowns occur every decade and must be endured without selling; flat stretches of 10–15 years have existed (e.g. 2000–2013). The risk is real — but it is the only reliably rewarded one. See <a href="https://www.investopedia.com/terms/e/equityriskpremium.asp">risk premium</a>.</dd></dl></details><details class="ficha"><summary>Government bonds</summary><dl><dt>Structural role</dt><dd>Ballast and liability matching; liquidity reserve in short maturities (bills).</dd><dt>Cash flow or growth</dt><dd>Fixed nominal coupon — precisely why inflation is its weak point.</dd><dt>Historical real return</dt><dd>≈1.7% p.a. for the world aggregate 1900–2024 (≈×1.18 per decade); bills, ≈0.5%.</dd><dt>Taxation</dt><dd>Coupons taxed annually as investment income; no accumulation mechanism except via funds.</dd><dt>Frictions and constraints</dt><dd><a href="https://www.investopedia.com/terms/d/duration.asp">Duration</a> risk: in 2022 the global aggregate fell ~−16% nominal — its worst year in a century — as rates rose amid high inflation.</dd><dt>Advantages</dt><dd>A legitimate portfolio stabilizer; very short maturities are the correct instrument for the liquidity reserve (section 7).</dd><dt>Disadvantages</dt><dd>Structurally incapable of being the engine: its long-run real return does not meet compounding objectives, and it fails against inflation exactly when most needed.</dd></dl></details><details class="ficha"><summary>Corporate bonds</summary><dl><dt>Structural role</dt><dd>Income satellite: the rung between government bonds and equities.</dd><dt>Cash flow or growth</dt><dd>Government coupon + <a href="https://www.investopedia.com/terms/c/creditspread.asp">credit spread</a> (historically ~0.5–1% net of defaults in investment grade; more in high yield, with more defaults).</dd><dt>Historical real return</dt><dd>≈0.5–1 point p.a. over the comparable government bond over the very long run, net of default losses.</dd><dt>Taxation</dt><dd>Like government bonds: coupon taxed annually.</dd><dt>Frictions and constraints</dt><dd>Liquidity below that of government bonds; the spread widens in crises.</dd><dt>Advantages</dt><dd>More income than government bonds with bounded risk in investment grade; diversifies the source of return.</dd><dt>Disadvantages</dt><dd>Its credit risk behaves like diluted equity: it falls <em>with</em> the stock market under stress, adding less diversification than it appears. High yield, in particular, is half equity with bond taxation.</dd></dl></details><h3>Real assets</h3><details class="ficha"><summary>Direct real estate</summary><dl><dt>Structural role</dt><dd>The primary residence: consumption + forced saving + rent hedge. As an <em>investment</em>, a concentrated satellite.</dd><dt>Cash flow or growth</dt><dd>Rental income (gross 3–6%) plus real price appreciation ≈1% p.a. since 1950 (Knoll et al.); before 1950, ≈0% real.</dd><dt>Historical real return</dt><dd>Price: ≈×1.12 per decade. Total return with rents is higher gross (Jordà et al.), but computed before taxes, capex ~1–2% p.a., vacancy, and management.</dd><dt>Taxation</dt><dd>The class with the most layers: transfer tax on entry (6–11% in Spain), rental income taxed each year at the general scale (marginals up to ~47–54%), annual property tax, and the sale taxed again.</dd><dt>Frictions and constraints</dt><dd>Round trip ≈10–15% of value in Spain (2–6% in the U.S./northern Europe); months to sell; indivisible; one asset, one city.</dd><dt>Advantages</dt><dd>The <strong>primary residence has economic sense of its own</strong>: in many markets the rent saved exceeds the equivalent mortgage payment, so buying the home one will live in is hedging a real liability (future rent) with non-callable fixed-rate financing. Tangible; leverageable with a mortgage.</dd><dt>Disadvantages</dt><dd>As an additional investment, it concentrates in a single asset what an index spreads across thousands, with the worst taxation and worst liquidity on the list, and a personal management burden that grows over time.</dd></dl></details><details class="ficha"><summary>REITs (listed real-estate vehicles)</summary><dl><dt>Structural role</dt><dd>Sector satellite: real-estate exposure with exchange liquidity.</dd><dt>Cash flow or growth</dt><dd>High mandatory dividend distribution (<a href="https://www.investopedia.com/terms/r/reit.asp">REIT</a> regime), little retained growth.</dd><dt>Historical real return</dt><dd>Comparable to equities over the very long run, with more regime variance.</dd><dt>Taxation</dt><dd>Unfavorable by design: being required to distribute, they generate unavoidable annual dividend taxation — there is no accumulating class.</dd><dt>Frictions and constraints</dt><dd>Structurally leveraged; sensitive to the rate cycle: in 2022 global REIT indices fell around −25%, at the same time as equities and bonds.</dd><dt>Advantages</dt><dd>Liquidity and diversification across properties impossible in direct real estate; professional management.</dd><dt>Disadvantages</dt><dd>A single capital-intensive sector (~2–3% of the world index); high correlation with equities precisely in crises; the forced dividend destroys tax deferral.</dd></dl></details><details class="ficha"><summary>Gold and commodities</summary><dl><dt>Structural role</dt><dd>Hedge satellite against extreme monetary and geopolitical scenarios.</dd><dt>Cash flow or growth</dt><dd>None: no coupon, no earnings, no rent. Only price.</dd><dt>Historical real return</dt><dd><1% p.a. for gold over the very long run (≈×1.07 per decade), with real drawdowns spanning two decades (1980–2000).</dd><dt>Taxation</dt><dd>The sale with a gain is taxed as savings income; physical and ETC vehicles add custody costs.</dd><dt>Frictions and constraints</dt><dd>High volatility for a yieldless asset; commodity futures bear roll costs.</dd><dt>Advantages</dt><dd>Decorrelation in monetary crises; centuries of universal acceptance.</dd><dt>Disadvantages</dt><dd>Without cash flow there is no internal compounding: it is insurance, not an engine. Its correct place is tactical and risk-sized.</dd></dl></details><h3>Private markets</h3><details class="ficha"><summary>Private equity (buyouts)</summary><dl><dt>Structural role</dt><dd>Institutional satellite: unlisted equity with leverage and lock-up.</dd><dt>Cash flow or growth</dt><dd>Irregular distributions after a <a href="https://www.investopedia.com/terms/j/jcurve.asp">J-curve</a> of years; the underlying is corporate earnings, as in listed equity.</dd><dt>Historical real return</dt><dd>Net of fees, post-2006 fund generations return on average ≈ the same as the equivalent listed index (PME ≈1.0–1.1; Harris–Jenkinson–Kaplan). The excess lives in the top quartile.</dd><dt>Taxation</dt><dd>Depends on the vehicle; the lock-up imposes its own realization calendar.</dd><dt>Frictions and constraints</dt><dd>Illiquidity of 10–12 years; «2 and 20» fees with a total effective cost of 3–6% p.a. (Phalippou); high minimums; <em>apparent</em> volatility is low because valued by appraisal, not by lower risk.</dd><dt>Advantages</dt><dd>Access to unlisted companies; the best managers show some persistence.</dd><dt>Disadvantages</dt><dd>The median fund does not compensate for illiquidity and fees; the top quartile rations access to new capital. Without demonstrable access to it, the expected position is «index minus fees, with a decade-long lock-up».</dd></dl></details><details class="ficha"><summary>Venture capital</summary><dl><dt>Structural role</dt><dd>Long-tail satellite: optionality on early-stage innovation.</dd><dt>Cash flow or growth</dt><dd>None for years; the return depends on a few extreme exits — a power-law distribution.</dd><dt>Historical real return</dt><dd>The <strong>median</strong> fund has underperformed the listed index in most fund generations (Kauffman; median PME &lt;1); the top decile concentrates almost all of the excess.</dd><dt>Taxation</dt><dd>Like private equity: dictated by the vehicle and the exit calendar.</dd><dt>Frictions and constraints</dt><dd>A decade-long lock-up; extreme dispersion across funds; access to top-decile managers is closed by excess demand.</dd><dt>Advantages</dt><dd>If — and only if — one accesses the top decile, the return can be extraordinary; strategic and informational value for industrial investors.</dd><dt>Disadvantages</dt><dd>For an investor without that access, the mathematical expectation is below the index with far more illiquidity. The dispersion of the class is not capturable: it belongs to the managers, not the investor.</dd></dl></details><h3>Speculative assets</h3><details class="ficha"><summary>Crypto-assets</summary><dl><dt>Structural role</dt><dd>Speculative satellite, if any, and of a size one can afford to lose.</dd><dt>Cash flow or growth</dt><dd>None in the base assets; no earnings or valuation anchor.</dd><dt>Historical real return</dt><dd>Extraordinary and not mechanically repeatable; drawdowns of more than 75% on multiple occasions within the past decade.</dd><dt>Taxation</dt><dd>Gains taxed as savings income in Spain; each swap between coins is a taxable event — ordinary trading destroys deferral.</dd><dt>Frictions and constraints</dt><dd>Custody and platform risk; shifting regulation.</dd><dt>Advantages</dt><dd>Continuous liquidity; optionality on a technological-monetary shift if it occurs.</dd><dt>Disadvantages</dt><dd>Volatility 3–5× that of equities with no flow demonstrably rewarding it; impossible to size as a core with actuarial criteria.</dd></dl></details>
+<h3>Synthesis</h3>
+<table>
+<tr><th>Asset</th><th>Real p.a. (× per decade)</th><th>Liquidity</th><th>Entry/exit cost</th><th>Taxation</th><th>Role</th></tr>
+<tr><td>Global equities</td><td>≈5.2% (×1.66)</td><td>Seconds</td><td>Basis points</td><td>Optimizable to full deferral</td><td><strong>Core</strong></td></tr>
+<tr><td>Primary residence</td><td>≈1% price + rent saved</td><td>Months</td><td>≈10–15% (Spain)</td><td>Many layers; reliefs for primary home</td><td>Hedge of the "rent" liability</td></tr>
+<tr><td>Investment real estate</td><td>≈1% price + net rent of capex</td><td>Months</td><td>≈10–15%</td><td>The worst: entry + annual rent + exit</td><td>Concentrated satellite</td></tr>
+<tr><td>REITs</td><td>≈ equities, more cyclical</td><td>Seconds</td><td>Basis points</td><td>Forced annual dividend</td><td>Sector satellite</td></tr>
+<tr><td>Government bonds</td><td>≈1.7% (×1.18)</td><td>Seconds</td><td>Basis points</td><td>Annual coupon</td><td>Ballast / liquidity</td></tr>
+<tr><td>Corporate bonds</td><td>≈2–2.5%</td><td>High</td><td>Low</td><td>Annual coupon</td><td>Income satellite</td></tr>
+<tr><td>Gold</td><td>≈0.7% (×1.07)</td><td>High</td><td>Low–medium</td><td>Savings tax on sale</td><td>Insurance</td></tr>
+<tr><td>Crypto-assets</td><td>n/a — no long sample</td><td>Continuous</td><td>Low</td><td>Each swap is taxed</td><td>Speculative</td></tr>
+<tr><td>Private equity</td><td>≈ equities net of fees (post-2006)</td><td>10–12 years</td><td>Fees 3–6%/yr</td><td>By vehicle</td><td>Institutional satellite</td></tr>
+<tr><td>Venture capital</td><td>Median &lt; equities; extreme top decile</td><td>≈10 years</td><td>High fees</td><td>By vehicle</td><td>Long-tail satellite</td></tr>
+</table>
+<p>The reading of the synthesis is direct: global listed equities are the only class that combines the highest historical real return with the best liquidity, the lowest cost, the most optimizable taxation, and access without barriers — and are therefore the core. The primary residence has an economic justification of its own: hedging with fixed-rate financing the real liability that future rent constitutes, which in many markets exceeds the equivalent mortgage payment; it is, however, the management of a liability, not the growth engine of wealth. Housing also possesses a property no other asset class matches —its financing capacity, with a high LTV and no margin call—, analyzed in the companion document <a href="doc4-en.html">"Housing as Collateral."</a> Private markets require a verifiable condition — demonstrable access to the top quartile of managers — without which their mathematical expectation is below that of the listed index with far greater illiquidity. Everything else is a satellite, and its inclusion must be justified case by case. It is also worth guarding against a common error: diversification is not an end in itself. Adding asset classes with a lower expected real return merely in order to "diversify" does not reduce the risk relevant to a long-term investor; it lowers the expected return without a clear counterpart. The pertinent diversification is that which occurs within the global core itself —thousands of companies across every sector and country— and, where applicable, that provided by genuinely distinct premia managed with judgment, not the mere accumulation of heterogeneous assets.</p>
+
+<h2 id="s3"><span class="no">3.</span>The comparative taxation of wealth</h2>
+<p>Taxation alters the final outcome of an investment as much as its gross return, and operates under three principles common to Western jurisdictions. <strong>First: deferral has economic value of its own.</strong> The tax on an unrealized gain remains invested and compounding in the investor's favor — functionally, cost-free financing from the state that each unnecessary realization cancels prematurely. <strong>Second: income is not taxed uniformly.</strong> A near-universal hierarchy exists: labor and rental income bear the highest general scales; dividends and interest are taxed annually at intermediate rates; unrealized gains are not taxed; and capital obtained through a loan is not income and is not taxed in any case. <strong>Third: inheritance resets the count in several jurisdictions.</strong> In the U.S. the <a href="https://www.investopedia.com/terms/s/stepupinbasis.asp">step-up in basis</a> applies; in Spain, art. 33.3.b of the <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764">Personal Income Tax Law</a> extinguishes the latent gain at death. Where this mechanism exists, the optimal realization policy over the very long run is non-realization.</p>
+<p>The table orders the treatment by type of activity, with the general principle and the two reference implementations:</p>
+<table>
+<tr><th>Activity</th><th>General principle</th><th>Spain</th><th>United States</th></tr>
+<tr><td>Speculation / trading</td><td>Every close with a gain is a taxable event: turnover destroys deferral trade by trade.</td><td>Savings base, 19–30% (30% marginal above €300,000 since 2025).</td><td>Also penalizes the short term: gains under 1 year at the ordinary rate (up to 37% federal) versus 0/15/20% long-term.</td></tr>
+<tr><td>Dividends and interest</td><td>Unavoidable annual drain in distributing classes; withholding at source on foreign dividends (only partly recoverable).</td><td>Savings base every year. Solution: the <strong>accumulating</strong> <a href="https://www.investopedia.com/terms/u/ucits.asp">UCITS</a> class, which reinvests internally with no taxable event for the holder.</td><td>No accumulating classes exist (funds distribute by law); efficiency is achieved via ETFs — see next row.</td></tr>
+<tr><td>Real estate</td><td>The class with the most layers: entry tax, annual rent at the high rate, exit tax, plus local holding taxes.</td><td>ITP transfer tax 6–11% on purchase; rent taxed in the <em>general base</em> (up to ~47–54% by region); sale in the savings base; annual IBI and municipal capital-gains tax.</td><td>Rental income at the ordinary rate with deductible depreciation; sale at LTCG; annual property tax of 1–2% in many states.</td></tr>
+<tr><td>Funds and ETFs</td><td>The vehicle determines taxation as much as the asset: accumulation and deferral are the key.</td><td>No taxation while unsold; traditional Spanish funds also enjoy the <a href="https://sede.agenciatributaria.gob.es/">transfer regime</a> (deferral when switching funds), which does not apply to ETFs — a reason to choose the core vehicle well from the start.</td><td>ETFs defer internal capital gains via <a href="https://www.investopedia.com/terms/e/etf.asp">in-kind redemptions</a> — the reason for their dominance in the U.S.</td></tr>
+<tr><td>Loans / credit</td><td><strong>Borrowing is not income: it is not taxed in any Western jurisdiction.</strong> Liquidity obtained with debt against the portfolio generates no taxable event.</td><td>Interest on a personal investment loan is generally non-deductible.</td><td>Margin interest is deductible against investment income; the basis of the <a href="https://www.jpmorgan.com/insights/investing/investment-strategy/how-the-buy-borrow-die-strategy-works">"buy, borrow, die"</a> strategy.</td></tr>
+<tr><td>Inheritance</td><td>Where the basis is reset at death, the latent gain of an entire lifetime permanently escapes income tax; the estate tax applies separately and usually allows reliefs for direct relatives.</td><td>Latent gain extinguished (art. 33.3.b of the Personal Income Tax Law); regional inheritance and gift tax on the value received; wealth tax allows debts to be deducted from the base.</td><td>Full <a href="https://www.investopedia.com/terms/s/stepupinbasis.asp">step-up in basis</a> + high federal estate exemption (&gt;$13M per person).</td></tr>
+</table>
+<p class="note">Tax parameters change frequently and vary by region, state, and jurisdiction; the above arithmetic is conceptual and must be validated with a qualified tax advisor before implementing any structure.</p>
+
+<h2 id="s4"><span class="no">4.</span>The core and its maintenance</h2>
+<p>The two preceding sections converge on a practical conclusion: the asset that combines the highest real return with the most favorable taxation is global equity held without selling. From this follows the specification of the core, whose full rationale is developed in the foundations document: a <a href="https://www.investopedia.com/terms/e/etf.asp">UCITS ETF</a> of global equities — on the FTSE All-World or the <a href="https://www.msci.com/indexes/index/892400">MSCI ACWI</a> — in accumulating class, with a total cost below 0.25% per year, fed by periodic contributions and held long-term. Each term answers to evidence: <em>equities</em>, for the long-run real premium; <em>global</em>, for the documented cost of home bias; <em>indexed</em>, for SPIVA's results and the absence of manager persistence; <em>accumulating</em>, for the suppression of annual dividend taxation; <em>held long-term</em>, for the value of deferral culminating in the extinction of the gain at inheritance.</p>
+<p>Alongside the core, the liquidity reserve — between 6 and 18 months of spending in <a href="https://www.tesoro.es/en">Treasury bills</a> or money market funds — serves a dual function: current financial stability and, above all, the behavioral guarantee of not liquidating the core during market drawdowns. The rest of this architecture — credit, financing structures, satellites — is built around these two pieces without altering them.</p>
+<figure class="plate"><div class="plate-eyebrow">Figure 1</div><svg xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto" data-w="718.713746pt" data-h="289.862141pt" viewBox="0 0 718.713746 289.862141" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-01T16:08:10.894475</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 289.862141 
+L 718.713746 289.862141 
+L 718.713746 0 
+L 0 0 
+L 0 289.862141 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 50.521953 254.786203 
+L 519.241953 254.786203 
+L 519.241953 21.938203 
+L 50.521953 21.938203 
+L 50.521953 254.786203 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 71.827408 203.042203 
+L 213.863771 203.042203 
+L 213.863771 182.344603 
+L 71.827408 182.344603 
+z
+" clip-path="url(#p5a9b9f9d9a)" style="fill: #b9c2c9"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 355.900135 203.042203 
+L 497.936499 203.042203 
+L 497.936499 182.344603 
+L 355.900135 182.344603 
+z
+" clip-path="url(#p5a9b9f9d9a)" style="fill: #b9c2c9"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 71.827408 182.344603 
+L 213.863771 182.344603 
+L 213.863771 30.562203 
+L 71.827408 30.562203 
+z
+" clip-path="url(#p5a9b9f9d9a)" style="fill: #2e5f7f"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 355.900135 182.344603 
+L 497.936499 182.344603 
+L 497.936499 30.562203 
+L 355.900135 30.562203 
+z
+" clip-path="url(#p5a9b9f9d9a)" style="fill: #2e5f7f"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 355.900135 203.042203 
+L 497.936499 203.042203 
+L 497.936499 237.538203 
+L 355.900135 237.538203 
+z
+" clip-path="url(#p5a9b9f9d9a)" style="fill: #a4463f"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m9cd3be54de" d="M 0 0 
+L 0 3.5 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9cd3be54de" x="142.845589" y="254.786203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(129.179183 269.384641)">Asset</text>
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(123.159652 280.582453)">balance</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m9cd3be54de" x="426.918317" y="254.786203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(399.687848 269.384641)">With credit</text>
+      <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(371.712848 280.582453)">on the core (20% LTV)</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <path d="M 50.521953 237.538203 
+L 519.241953 237.538203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <defs>
+       <path id="m6149506375" d="M 0 0 
+L -3.5 0 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="237.538203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="241.527383" transform="rotate(-0 43.521953 241.527383)">−20</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <path d="M 50.521953 203.042203 
+L 519.241953 203.042203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="203.042203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="207.031383" transform="rotate(-0 43.521953 207.031383)">0</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <path d="M 50.521953 168.546203 
+L 519.241953 168.546203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="168.546203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="172.535383" transform="rotate(-0 43.521953 172.535383)">20</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <path d="M 50.521953 134.050203 
+L 519.241953 134.050203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="134.050203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="138.039383" transform="rotate(-0 43.521953 138.039383)">40</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_11">
+      <path d="M 50.521953 99.554203 
+L 519.241953 99.554203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="99.554203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="103.543383" transform="rotate(-0 43.521953 103.543383)">60</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_13">
+      <path d="M 50.521953 65.058203 
+L 519.241953 65.058203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="65.058203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="69.047383" transform="rotate(-0 43.521953 69.047383)">80</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_15">
+      <path d="M 50.521953 30.562203 
+L 519.241953 30.562203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m6149506375" x="50.521953" y="30.562203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="43.521953" y="34.551383" transform="rotate(-0 43.521953 34.551383)">100</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="15.178359" y="138.362203" transform="rotate(-90 15.178359 138.362203)">% of wealth</text>
+    </g>
+   </g>
+   <g id="line2d_17">
+    <path d="M 50.521953 203.042203 
+L 519.241953 203.042203 
+" clip-path="url(#p5a9b9f9d9a)" style="fill: none; stroke: #22303c; stroke-width: 0.9; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 50.521953 254.786203 
+L 50.521953 21.938203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 50.521953 254.786203 
+L 519.241953 254.786203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #a4463f" x="426.918317" y="247.887003" transform="rotate(-0 426.918317 247.887003)">−20% LTV</text>
+   </g>
+   <g id="text_12">
+    <text style="font-style: italic; font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(517.821589 114.360206)">Credit does not sell the core: it adds liquidity</text>
+    <text style="font-style: italic; font-size: 8.6px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(517.821589 123.990325)">while the compounding position stays intact</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="284.881953" y="15.938203" transform="rotate(-0 284.881953 15.938203)">Wealth composition: assets and credit drawn on the core</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_10">
+     <path d="M 59.071953 216.372062 
+L 78.071953 216.372062 
+L 78.071953 209.722062 
+L 59.071953 209.722062 
+z
+" style="fill: #b9c2c9"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="85.671953" y="216.372062" transform="rotate(-0 85.671953 216.372062)">Liquidity reserve</text>
+    </g>
+    <g id="patch_11">
+     <path d="M 59.071953 230.316281 
+L 78.071953 230.316281 
+L 78.071953 223.666281 
+L 59.071953 223.666281 
+z
+" style="fill: #2e5f7f"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="85.671953" y="230.316281" transform="rotate(-0 85.671953 230.316281)">Global index core</text>
+    </g>
+    <g id="patch_12">
+     <path d="M 59.071953 244.2605 
+L 78.071953 244.2605 
+L 78.071953 237.6105 
+L 59.071953 237.6105 
+z
+" style="fill: #a4463f"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="85.671953" y="244.2605" transform="rotate(-0 85.671953 244.2605)">Liquidity drawn (debt)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5a9b9f9d9a">
+   <rect x="50.521953" y="21.938203" width="468.72" height="232.848"/>
+  </clipPath>
+ </defs>
+</svg><figcaption><strong>Wealth composition in two states: with assets only (liquidity reserve and index core) and with credit drawn on the core up to 20% of its value. The credit provides liquidity without selling the core, which remains invested.</strong> <span class="src">Own elaboration. The reserve/core split is illustrative; the debt tranche corresponds to the 20% LTV operating cap of section 5.</span></figcaption></figure>
+
+<h2 id="s5"><span class="no">5.</span>Liquidity without selling: credit on the core</h2>
+<p>Wealth held long-term needs to solve liquidity by a route other than selling. The structural solution is credit collateralized by the portfolio itself — the strategy known in the U.S. as <a href="https://www.jpmorgan.com/insights/investing/investment-strategy/how-the-buy-borrow-die-strategy-works">"buy, borrow, die"</a>, fully adaptable to the Spanish framework. Its three steps exploit, one by one, the principles of section 3: <strong>buy</strong> (the accumulating core, which defers all taxation while held), <strong>borrow</strong> (a <a href="https://www.investopedia.com/terms/s/securitiesbased-lending.asp">margin credit</a> with the portfolio pledged: the loan is not income and generates no taxable event), and <strong>transfer</strong> (where the tax basis is reset at death, the latent income-tax gain is extinguished: the heirs do not pay the income tax on the gain accumulated over the owner’s entire life). One point that is often confused deserves precision: this does <em>not</em> mean inheriting tax-free. The transfer is indeed taxed under <strong>inheritance and gift tax</strong>, which in Spain is regional and taxes the value received — with substantial reliefs for spouse and descendants in several regions (in Catalonia, up to 99% for the spouse). What is extinguished is only the latent income-tax gain, not the inheritance tax; and the outstanding debt on the portfolio reduces the inheritance-tax base, because the heir receives the wealth <em>net</em> of what is owed — that is the sense in which “the estate settles the debt.”</p>
+<h3>Uses of the credit</h3>
+<p>Credit secured by the portfolio covers liquidity needs without requiring the core to be sold or the sale to be taxed. Its natural application is liquidity for spending in a broad sense: financing the down payment on a home, the purchase of a vehicle, a renovation, studies, or any personal or unexpected outlay. In these cases, credit secured by the portfolio is usually cheaper than a loan requested from another institution for the same purpose, because the collateral is a liquid portfolio with transparent valuation, which reduces the spread the lender applies. In addition, by not selling the core, the position remains invested and the tax deferral of the gain is preserved.</p>
+<p>Credit on the portfolio is not intended to leverage market exposure permanently. That function belongs to the systematic strategies of section 6, which manage exposure with specific instruments and formalized risk control, without turning the core into collateral subject to revision.</p>
+<h3>The borrowing discipline</h3>
+<p>The critical parameter is the <a href="https://www.investopedia.com/terms/l/loantovalueratio.asp">LTV</a> — debt over portfolio value — because the collateral is marked to market daily and the lender can demand additional collateral (<a href="https://www.investopedia.com/terms/m/margincall.asp">margin call</a>) if the LTV exceeds its maintenance threshold, typically in the 60–70% zone depending on the institution and the collateral. The operating rule is a <strong>maximum target LTV of 20%</strong>, managed with flows and not with sales: in rising markets the credit capacity grows and admits new draws; in drawdowns, the upward drift of the LTV is contained with periodic contributions and moderated draws — never by liquidating the core.</p>
+<figure class="plate"><div class="plate-eyebrow">Figure 2</div><svg xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto" data-w="513.163906pt" data-h="298.854266pt" viewBox="0 0 513.163906 298.854266" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-25T15:44:30.405751</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 298.854266 
+L 513.163906 298.854266 
+L 513.163906 0 
+L 0 0 
+L 0 298.854266 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 48.403906 260.330203 
+L 505.963906 260.330203 
+L 505.963906 21.938203 
+L 48.403906 21.938203 
+L 48.403906 260.330203 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 48.403906 139.113932 
+L 505.963906 139.113932 
+L 505.963906 118.91122 
+L 48.403906 118.91122 
+z
+" clip-path="url(#p891ae2b1d9)" style="fill: #a4463f; opacity: 0.12; stroke: #a4463f; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 48.403906 260.330203 
+L 48.403906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m471077a620" d="M 0 0 
+L 0 3.5 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m471077a620" x="48.403906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="48.403906" y="275.308562" transform="rotate(-0 48.403906 275.308562)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 109.411906 260.330203 
+L 109.411906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m471077a620" x="109.411906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="109.411906" y="275.308562" transform="rotate(-0 109.411906 275.308562)">10</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 170.419906 260.330203 
+L 170.419906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m471077a620" x="170.419906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="170.419906" y="275.308562" transform="rotate(-0 170.419906 275.308562)">20</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 231.427906 260.330203 
+L 231.427906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m471077a620" x="231.427906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="231.427906" y="275.308562" transform="rotate(-0 231.427906 275.308562)">30</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 292.435906 260.330203 
+L 292.435906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m471077a620" x="292.435906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="292.435906" y="275.308562" transform="rotate(-0 292.435906 275.308562)">40</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 353.443906 260.330203 
+L 353.443906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m471077a620" x="353.443906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="353.443906" y="275.308562" transform="rotate(-0 353.443906 275.308562)">50</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 414.451906 260.330203 
+L 414.451906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m471077a620" x="414.451906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="414.451906" y="275.308562" transform="rotate(-0 414.451906 275.308562)">60</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 475.459906 260.330203 
+L 475.459906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m471077a620" x="475.459906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="475.459906" y="275.308562" transform="rotate(-0 475.459906 275.308562)">70</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="277.183906" y="289.470594" transform="rotate(-0 277.183906 289.470594)">Market drawdown (%)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_17">
+      <path d="M 48.403906 260.330203 
+L 505.963906 260.330203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <defs>
+       <path id="m02f13037a1" d="M 0 0 
+L -3.5 0 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m02f13037a1" x="48.403906" y="260.330203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="264.319383" transform="rotate(-0 41.403906 264.319383)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_19">
+      <path d="M 48.403906 219.924779 
+L 505.963906 219.924779 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m02f13037a1" x="48.403906" y="219.924779" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="223.913959" transform="rotate(-0 41.403906 223.913959)">20</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_21">
+      <path d="M 48.403906 179.519356 
+L 505.963906 179.519356 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m02f13037a1" x="48.403906" y="179.519356" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="183.508535" transform="rotate(-0 41.403906 183.508535)">40</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_23">
+      <path d="M 48.403906 139.113932 
+L 505.963906 139.113932 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m02f13037a1" x="48.403906" y="139.113932" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="143.103112" transform="rotate(-0 41.403906 143.103112)">60</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_25">
+      <path d="M 48.403906 98.708508 
+L 505.963906 98.708508 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m02f13037a1" x="48.403906" y="98.708508" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="102.697688" transform="rotate(-0 41.403906 102.697688)">80</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_27">
+      <path d="M 48.403906 58.303084 
+L 505.963906 58.303084 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m02f13037a1" x="48.403906" y="58.303084" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="62.292264" transform="rotate(-0 41.403906 62.292264)">100</text>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="15.178359" y="141.134203" transform="rotate(-90 15.178359 141.134203)">Loan-to-value of the pledged portfolio (%)</text>
+    </g>
+   </g>
+   <g id="line2d_29">
+    <path d="M 48.403906 219.924779 
+L 79.743632 217.73676 
+L 108.994043 215.469428 
+L 136.155139 213.136668 
+L 161.22692 210.757162 
+L 184.209386 208.354944 
+L 205.102536 205.959771 
+L 225.995687 203.33318 
+L 244.799523 200.742407 
+L 261.514043 198.233447 
+L 278.228564 195.503919 
+L 292.853769 192.910868 
+L 307.478975 190.101729 
+L 322.10418 187.048317 
+L 334.640071 184.211598 
+L 347.175961 181.14642 
+L 359.711851 177.824023 
+L 370.158427 174.834669 
+L 380.605002 171.620551 
+L 391.051577 168.15533 
+L 399.408838 165.181947 
+L 407.766098 162.010339 
+L 416.123358 158.619999 
+L 424.480619 154.987491 
+L 432.837879 151.085909 
+L 441.195139 146.884206 
+L 447.463084 143.514523 
+L 453.73103 139.938532 
+L 459.998975 136.13669 
+L 466.26692 132.086902 
+L 472.534865 127.764094 
+L 478.80281 123.139695 
+L 485.070756 118.181002 
+L 491.338701 112.850407 
+L 497.606646 107.10444 
+L 501.785276 103.01842 
+L 505.963906 98.708508 
+L 505.963906 98.708508 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #2e5f7f; stroke-width: 2.3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_30">
+    <path d="M 48.403906 189.620712 
+L 71.386372 186.852724 
+L 94.368838 183.859197 
+L 115.261988 180.918005 
+L 136.155139 177.741517 
+L 154.958975 174.657292 
+L 173.76281 171.333774 
+L 190.477331 168.15533 
+L 207.191851 164.741446 
+L 221.817057 161.539909 
+L 236.442262 158.116483 
+L 251.067468 154.447272 
+L 263.603358 151.085909 
+L 276.139249 147.504129 
+L 288.675139 143.679517 
+L 301.21103 139.58651 
+L 311.657605 135.949652 
+L 322.10418 132.086902 
+L 332.550756 127.97654 
+L 342.997331 123.593968 
+L 351.354591 119.873254 
+L 359.711851 115.944388 
+L 368.069112 111.789401 
+L 376.426372 107.388192 
+L 384.783632 102.718207 
+L 393.140893 97.754049 
+L 401.498153 92.46702 
+L 407.766098 88.27044 
+L 414.034043 83.858652 
+L 420.301988 79.214663 
+L 426.569934 74.319649 
+L 432.837879 69.152689 
+L 439.105824 63.690474 
+L 445.373769 57.906953 
+L 451.641714 51.772915 
+L 457.90966 45.2555 
+L 464.177605 38.317606 
+L 470.44555 30.917186 
+L 474.62418 25.703254 
+L 478.80281 20.246813 
+L 480.892125 17.897661 
+L 505.963906 17.897661 
+L 505.963906 17.897661 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #b08a3e; stroke-width: 2.3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_31">
+    <path d="M 48.403906 159.316644 
+L 69.297057 155.734603 
+L 88.100893 152.286396 
+L 106.904728 148.603084 
+L 123.619249 145.111612 
+L 140.333769 141.394883 
+L 157.04829 137.430373 
+L 171.673495 133.738103 
+L 186.298701 129.817109 
+L 200.923906 125.645457 
+L 213.459797 121.851521 
+L 225.995687 117.837646 
+L 238.531577 113.584137 
+L 251.067468 109.068873 
+L 261.514043 105.088312 
+L 271.960619 100.892585 
+L 282.407194 96.463762 
+L 292.853769 91.781864 
+L 303.300345 86.82456 
+L 311.657605 82.643701 
+L 320.014865 78.25638 
+L 328.372125 73.646916 
+L 336.729386 68.798 
+L 345.086646 63.690474 
+L 353.443906 58.303084 
+L 361.801167 52.61218 
+L 370.158427 46.591367 
+L 376.426372 41.841616 
+L 382.694317 36.875966 
+L 388.962262 31.679356 
+L 395.230208 26.235288 
+L 401.498153 20.525656 
+L 403.587468 18.560045 
+L 405.676783 17.897661 
+L 505.963906 17.897661 
+L 505.963906 17.897661 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke: #a4463f; stroke-width: 2.3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_32">
+    <path d="M 48.403906 139.113932 
+L 505.963906 139.113932 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #22303c"/>
+   </g>
+   <g id="line2d_33">
+    <path d="M 383.947906 260.330203 
+L 383.947906 21.938203 
+" clip-path="url(#p891ae2b1d9)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #8a9aa6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 48.403906 260.330203 
+L 48.403906 21.938203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 48.403906 260.330203 
+L 505.963906 260.330203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #22303c" x="54.504706" y="115.880813" transform="rotate(-0 54.504706 115.880813)">typical margin-call zone: 60–70% LTV, by broker</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #8a9aa6" transform="translate(387.608386 240.150816)">2007–09 world equity</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #8a9aa6" transform="translate(387.608386 250.228847)">drawdown ≈ −55%</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="277.183906" y="15.938203" transform="rotate(-0 277.183906 15.938203)">Why the borrowing sleeve is capped at 20% LTV</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_34">
+     <path d="M 57.853906 35.691562 
+L 68.353906 35.691562 
+L 78.853906 35.691562 
+" style="fill: none; stroke: #2e5f7f; stroke-width: 2.3; stroke-linecap: square"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="87.253906" y="39.366562" transform="rotate(-0 87.253906 39.366562)">Initial LTV 20%</text>
+    </g>
+    <g id="line2d_35">
+     <path d="M 57.853906 51.103594 
+L 68.353906 51.103594 
+L 78.853906 51.103594 
+" style="fill: none; stroke: #b08a3e; stroke-width: 2.3; stroke-linecap: square"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="87.253906" y="54.778594" transform="rotate(-0 87.253906 54.778594)">Initial LTV 35%</text>
+    </g>
+    <g id="line2d_36">
+     <path d="M 57.853906 66.515625 
+L 68.353906 66.515625 
+L 78.853906 66.515625 
+" style="fill: none; stroke: #a4463f; stroke-width: 2.3; stroke-linecap: square"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: start" x="87.253906" y="70.190625" transform="rotate(-0 87.253906 70.190625)">Initial LTV 50%</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p891ae2b1d9">
+   <rect x="48.403906" y="21.938203" width="457.56" height="238.392"/>
+  </clipPath>
+ </defs>
+</svg><figcaption><strong>Mechanical LTV of the pledged portfolio by market drawdown, for three starting levels.</strong> <span class="src">Own calculation: LTV(d)=LTV₀/(1−d). World equities fell ≈−55% peak-to-trough in 2007–09 (≈−57% for the S&P 500). At a 20% initial LTV, the position stays well below the margin-call zone (60–70% by institution) even repeating 2008; at a 50% initial LTV, a −17% correction already reaches the lower threshold.</span></figcaption></figure>
+<p>The 20% cap is not an arbitrary figure: it is the level that survives, with margin, the worst recorded drawdown of the world index over 125 years of data. A higher LTV is possible with specific hedges that bound the portfolio’s maximum drawdown, but that introduces additional models and costs belonging to a more institutional domain, outside the scope of this guide. Forcing the liquidation of a portfolio pledged at 20% would require a global drawdown on the order of 65–70% — a scenario that has occurred in individual countries (the U.S. between 1929 and 1932, Japan since 1989), which is precisely the argument for a global core, but never in the aggregate world index, whose collapse of that magnitude would imply the simultaneous failure of the collateral of every alternative.</p>
+
+<h2 id="s6"><span class="no">6.</span>Advanced strategies: a note</h2>
+<p>For the investor who, with the above architecture already constituted, seeks <strong>more expected compounding per unit of realized risk, or more capital efficiency</strong>, there is an additional layer: the systematic management of exposure through index futures, superimposed on a physical core that is not sold. The use of futures allows the market exposure to be modulated without liquidating the core, preserving the tax efficiency of section 3, and the quantitative capability to be applied to what is genuinely manageable systematically —volatility and risk— rather than to trying to beat the index by abandoning it.</p>
+<p>These programs —SCGA and SCRA— are developed in detail in our <strong>institutional document</strong>, which presents their mechanics, their performance attribution, and the access terms, and are addressed to qualified investors. They employ leverage, and the assessment of their fit within a specific wealth is, in every case, a matter for a personal conversation.</p>
+
+<p class="note">Disclaimer. This document is informational and educational in nature; it does not constitute investment, legal, or tax advice, a personalized recommendation, or an offer or solicitation. Historical figures are very long-run averages or indicative ranges, not forecasts; equities experience deep drawdowns and prolonged periods without gains. The applicable taxation and regulation depend on each investor's circumstances and must be confirmed with qualified professionals.</p>
+
+<h2 id="refs">References</h2>
+<ol class="refs">
+<li>Dimson, Marsh &amp; Staunton — <a href="https://www.ubs.com/global/en/investment-bank/global-investment-returns-yearbook.html">UBS Global Investment Returns Yearbook 2025</a>.</li>
+<li>S&amp;P Dow Jones Indices — <a href="https://www.spglobal.com/spdji/en/research-insights/spiva/">SPIVA Scorecards</a> and <a href="https://www.spglobal.com/spdji/en/research-insights/spiva/#persistence">Persistence Scorecards</a>.</li>
+<li>Harris, Jenkinson &amp; Kaplan — <a href="https://onlinelibrary.wiley.com/doi/10.1111/jofi.12154">"Private Equity Performance: What Do We Know?"</a>, Journal of Finance, 2014.</li>
+<li>Phalippou — <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3623820">"An Inconvenient Fact: Private Equity Returns &amp; The Billionaire Factory"</a>, 2020.</li>
+<li>Kauffman Foundation — <a href="https://www.kauffman.org/entrepreneurship/reports/we-have-met-the-enemy-and-he-is-us/">"We Have Met the Enemy… and He Is Us"</a>, 2012.</li>
+<li>Jordà, Knoll, Kuvshinov, Schularick &amp; Taylor — <a href="https://academic.oup.com/qje/article/134/3/1225/5435538">"The Rate of Return on Everything, 1870–2015"</a>, QJE 2019; Knoll, Schularick &amp; Steger — <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20150501">"No Price Like Home"</a>, AER 2017.</li>
+<li>Official State Gazette — <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764">Law 35/2006 on Personal Income Tax</a> (art. 33.3.b and the savings scale); IRS — <a href="https://www.irs.gov/">step-up in basis</a>; Banco de España — <a href="https://www.bde.es/webbe/es/estadisticas/">rate statistics</a>.</li>
+<li>Roger, J.A. — <a href="https://riskresearch.github.io/rr-strategy-research/">RR Strategy Research</a>, Core One Asset Management, 2026 (framework of the section 6 strategies).</li>
+</ol>
+
+</main>
+</div>
+</body>
+</html>
