@@ -13,13 +13,16 @@
 body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.65 "Source Serif 4", Georgia, serif; }
 /* Full-screen brand masthead */
 .masthead { min-height:100vh; min-height:100svh; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; text-align:center; padding:0 24px; position:relative; }
+  justify-content:center; padding:0 24px; position:relative; }
+.masthead-inner { width:100%; max-width:940px; margin:0 auto; text-align:left; }
 .brand-hero { font-family:"Source Serif 4", Georgia, serif; font-weight:700; color:var(--ink);
-  text-transform:uppercase; line-height:1.02; font-size:clamp(46px, 12.5vw, 168px); }
-.brand-hero .l1 { display:block; font-size:1em; letter-spacing:.054em; }
-.brand-hero .l2 { display:block; font-size:.457em; letter-spacing:.118em; margin-top:.06em; }
-.masthead .rule { width:70px; height:3px; background:var(--core); margin:40px auto 0; }
+  line-height:1.04; letter-spacing:-.03em;
+  /* sized so the longest line ("Asset Management", ~7.44em) always fits the column */
+  font-size:clamp(32px, calc((100vw - 56px) / 7.5), 126px); }
+.brand-hero .l1, .brand-hero .l2 { display:block; }
+.masthead .rule { width:84px; height:3px; background:var(--core); margin:46px 0 0; }
 .scrollcue { position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  width:100%; max-width:940px; padding:0 24px; text-align:left;
   color:var(--muted); font-size:22px; line-height:1; opacity:.5; }
 .wrap { max-width:940px; margin:0 auto; padding:0 24px 90px; }
 header.hero { padding:64px 0 30px; border-bottom:1px solid var(--hair); }
@@ -51,11 +54,13 @@ footer { margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); fo
 </head>
 <body>
 <section class="masthead">
-  <div class="brand-hero">
-    <span class="l1">Core One</span>
-    <span class="l2">Asset Management</span>
+  <div class="masthead-inner">
+    <div class="brand-hero">
+      <span class="l1">Core One</span>
+      <span class="l2">Asset Management</span>
+    </div>
+    <div class="rule"></div>
   </div>
-  <div class="rule"></div>
   <div class="scrollcue">&#8595;</div>
 </section>
 <div class="wrap">
