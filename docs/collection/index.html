@@ -5,94 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Core One Asset Management — Colección de investigación</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ink:#0d1b2a;      /* headings */
-  --body:#2c3e50;     /* body text */
-  --muted:#6b7a8d;    /* secondary */
-  --core:#00437c;     /* brand navy */
-  --hair:#dde3ec;
-  --hair2:#e0e6ee;
-  --wash:#fafbfd;
-  --paper:#ffffff;
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { margin:0; background:var(--paper); color:var(--body);
-  font-family:Georgia,"Times New Roman",serif; font-size:14px; line-height:1.7; }
+/* Same type system and palette as the collection documents (doc1–doc4) */
+:root { --ink:#22303c; --muted:#5d6b77; --core:#2e5f7f; --brass:#8a6a2b;
+  --hair:#dfe3e7; --paper:#ffffff; --wash:#f6f8f9; --warn:#a4463f; }
+* { box-sizing:border-box; } html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:400 17.5px/1.68 "Source Serif 4", Georgia, serif; }
+.wrap { max-width:940px; margin:0 auto; padding:0 24px 90px; }
+header.hero { padding:56px 0 26px; border-bottom:1px solid var(--hair); }
+.langbar { display:flex; gap:8px; align-items:center; font-family:"Source Sans 3",sans-serif; }
+.langbar .lbl { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-right:6px; }
+.langbtn { font-family:"Source Sans 3",sans-serif; font-size:14px; font-weight:600; padding:7px 16px; border:1px solid var(--hair); background:#fff; color:var(--muted); cursor:pointer; letter-spacing:.02em; }
+.langbtn.active { background:var(--core); color:#fff; border-color:var(--core); }
 
-/* ── Full-screen brand masthead ── */
-.masthead { min-height:100vh; min-height:100svh; display:flex; flex-direction:column;
-  justify-content:center; padding:0; position:relative; }
-/* same box as .wrap so the brand's left edge lines up with the content below */
-.masthead-inner { width:100%; max-width:860px; margin:0 auto; padding:0 28px; text-align:left; }
-.brand-hero { font-family:Georgia,"Times New Roman",serif; font-weight:bold; color:var(--ink);
-  line-height:1.04; letter-spacing:-.02em;
-  /* Georgia sets "Asset Management" at ~9.42em; sized so it always fits on one line */
-  font-size:clamp(26px, calc((100vw - 56px) / 9.5), 85px); }
-.brand-hero .l1, .brand-hero .l2 { display:block; }
-.masthead .rule { width:80px; height:3px; background:var(--core); margin:44px 0 0; }
-.scrollcue { position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
-  width:100%; max-width:860px; padding:0 28px; text-align:left;
-  color:var(--muted); font-size:20px; line-height:1; opacity:.5; }
+.pane { padding-top:40px; }
+.kicker { font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); }
+h1 { font-size:38px; line-height:1.14; font-weight:700; margin:12px 0 8px; letter-spacing:-.01em; }
+.lede { font-size:20px; color:var(--muted); font-weight:400; margin:0; line-height:1.45; max-width:760px; }
+.intro { font-family:"Source Sans 3",sans-serif; font-size:15.5px; color:var(--muted); line-height:1.6; margin:30px 0 0; max-width:780px; }
 
-/* ── Page ── */
-.wrap { max-width:860px; margin:0 auto; padding:0 28px 72px; }
-header.hero { padding:44px 0 24px; border-bottom:1px solid var(--hair2); }
-.langbar { display:flex; gap:8px; align-items:center; }
-.langbar .lbl { font-size:.72rem; letter-spacing:2px; text-transform:uppercase;
-  color:var(--muted); margin-right:6px; }
-.langbtn { font-family:Georgia,"Times New Roman",serif; font-size:.72rem; font-weight:bold;
-  letter-spacing:.6px; text-transform:uppercase; padding:6px 14px;
-  border:1px solid var(--core); background:#fff; color:var(--core); cursor:pointer; }
-.langbtn.active { background:var(--core); color:#fff; }
+.cards { display:grid; gap:20px; margin-top:46px; }
+.card { border:1px solid var(--hair); background:#fff; padding:26px 28px; display:grid; grid-template-columns:44px 1fr; gap:4px 20px; align-items:start; text-decoration:none; color:inherit; transition:border-color .15s, box-shadow .15s; }
+.card:hover { border-color:var(--core); box-shadow:0 2px 0 var(--core); }
+.card .num { font-family:"IBM Plex Mono",monospace; font-size:26px; font-weight:500; color:var(--brass); line-height:1; grid-row:1/3; }
+.card .eyebrow { font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.card h2 { font-size:22px; margin:0 0 6px; letter-spacing:-.01em; line-height:1.2; }
+.card p { font-family:"Source Sans 3",sans-serif; font-size:14.5px; color:var(--muted); margin:0; line-height:1.5; max-width:560px; }
+.tag { display:inline-block; font-family:"Source Sans 3",sans-serif; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--warn); border:1px solid #e4c9c6; background:#fbf7f6; padding:2px 8px; margin-top:10px; }
 
-.kicker { font-size:.75rem; font-weight:bold; letter-spacing:2px; text-transform:uppercase;
-  color:var(--core); margin:36px 0 10px; }
-h1 { font-family:Georgia,"Times New Roman",serif; font-size:1.9rem; line-height:1.25;
-  font-weight:bold; color:var(--ink); margin:0 0 14px; letter-spacing:-.01em; }
-.lede { font-size:1rem; color:var(--body); margin:0; line-height:1.7; max-width:700px; }
-.intro { font-size:.9rem; color:var(--muted); margin:16px 0 0; line-height:1.7; max-width:700px; }
-
-/* ── Document cards ── */
-.cards { display:grid; gap:16px; margin-top:34px; }
-.card { border:1px solid var(--hair); border-left:3px solid var(--core); background:var(--wash);
-  padding:18px 20px; display:grid; grid-template-columns:42px 1fr; gap:2px 16px;
-  align-items:start; text-decoration:none; color:inherit; transition:background .15s; }
-.card:hover { background:#f3f7fb; }
-.card .num { font-family:"Courier New",Courier,monospace; font-size:1.05rem; font-weight:bold;
-  color:var(--core); line-height:1.5; grid-row:1/3; }
-.card .eyebrow { font-size:.68rem; letter-spacing:1.4px; text-transform:uppercase;
-  color:var(--muted); margin-bottom:5px; }
-.card h2 { font-family:Georgia,"Times New Roman",serif; font-size:.95rem; font-weight:bold;
-  color:var(--ink); margin:0 0 6px; line-height:1.3; }
-.card p { font-size:.86rem; color:var(--body); margin:0; line-height:1.6; max-width:560px; }
-.tag { display:inline-block; font-size:.66rem; font-weight:bold; letter-spacing:1px;
-  text-transform:uppercase; color:var(--muted); border:1px solid var(--hair);
-  background:#fff; padding:2px 8px; margin-top:9px; }
-
-footer { margin-top:46px; padding-top:20px; border-top:1px solid var(--hair2);
-  font-size:.72rem; color:#8a9bb0; line-height:1.7; }
+footer { margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); font-family:"Source Sans 3",sans-serif; font-size:13px; color:var(--muted); line-height:1.6; }
 .hidden { display:none; }
-
-@media (max-width:720px) {
-  h1 { font-size:1.5rem; }
-  .card { grid-template-columns:1fr; gap:2px; }
-  .card .num { grid-row:auto; margin-bottom:4px; }
-}
+@media (max-width:720px) { h1 { font-size:30px; } .card { grid-template-columns:1fr; gap:2px; } .card .num { grid-row:auto; font-size:20px; } }
 </style>
 </head>
 <body>
-<section class="masthead">
-  <div class="masthead-inner">
-    <div class="brand-hero">
-      <span class="l1">Core One</span>
-      <span class="l2">Asset Management</span>
-    </div>
-    <div class="rule"></div>
-  </div>
-  <div class="scrollcue">&#8595;</div>
-</section>
 <div class="wrap">
 <header class="hero">
   <div class="langbar">
@@ -102,7 +50,7 @@ footer { margin-top:46px; padding-top:20px; border-top:1px solid var(--hair2);
   </div>
 </header>
 <div class="pane active" data-lang="es">
-<div class="kicker">Colección de investigación</div>
+<div class="kicker">Core One Asset Management · Colección de investigación</div>
 <h1>El capital a largo plazo: fundamentos, estructura y método</h1>
 <p class="lede">Una colección en cuatro documentos sobre en qué invertir el capital a largo plazo, cómo estructurarlo con eficiencia fiscal, y cómo extenderlo con estrategias sistemáticas — del principiante al inversor cualificado.</p>
 <p class="intro">Los documentos forman una secuencia. El primero establece los fundamentos; el segundo añade las capas de un patrimonio de cierta entidad, con un documento complementario sobre la vivienda como colateral; el tercero, reservado a inversores cualificados, detalla los programas sistemáticos. Cada uno puede leerse por separado.</p>
@@ -122,7 +70,7 @@ footer { margin-top:46px; padding-top:20px; border-top:1px solid var(--hair2);
 <footer>Documentos de carácter informativo y divulgativo. No constituyen asesoramiento de inversión, legal o fiscal, ni una oferta o solicitud. La rentabilidad pasada no garantiza resultados futuros. El documento institucional se dirige exclusivamente a inversores cualificados o profesionales.</footer>
 </div>
 <div class="pane hidden" data-lang="en">
-<div class="kicker">Research collection</div>
+<div class="kicker">Core One Asset Management · Research collection</div>
 <h1>Long-Term Capital: Foundations, Structure, and Method</h1>
 <p class="lede">A four-document collection on where to invest long-term capital, how to structure it with tax efficiency, and how to extend it with systematic strategies — from the beginner to the qualified investor.</p>
 <p class="intro">The documents form a sequence. The first establishes the foundations; the second adds the layers of a wealth of some size, with a companion document on housing as collateral; the third, reserved for qualified investors, details the systematic programs. Each can be read on its own.</p>
