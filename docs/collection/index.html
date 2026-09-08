@@ -11,6 +11,16 @@
   --hair:#dfe3e7; --paper:#ffffff; --wash:#f6f8f9; --warn:#a4463f; }
 * { box-sizing:border-box; } html { scroll-behavior:smooth; }
 body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.65 "Source Serif 4", Georgia, serif; }
+/* Full-screen brand masthead */
+.masthead { min-height:100vh; min-height:100svh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; padding:0 24px; position:relative; }
+.brand-hero { font-family:"Source Serif 4", Georgia, serif; font-weight:700; color:var(--ink);
+  text-transform:uppercase; line-height:1.02; font-size:clamp(46px, 12.5vw, 168px); }
+.brand-hero .l1 { display:block; font-size:1em; letter-spacing:.054em; }
+.brand-hero .l2 { display:block; font-size:.457em; letter-spacing:.118em; margin-top:.06em; }
+.masthead .rule { width:70px; height:3px; background:var(--core); margin:40px auto 0; }
+.scrollcue { position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  color:var(--muted); font-size:22px; line-height:1; opacity:.5; }
 .wrap { max-width:940px; margin:0 auto; padding:0 24px 90px; }
 header.hero { padding:64px 0 30px; border-bottom:1px solid var(--hair); }
 .kicker { font-family:"Source Serif 4", Georgia, serif; font-size:23px; font-weight:600; letter-spacing:-.005em; text-transform:none; color:var(--core); line-height:1.3; margin-bottom:14px; }
@@ -40,6 +50,14 @@ footer { margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); fo
 </style>
 </head>
 <body>
+<section class="masthead">
+  <div class="brand-hero">
+    <span class="l1">Core One</span>
+    <span class="l2">Asset Management</span>
+  </div>
+  <div class="rule"></div>
+  <div class="scrollcue">&#8595;</div>
+</section>
 <div class="wrap">
 <header class="hero">
   <div class="langbar">
@@ -49,7 +67,7 @@ footer { margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); fo
   </div>
 </header>
 <div class="pane active" data-lang="es">
-<div class="kicker">Core One Asset Management · Colección de investigación</div>
+<div class="kicker">Colección de investigación</div>
 <h1>El capital a largo plazo: fundamentos, estructura y método</h1>
 <p class="lede">Una colección en cuatro documentos sobre en qué invertir el capital a largo plazo, cómo estructurarlo con eficiencia fiscal, y cómo extenderlo con estrategias sistemáticas — del principiante al inversor cualificado.</p>
 <p class="intro">Los documentos forman una secuencia. El primero establece los fundamentos; el segundo añade las capas de un patrimonio de cierta entidad, con un documento complementario sobre la vivienda como colateral; el tercero, reservado a inversores cualificados, detalla los programas sistemáticos. Cada uno puede leerse por separado.</p>
@@ -69,7 +87,7 @@ footer { margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); fo
 <footer>Documentos de carácter informativo y divulgativo. No constituyen asesoramiento de inversión, legal o fiscal, ni una oferta o solicitud. La rentabilidad pasada no garantiza resultados futuros. El documento institucional se dirige exclusivamente a inversores cualificados o profesionales.</footer>
 </div>
 <div class="pane hidden" data-lang="en">
-<div class="kicker">Core One Asset Management · Research collection</div>
+<div class="kicker">Research collection</div>
 <h1>Long-Term Capital: Foundations, Structure, and Method</h1>
 <p class="lede">A four-document collection on where to invest long-term capital, how to structure it with tax efficiency, and how to extend it with systematic strategies — from the beginner to the qualified investor.</p>
 <p class="intro">The documents form a sequence. The first establishes the foundations; the second adds the layers of a wealth of some size, with a companion document on housing as collateral; the third, reserved for qualified investors, details the systematic programs. Each can be read on its own.</p>
