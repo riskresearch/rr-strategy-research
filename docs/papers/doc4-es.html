@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La vivienda como colateral — El LTV como ventaja estructural</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#22303c; --muted:#5d6b77; --core:#2e5f7f; --brass:#8a6a2b;
+  --hair:#dfe3e7; --paper:#ffffff; --wash:#f6f8f9; --warn:#a4463f; }
+* { box-sizing:border-box; } html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.65 "Source Serif 4", Georgia, serif; }
+.page { max-width:1120px; margin:0 auto; padding:0 24px; display:grid; grid-template-columns:255px minmax(0,1fr); gap:56px; }
+nav.toc { position:sticky; top:0; align-self:start; padding:44px 0 40px; font-family:"Source Sans 3",sans-serif; font-size:13.5px; max-height:100vh; overflow-y:auto; }
+nav.toc .toc-title { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); margin-bottom:14px; }
+nav.toc a { display:block; color:var(--muted); text-decoration:none; padding:4px 0 4px 12px; border-left:2px solid var(--hair); line-height:1.4; }
+nav.toc a:hover { color:var(--core); border-left-color:var(--core); }
+main { padding:44px 0 90px; min-width:0; }
+.kicker { font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); }
+h1 { font-size:40px; line-height:1.12; font-weight:700; margin:10px 0 6px; letter-spacing:-.01em; }
+.subtitle { font-size:20px; color:var(--muted); font-weight:400; margin:0 0 34px; line-height:1.4; }
+h2 { font-size:26px; margin:58px 0 6px; letter-spacing:-.005em; scroll-margin-top:20px; }
+h2 .no { font-family:"IBM Plex Mono",monospace; font-size:15px; color:var(--brass); margin-right:10px; }
+h2::after { content:""; display:block; width:44px; height:2px; background:var(--brass); margin-top:10px; }
+h3 { font-size:19px; margin:34px 0 4px; }
+p { margin:14px 0; } a { color:var(--core); } strong { font-weight:600; }
+.plate { margin:34px 0; padding:22px 22px 14px; border:1px solid var(--hair); background:#fff; }
+.plate-eyebrow { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass); margin-bottom:12px; }
+figcaption { font-family:"Source Sans 3",sans-serif; font-size:13.5px; color:var(--muted); margin-top:12px; line-height:1.5; }
+figcaption strong { color:var(--ink); } .src { display:block; margin-top:3px; font-size:12.5px; }
+table { border-collapse:collapse; width:100%; margin:26px 0; font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.45; }
+th { text-align:left; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border-bottom:2px solid var(--ink); padding:8px 10px; }
+td { border-bottom:1px solid var(--hair); padding:10px; vertical-align:top; }
+td:first-child { font-weight:600; }
+.callout { border:1px solid var(--hair); border-left:3px solid var(--warn); background:#fbf7f6; padding:16px 22px; margin:28px 0; font-size:15.5px; }
+.callout .lbl { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--warn); display:block; margin-bottom:6px; }
+.note { font-size:14px; color:var(--muted); font-family:"Source Sans 3",sans-serif; }
+ol.refs { font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.6; padding-left:20px; }
+ol.refs li { margin:8px 0; }
+.ficha { border:1px solid var(--hair); margin:22px 0; }
+.ficha summary { background:var(--wash); padding:12px 18px; font-family:"Source Sans 3",sans-serif; font-weight:700; font-size:16px; cursor:pointer; list-style:none; position:relative; }
+.ficha summary::after { content:"+"; position:absolute; right:18px; top:10px; color:var(--brass); font-weight:700; font-size:18px; }
+.ficha[open] summary { border-bottom:1px solid var(--hair); }
+.ficha[open] summary::after { content:"2"; }
+.ficha summary::-webkit-details-marker { display:none; }
+.ficha dl { display:grid; grid-template-columns:200px 1fr; margin:0; font-family:"Source Sans 3",sans-serif; font-size:14px; line-height:1.5; }
+.ficha dt { padding:9px 18px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass); border-bottom:1px solid var(--hair); }
+.ficha dd { margin:0; padding:9px 18px 9px 0; border-bottom:1px solid var(--hair); }
+.ficha dt:last-of-type, .ficha dd:last-of-type { border-bottom:none; }
+.calc { border:1px solid var(--hair); background:var(--wash); padding:24px 26px; margin:30px 0; font-family:"Source Sans 3",sans-serif; }
+.calc h4 { margin:0 0 4px; font-size:17px; }
+.calc .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; margin:18px 0; }
+.calc label { display:block; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.calc input[type=number] { width:100%; padding:8px 10px; border:1px solid var(--hair); font:600 15px "Source Sans 3",sans-serif; color:var(--ink); background:#fff; }
+.calc input[type=range] { width:100%; accent-color:var(--core); }
+.calc .val { font-weight:700; color:var(--core); }
+.calc .out { background:#fff; border:1px solid var(--hair); padding:16px 20px; margin-top:14px; }
+.calc .out .big { font-size:24px; font-weight:700; color:var(--core); }
+.calc .bar { display:flex; height:26px; margin:10px 0 4px; border:1px solid var(--hair); overflow:hidden; font-size:11.5px; color:#fff; font-weight:700; }
+.calc .bar div { display:flex; align-items:center; justify-content:center; white-space:nowrap; overflow:hidden; }
+.calc .legend { font-size:12.5px; color:var(--muted); }
+@media (max-width:900px) { .page { grid-template-columns:1fr; gap:0; } nav.toc { position:static; max-height:none; border-bottom:1px solid var(--hair); padding:28px 0 18px; } h1 { font-size:31px; } .calc .grid { grid-template-columns:1fr; } .ficha dl { grid-template-columns:1fr; } .ficha dt { border-bottom:none; padding-bottom:0; } .ficha dd { padding-left:18px; } }
+@media print { nav.toc { display:none; } .page { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="toc">
+  <div class="toc-title">Contenido</div>
+  <a href="#s1">1. Objeto y planteamiento</a>
+  <a href="#s2">2. El coste de la propiedad inmobiliaria</a>
+  <a href="#s3">3. La capacidad de financiación como activo</a>
+  <a href="#s4">4. Vivienda directa o vehículos cotizados</a>
+  <a href="#s5">5. Cómo se concede una hipoteca</a>
+  <a href="#s6">6. La financiación del conjunto de la operación</a>
+  <a href="#s7">7. La operación de inversión: rentas y apreciación</a>
+  <a href="#s8">8. Síntesis</a>
+  <a href="#refs">Referencias</a>
+</nav>
+<main>
+
+<div class="kicker">Documento complementario · Vivienda y financiación</div>
+<h1>La vivienda como colateral</h1>
+<p class="subtitle">La capacidad de financiación de la vivienda como ventaja patrimonial.</p>
+
+<h2 id="s1"><span class="no">1.</span>Objeto y planteamiento</h2>
+<p>En el documento de arquitectura patrimonial, la vivienda de inversión se clasifica como un activo satélite: concentra en un único bien, ilíquido e indivisible, lo que un índice distribuye entre miles de empresas, y soporta la fiscalidad más gravosa y los mayores costes de transacción del conjunto de clases de activo. Ese análisis es correcto cuando la vivienda se evalúa como fuente de rentabilidad. El presente documento examina una dimensión distinta, que aquella evaluación no recoge y en la que la vivienda ocupa una posición singular: su capacidad para servir de colateral de financiación.</p>
+<p>El planteamiento puede formularse como una pregunta comparativa. Entre los activos accesibles a un inversor particular, ninguno permite obtener financiación por una fracción tan elevada de su valor, a plazos tan largos y en condiciones tan estables como el inmueble residencial. Esa propiedad, y no la rentabilidad esperada del activo, constituye la razón económica por la que la vivienda mantiene un lugar propio en la planificación patrimonial. El documento cuantifica el coste de la propiedad, examina la capacidad de financiación que la distingue, compara la inversión directa con los vehículos cotizados, y describe cómo se conceden y estructuran las hipotecas en la práctica.</p>
+
+<h2 id="s2"><span class="no">2.</span>El coste de la propiedad inmobiliaria</h2>
+<p>La contrapartida de la inversión inmobiliaria es elevada y debe cuantificarse con precisión. La adquisición y el mantenimiento de un inmueble incorporan costes que un activo financiero no soporta: el impuesto de transmisiones patrimoniales, que oscila entre el 6 % y el 11 % en la compra de vivienda usada, o el IVA en la obra nueva; los gastos de notaría, registro y gestión; el impuesto sobre bienes inmuebles de periodicidad anual; los costes de conservación y las derramas de la comunidad; y, en la enajenación, una nueva tributación de la plusvalía y el impuesto municipal sobre el incremento de valor. El coste conjunto de entrada y salida de una operación inmobiliaria se sitúa con frecuencia entre el 10 % y el 15 % del valor del inmueble, frente a las escasas centésimas de un fondo cotizado. A ello se añaden la iliquidez, que puede exigir meses para materializar una venta, y la indivisibilidad del activo.</p>
+<p>Si el análisis concluyera aquí, la vivienda de inversión resultaría inferior a un núcleo indexado global como instrumento de acumulación. La evaluación queda, sin embargo, incompleta, porque omite el activo que el inmueble genera y que ningún otro proporciona en la misma medida: una capacidad de crédito amplia, estable y de coste reducido.</p>
+
+<h2 id="s3"><span class="no">3.</span>La capacidad de financiación como activo</h2>
+<p>El <a href="https://www.investopedia.com/terms/l/loantovalueratio.asp">loan-to-value</a> (LTV) expresa la fracción del valor de un activo que puede financiarse con deuda garantizada por él. Es la magnitud que revela la asimetría entre la vivienda y las demás clases de activo: el inmueble residencial admite el LTV más elevado accesible a un particular y, a diferencia del resto, su financiación no se revisa a la baja cuando el precio del activo desciende.</p>
+<figure class="plate"><div class="plate-eyebrow">Figura 1</div><svg xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto" data-w="577.587543pt" data-h="289.278344pt" viewBox="0 0 577.587543 289.278344" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-01T15:22:14.087415</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 289.278344 
+L 577.587543 289.278344 
+L 577.587543 0 
+L 0 0 
+L 0 289.278344 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 48.403906 255.246203 
+L 517.123906 255.246203 
+L 517.123906 22.398203 
+L 48.403906 22.398203 
+L 48.403906 255.246203 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 48.403906 130.506203 
+L 517.123906 130.506203 
+L 517.123906 109.716203 
+L 48.403906 109.716203 
+z
+" clip-path="url(#p30f57b395a)" style="fill: #a4463f; opacity: 0.08; stroke: #a4463f; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mb26767f943" d="M 0 0 
+L 0 3.5 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb26767f943" x="69.709361" y="255.246203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(49.2569 269.464719)">Vivienda</text>
+      <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(45.44354 280.102641)">(hipoteca)</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mb26767f943" x="282.763906" y="255.246203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(257.487227 269.464719)">Cartera de</text>
+      <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(268.45082 280.102641)">bonos</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mb26767f943" x="495.818452" y="255.246203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(470.474233 269.464719)">Acciones y</text>
+      <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #22303c" transform="translate(469.598452 280.102641)">fondos/ETF</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <path d="M 48.403906 255.246203 
+L 517.123906 255.246203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_5">
+      <defs>
+       <path id="md5a9a4a983" d="M 0 0 
+L -3.5 0 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md5a9a4a983" x="48.403906" y="255.246203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="259.235383" transform="rotate(-0 41.403906 259.235383)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <path d="M 48.403906 213.666203 
+L 517.123906 213.666203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#md5a9a4a983" x="48.403906" y="213.666203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="217.655383" transform="rotate(-0 41.403906 217.655383)">20</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8">
+      <path d="M 48.403906 172.086203 
+L 517.123906 172.086203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#md5a9a4a983" x="48.403906" y="172.086203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="176.075383" transform="rotate(-0 41.403906 176.075383)">40</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <path d="M 48.403906 130.506203 
+L 517.123906 130.506203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#md5a9a4a983" x="48.403906" y="130.506203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="134.495383" transform="rotate(-0 41.403906 134.495383)">60</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_12">
+      <path d="M 48.403906 88.926203 
+L 517.123906 88.926203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#md5a9a4a983" x="48.403906" y="88.926203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="92.915383" transform="rotate(-0 41.403906 92.915383)">80</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_14">
+      <path d="M 48.403906 47.346203 
+L 517.123906 47.346203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #d9dde1; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#md5a9a4a983" x="48.403906" y="47.346203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #22303c" x="41.403906" y="51.335383" transform="rotate(-0 41.403906 51.335383)">100</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="15.178359" y="138.822203" transform="rotate(-90 15.178359 138.822203)">LTV de financiación accesible (%)</text>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 69.709361 88.926203 
+L 69.709361 47.346203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #2e5f7f; stroke-opacity: 0.92; stroke-width: 14; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 282.763906 109.716203 
+L 282.763906 68.136203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #8a9aa6; stroke-opacity: 0.92; stroke-width: 14; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 495.818452 151.296203 
+L 495.818452 130.506203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke: #8a9aa6; stroke-opacity: 0.92; stroke-width: 14; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 48.403906 120.111203 
+L 517.123906 120.111203 
+" clip-path="url(#p30f57b395a)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #a4463f"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 48.403906 255.246203 
+L 48.403906 22.398203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 48.403906 255.246203 
+L 517.123906 255.246203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="69.709361" y="41.109203" transform="rotate(-0 69.709361 41.109203)">80–100%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="282.763906" y="61.899203" transform="rotate(-0 282.763906 61.899203)">70–90%</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="495.818452" y="124.269203" transform="rotate(-0 495.818452 124.269203)">50–60%</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 8.4px; font-family: 'DejaVu Sans'; fill: #a4463f" transform="translate(511.468105 107.586541)">zona típica de</text>
+    <text style="font-size: 8.4px; font-family: 'DejaVu Sans'; fill: #a4463f" transform="translate(488.461293 116.992703)">llamada de margen</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="282.763906" y="16.398203" transform="rotate(-0 282.763906 16.398203)">LTV accesible a un particular y exposición a llamada de margen</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_6">
+     <path d="M 288.177969 37.336797 
+L 306.177969 37.336797 
+L 306.177969 31.036797 
+L 288.177969 31.036797 
+z
+" style="fill: #2e5f7f; stroke: #2e5f7f; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="313.377969" y="37.336797" transform="rotate(-0 313.377969 37.336797)">sin llamada de margen</text>
+    </g>
+    <g id="patch_7">
+     <path d="M 288.177969 50.547109 
+L 306.177969 50.547109 
+L 306.177969 44.247109 
+L 288.177969 44.247109 
+z
+" style="fill: #8a9aa6; stroke: #8a9aa6; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start" x="313.377969" y="50.547109" transform="rotate(-0 313.377969 50.547109)">con llamada de margen (marca a mercado)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p30f57b395a">
+   <rect x="48.403906" y="22.398203" width="468.72" height="232.848"/>
+  </clipPath>
+ </defs>
+</svg><figcaption><strong>LTV de financiación accesible a un inversor particular y exposición a llamada de margen, por clase de activo. La vivienda combina el LTV más elevado con la ausencia de valoración diaria a mercado; las carteras financieras admiten LTV inferiores y quedan sujetas a llamada de margen.</strong> <span class="src">Elaboración propia a partir de condiciones habituales de financiación hipotecaria y de crédito con garantía de valores. Los rangos son indicativos y dependen del perfil del prestatario y de la entidad.</span></figcaption></figure>
+<p>Una hipoteca residencial ordinaria financia en torno al 80 % del valor de tasación, y determinadas estructuras —que se examinan en la sección 6— permiten alcanzar hasta el 100 % del precio de adquisición. Una cartera de renta fija de calidad admite un crédito con garantía que puede aproximarse al 90 % de su valor; una cartera de acciones o de fondos, alrededor del 50 % al 60 %. Estas dos últimas, no obstante, presentan una diferencia determinante respecto de la hipoteca: la cartera pignorada se valora diariamente a mercado, y si su valor cae de modo que el LTV supera el umbral de mantenimiento, el prestamista puede exigir garantías adicionales o liquidar la posición. Es la <a href="https://www.investopedia.com/terms/m/margincall.asp">llamada de margen</a>. La financiación hipotecaria carece de este mecanismo.</p>
+
+<h2 id="s4"><span class="no">4.</span>Vivienda directa o vehículos cotizados</h2>
+<p>La exposición al mercado inmobiliario admite dos vías: la adquisición directa de un inmueble o la inversión en vehículos cotizados especializados, como los <a href="https://www.investopedia.com/terms/r/reit.asp">REIT</a> —en España, las SOCIMI—. Ambas ofrecen exposición a la misma clase de activo, pero difieren en aspectos que conviene contrastar de forma neutral, porque la elección depende del objetivo del inversor.</p>
+<p>El vehículo cotizado aporta liquidez inmediata, diversificación entre numerosos inmuebles, divisibilidad y gestión profesional, sin las cargas operativas de la propiedad directa. Estas ventajas son reales, pero conviene examinar por qué, pese a invertir en el mismo activo subyacente, el REIT no reproduce las propiedades que hacen atractiva a la vivienda directa. Concurren cuatro razones estructurales.</p>
+<p>La primera es <strong>fiscal</strong>. El régimen que define a estos vehículos —el REIT en su formulación internacional, la SOCIMI en España— les obliga a distribuir cada año la mayor parte de sus beneficios para acceder a la exención en el impuesto de sociedades. Esa distribución obligatoria se traduce en un dividendo que el inversor percibe y por el que tributa anualmente, de modo que no existe la posibilidad de diferir la ganancia acumulándola dentro del vehículo. Se pierde así el mecanismo que, en la inversión directa mantenida a largo plazo, permite que la revalorización capitalice sin tributación hasta la venta.</p>
+<p>La segunda es la <strong>ausencia de apalancamiento propio del inversor</strong>, que es el punto central de este documento. El REIT se apalanca en su propio balance, a nivel corporativo, pero el partícipe no obtiene por poseer sus acciones una capacidad de financiación distinta de la de cualquier otro valor cotizado: sus participaciones se pignoran con un LTV moderado, del orden del 50 % al 60 %, y quedan sujetas a llamada de margen. La vivienda directa, en cambio, confiere al propio inversor el acceso a una hipoteca del 80 % al 100 % sin valoración diaria a mercado. El inversor en REIT recibe rentas inmobiliarias; el propietario directo recibe rentas inmobiliarias y, además, la capacidad de financiación que ningún otro activo iguala.</p>
+<p>La tercera es el <strong>comportamiento en el mercado</strong>. Aunque su activo subyacente sea el inmueble, el REIT cotiza en bolsa y se comporta como renta variable: su volatilidad es comparable a la del índice de acciones, y su correlación con este se eleva precisamente en los episodios de tensión, cuando la diversificación sería más valiosa. El precio de la vivienda directa, al no valorarse a diario, no transmite esa volatilidad al patrimonio del propietario ni puede desencadenar ventas forzadas.</p>
+<p>La cuarta es la <strong>doble capa de costes y de agencia</strong>. El inversor en REIT soporta los gastos de gestión del vehículo y depende de las decisiones de sus administradores —endeudamiento corporativo, política de adquisiciones, ampliaciones de capital que pueden diluir al partícipe—, sobre las que no tiene control. El propietario directo asume los costes operativos del inmueble, pero conserva el control íntegro de la operación y de su financiación.</p>
+<p>La conclusión no es que el REIT sea un mal instrumento: para obtener exposición líquida y diversificada al sector inmobiliario, sin gestión operativa, es más eficiente que la compra de un piso. Pero no reproduce la propiedad que motiva la inversión directa en vivienda —una capacidad de apalancamiento elevada, estable e inmune a la llamada de margen—, y por esa razón ambos instrumentos responden a objetivos distintos y no son sustitutivos. En exposición pura al inmobiliario, el vehículo cotizado es preferible; en capacidad de financiación estable, la vivienda directa no tiene alternativa.</p>
+
+<h2 id="s5"><span class="no">5.</span>Cómo se concede una hipoteca</h2>
+<p>La concesión hipotecaria descansa en tres criterios que las entidades evalúan de forma conjunta. El primero es la <strong>capacidad de pago</strong>, medida principalmente por la ratio de esfuerzo, esto es, la proporción de los ingresos netos mensuales destinada al servicio de la deuda; como referencia general, las entidades suelen situar el límite prudencial en torno al 30 %–35 % de los ingresos. El segundo es el <strong>LTV</strong>, la relación entre el importe del préstamo y el menor de dos valores, el de tasación y el de compraventa; el estándar se sitúa en el 80 % para vivienda habitual, y por debajo para segunda vivienda o inversión. El tercero es el <strong>perfil del prestatario</strong>: estabilidad y origen de los ingresos, historial crediticio, ahorro acumulado y garantías adicionales disponibles.</p>
+<p>La cuota resultante depende del capital prestado, del plazo y del tipo de interés aplicado. El alargamiento del plazo reduce la cuota mensual pero incrementa el coste total en intereses; la relación entre ambos no es lineal, de modo que los primeros años de plazo adicional reducen la cuota de forma apreciable, mientras que los últimos apenas la modifican. La entidad concede el préstamo cuando los tres criterios se satisfacen simultáneamente: un LTV bajo no compensa una capacidad de pago insuficiente, ni a la inversa.</p>
+<p class="note">Este apartado recoge los criterios generales que aplican las entidades en España; los umbrales concretos varían por entidad, producto y momento del ciclo, y deben confirmarse en cada caso. Su descripción se apoya en la experiencia profesional del autor en la gestión hipotecaria.</p>
+
+<h2 id="s6"><span class="no">6.</span>La financiación del conjunto de la operación</h2>
+<p>La hipoteca estándar financia en torno al 80 % del valor, de modo que la operación completa exige cubrir el 20 % restante y los gastos de compra, que suman en conjunto alrededor de un 30 % del valor del inmueble. La forma de cubrir esa fracción no financiada por la hipoteca determina si la operación es viable sin desembolsar ahorro propio.</p>
+<figure class="plate"><div class="plate-eyebrow">Figura 2</div><svg xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto" data-w="486.460313pt" data-h="315.966646pt" viewBox="0 0 486.460313 315.966646" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-01T15:22:14.153571</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 315.966646 
+L 486.460313 315.966646 
+L 486.460313 0 
+L 0 0 
+L 0 315.966646 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 10.540312 210.894203 
+L 479.260313 210.894203 
+L 479.260313 22.398203 
+L 10.540312 22.398203 
+L 10.540312 210.894203 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 10.540312 155.916203 
+L 342.377481 155.916203 
+L 342.377481 77.376203 
+L 10.540312 77.376203 
+z
+" clip-path="url(#p8106a9a9b7)" style="fill: #2e5f7f"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 342.377481 155.916203 
+L 425.336773 155.916203 
+L 425.336773 77.376203 
+L 342.377481 77.376203 
+z
+" clip-path="url(#p8106a9a9b7)" style="fill: #b08a3e"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 425.336773 155.916203 
+L 470.964383 155.916203 
+L 470.964383 77.376203 
+L 425.336773 77.376203 
+z
+" clip-path="url(#p8106a9a9b7)" style="fill: #8a9aa6"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mf9ff69d083" d="M 0 0 
+L 0 3.5 
+" style="stroke: #22303c; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf9ff69d083" x="10.540312" y="210.894203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="10.540312" y="225.872562" transform="rotate(-0 10.540312 225.872562)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mf9ff69d083" x="93.499605" y="210.894203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="93.499605" y="225.872562" transform="rotate(-0 93.499605 225.872562)">20</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mf9ff69d083" x="176.458897" y="210.894203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="176.458897" y="225.872562" transform="rotate(-0 176.458897 225.872562)">40</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mf9ff69d083" x="259.418189" y="210.894203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="259.418189" y="225.872562" transform="rotate(-0 259.418189 225.872562)">60</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mf9ff69d083" x="342.377481" y="210.894203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="342.377481" y="225.872562" transform="rotate(-0 342.377481 225.872562)">80</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mf9ff69d083" x="425.336773" y="210.894203" style="fill: #22303c; stroke: #22303c; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="425.336773" y="225.872562" transform="rotate(-0 425.336773 225.872562)">100</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="244.900313" y="240.034594" transform="rotate(-0 244.900313 240.034594)">% sobre el valor del inmueble</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_6">
+    <path d="M 10.540312 210.894203 
+L 10.540312 22.398203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 10.540312 210.894203 
+L 479.260313 210.894203 
+" style="fill: none; stroke: #22303c; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="176.458897" y="119.267609" transform="rotate(-0 176.458897 119.267609)">80%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="383.857127" y="119.267609" transform="rotate(-0 383.857127 119.267609)">20%</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="448.150578" y="119.267609" transform="rotate(-0 448.150578 119.267609)">11%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22303c" x="244.900313" y="16.398203" transform="rotate(-0 244.900313 16.398203)">Coste total de adquisición: qué cubre la hipoteca y qué debe aportarse</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_8">
+     <path d="M 112.451578 277.947739 
+L 129.651578 277.947739 
+L 129.651578 271.927739 
+L 112.451578 271.927739 
+z
+" style="fill: #2e5f7f"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; text-anchor: start" x="136.531578" y="277.947739" transform="rotate(-0 136.531578 277.947739)">Hipoteca (80% del valor)</text>
+    </g>
+    <g id="patch_9">
+     <path d="M 112.451578 290.914927 
+L 129.651578 290.914927 
+L 129.651578 284.894927 
+L 112.451578 284.894927 
+z
+" style="fill: #b08a3e"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; text-anchor: start" x="136.531578" y="290.914927" transform="rotate(-0 136.531578 290.914927)">Aportación propia o financiación complementaria (20%)</text>
+    </g>
+    <g id="patch_10">
+     <path d="M 112.451578 303.538114 
+L 129.651578 303.538114 
+L 129.651578 297.518114 
+L 112.451578 297.518114 
+z
+" style="fill: #8a9aa6"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 8.6px; font-family: 'DejaVu Sans'; text-anchor: start" x="136.531578" y="303.538114" transform="rotate(-0 136.531578 303.538114)">Gastos de compra (~10–12%)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8106a9a9b7">
+   <rect x="10.540312" y="22.398203" width="468.72" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg><figcaption><strong>Descomposición del coste total de adquisición sobre el valor del inmueble: el tramo cubierto por una hipoteca estándar al 80 %, la fracción no financiada por ella, y los gastos de compra. La suma a aportar por vías distintas de la hipoteca principal se sitúa en torno al 30 % del valor.</strong> <span class="src">Elaboración propia. Los gastos de compra (impuestos, notaría, registro, gestión) se estiman entre el 10 % y el 12 % en vivienda usada.</span></figcaption></figure>
+<p>Existen estructuras que permiten financiar la totalidad de la operación, o la parte no cubierta por la hipoteca principal. Entre las habituales figuran la aportación de una <strong>segunda garantía</strong> —otro inmueble libre de cargas, propio o de un familiar, que amplía el colateral y eleva el LTV efectivo—; la <strong>combinación de productos</strong>, en la que un préstamo complementario cubre la entrada y los gastos; y determinadas operaciones sobre inmuebles de origen bancario, en las que la entidad financia porcentajes superiores al estándar. Cada una de estas vías incrementa el endeudamiento total y, por tanto, el riesgo, y su viabilidad depende estrechamente de la capacidad de pago del prestatario, que sigue siendo el criterio determinante.</p>
+
+<h2 id="s7"><span class="no">7.</span>La operación de inversión: rentas y apreciación</h2>
+<p>La lógica económica de la vivienda de inversión se articula en dos fases. Durante la tenencia, el inmueble se destina al arrendamiento, y la renta percibida atiende el servicio de la hipoteca; en la medida en que la renta neta cubre la cuota, el inquilino financia, de hecho, la amortización del préstamo, y el patrimonio neto del inversor crece a medida que se reduce la deuda pendiente. Al término del horizonte, la enajenación del inmueble materializa la apreciación acumulada del valor, una vez cancelada la deuda restante. El rendimiento de la operación combina, así, la reducción progresiva del pasivo financiada por las rentas y la revalorización del activo.</p>
+<p>El apalancamiento amplifica ambos efectos. Puesto que la hipoteca financia la mayor parte del precio, la apreciación del inmueble se calcula sobre el valor total, mientras que el capital efectivamente aportado por el inversor es una fracción de aquél; la rentabilidad sobre los fondos propios resulta, en consecuencia, superior a la revalorización del inmueble. Esta amplificación opera en ambos sentidos: una caída del valor reduce el patrimonio neto en la misma proporción aumentada, si bien la ausencia de llamada de margen impide que ese descenso fuerce una venta anticipada mientras se atienda la cuota. La operación es, por su naturaleza, de largo plazo, y su resultado depende de que las rentas cubran de forma sostenida el servicio de la deuda a lo largo de todo el horizonte.</p>
+
+<h2 id="s8"><span class="no">8.</span>Síntesis</h2>
+<p>El juicio equilibrado reúne las dos caras del activo. La vivienda soporta la fiscalidad y los costes de transacción más elevados de todas las clases de activo, y como instrumento de acumulación no compite con un núcleo indexado global. Es, al mismo tiempo, el mejor colateral disponible para un inversor particular: el de mayor LTV, el de financiación más estable a largo plazo entre la deuda con garantía real, y el único inmune a la llamada de margen. Ambas afirmaciones son simultáneamente ciertas, y la aparente contradicción se resuelve distinguiendo funciones: la vivienda no es un motor de rentabilidad eficiente, pero constituye un cimiento patrimonial de primer orden.</p>
+<p>De ello se sigue su lugar en la arquitectura patrimonial. La vivienda habitual cubre el pasivo real que representa el alquiler futuro, fijando su coste con la financiación más estable disponible. La vivienda de inversión, adquirida con apalancamiento y destinada al arrendamiento, permite que las rentas amorticen la deuda y aspira a la apreciación del activo a largo plazo. Y la capacidad de crédito que el inmueble genera, empleada con la disciplina de LTV prudente que rige el crédito sobre el núcleo financiero, constituye una fuente de liquidez estructural que no obliga a enajenar activos productivos. El diseño concreto de estas operaciones —el LTV prudente en cada caso, la combinación de productos que lo hace posible y su encaje con el resto del patrimonio— corresponde al análisis individual de cada situación.</p>
+
+<p class="note">Advertencia. Este documento tiene carácter divulgativo e informativo; no constituye asesoramiento de inversión, fiscal, hipotecario ni legal, ni una recomendación personalizada. Las condiciones de financiación, los porcentajes de LTV y la fiscalidad dependen de cada entidad, jurisdicción y circunstancia personal, varían con el tiempo y deben confirmarse con los profesionales correspondientes. El endeudamiento sobre cualquier activo incrementa el riesgo y puede amplificar las pérdidas.</p>
+
+<h2 id="refs">Referencias</h2>
+<ol class="refs">
+<li>Banco de España — <a href="https://www.bde.es/webbe/es/estadisticas/">estadísticas de tipos y crédito hipotecario</a> y <a href="https://clientebancario.bde.es/">Portal del Cliente Bancario</a>.</li>
+<li>Jordà, Knoll, Kuvshinov, Schularick &amp; Taylor — <a href="https://academic.oup.com/qje/article/134/3/1225/5435538">«The Rate of Return on Everything, 1870–2015»</a>, QJE 2019.</li>
+<li>Investopedia — <a href="https://www.investopedia.com/terms/l/loantovalueratio.asp">loan-to-value</a>, <a href="https://www.investopedia.com/terms/m/margincall.asp">llamada de margen</a>, <a href="https://www.investopedia.com/terms/r/reit.asp">REIT</a>, <a href="https://www.investopedia.com/terms/s/securitiesbased-lending.asp">crédito con garantía de valores</a>.</li>
+</ol>
+
+</main>
+</div>
+</body>
+</html>

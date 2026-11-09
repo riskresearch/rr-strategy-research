@@ -1,6 +1,6 @@
 project:
   type: default
-  output-dir: ../docs/strategy
+  output-dir: ../docs/programs
 
 format:
   html:

@@ -1,0 +1,46 @@
+---
+title: "S&P 500 Core GTVP Allocation (SCGA) — Strategy Document"
+subtitle: "Core One Research | November 2026"
+---
+
+## 1. Program summary
+
+S&P 500 Core GTVP (SCGA) is a tax-aware, long-biased program that holds a permanent physical S&P 500 core — a UCITS ETF that is never sold — and manages market exposure through a capital-efficient S&P 500 futures overlay. The objective is to compound with the U.S. equity market while deferring capital-gains realization on the core and adjusting risk through the overlay rather than by trading the underlying. Net exposure is held within a controlled range around a fully-invested equity baseline.
+
+## 2. Investment thesis / source of return
+
+The program rests on two ideas. The first is the equity risk premium — the durable, long-run compensation for owning productive corporate assets — which the physical core captures directly and permanently. The second is that *not selling* is itself a source of after-tax return: every disposal of an appreciated asset crystallizes a tax liability that permanently leaves the compounding base, so a structure that raises and lowers market exposure through derivatives — instead of selling the underlying — keeps more capital working over time. Holding the core indefinitely and shaping risk with a capital-efficient overlay is therefore both an investment decision and an after-tax efficiency decision. These are structural effects, not a market forecast.
+
+## 3. Universe & instruments
+
+The physical core is a broad, low-cost S&P 500 UCITS ETF (for example, CSPX) listed on the London Stock Exchange and denominated in U.S. dollars. A UCITS ETF is chosen for its regulatory suitability, low ongoing cost, and appropriateness for an indefinite hold. Exposure is adjusted with S&P 500 futures — the standard E-mini (ES) and the Micro E-mini (MES) — which provide deep liquidity and capital-efficient, precise control of net exposure without disturbing the core.
+
+The program can be deployed as the physical-core hybrid described here, or, for investors who cannot or prefer not to custody the ETF directly, as a futures-only implementation that replicates the same exposure profile through a dedicated investment vehicle.
+
+## 4. Methodology (conceptual)
+
+The approach has three elements, described in mechanism only.
+
+**Core discipline.** The physical core is purchased once and held; its share count only ever grows. It is never sold to manage risk.
+
+**Overlay philosophy.** A futures overlay sits on top of the fully-invested core and moves net exposure up or down around it, guided by the same risk-adjusted, downside-volatility-aware philosophy used across the firm's programs — adding exposure in calm, favorable conditions and reducing it when conditions deteriorate. The overlay is sized relative to total equity so it cannot run away as the core compounds.
+
+**Reinvestment.** Because listed futures settle in cash daily, realized overlay gains accumulate as real cash rather than paper gains; at a regular cadence, cash above a maintained buffer is swept into additional core shares, compounding the permanent position. Overlay losses are carried in the futures cash ledger against that buffer rather than forcing any sale of the core.
+
+## 5. Risk management
+
+The defining risk discipline is the **never-sell Spot Core**: the physical position is a hard structural invariant and is never trimmed to manage risk. Risk is instead managed by the overlay, which reduces net exposure in adverse conditions — but the overlay reduces equity risk, it does not eliminate it, and the program participates in bear markets. A maintained cash buffer absorbs ordinary day-to-day overlay losses before any margin borrowing against the pledged core is required. Net exposure and gross leverage are both bounded.
+
+## 6. Capacity & minimum investment
+
+The program is not currently offered to the public. Any future implementation for third parties — for example through a separately managed account or a fund vehicle — would be carried out only through, or together with, appropriately authorised firms. The suggested minimum for an effective deployment is approximately **US$500,000** — enough for positions to be expressed in whole contracts with acceptable granularity and for execution and financing costs to remain proportionate. Capacity is large: the markets traded are among the most liquid listed instruments in the world, so the strategy can scale materially before market impact becomes a consideration. We are also open to discussing additional, more tax-efficient vehicles where they are appropriate.
+
+## 7. Track record
+
+The program runs as a forward test in an Interactive Brokers Financial Advisor **paper (simulated) sub-account**, and its record is published without adjustment. Forward-test performance, current positioning, and a same-period benchmark comparison are published on the program's performance-attribution page: **[SCGA performance attribution](scga-performance.html)**. Because the live sample currently spans only a short period, statistics that require a longer window are shown as *accumulating* rather than annualized.
+
+## 8. Key risks & disclaimers
+
+::: {.callout-warning}
+This program uses leverage and can experience meaningful drawdowns; it is designed for long-horizon investors who can tolerate equity-like volatility. It is not a drawdown-defense product and will participate in falling markets. The futures overlay generates its own taxable results, and the tax treatment of the structure depends entirely on an investor's jurisdiction and circumstances — nothing here is tax advice. Systematic models can underperform, and any model is a simplification that may behave unexpectedly in conditions unlike those that informed its design. Live and simulated results are not a guarantee of future performance; past performance — whether hypothetical or actual — does not predict future results. Nothing in this document is investment, legal, or tax advice, nor an offer to sell or a solicitation to buy any security or fund interest. All figures are in U.S. dollars unless stated otherwise.
+:::
