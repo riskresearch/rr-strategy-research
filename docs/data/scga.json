@@ -2,13 +2,13 @@
  "program": "SCGA",
  "account_type": "paper",
  "inception": "2026-07-07",
- "as_of": "2026-11-19",
- "trading_days": 91,
- "total_return_pct": -7.04,
+ "as_of": "2026-11-20",
+ "trading_days": 92,
+ "total_return_pct": -6.11,
  "max_drawdown_pct": -11.27,
  "benchmark": "SPY (dividend-adjusted)",
- "bench_total_return_pct": -1.8,
- "bench_max_drawdown_pct": -5.99,
+ "bench_total_return_pct": -2.1,
+ "bench_max_drawdown_pct": -6.28,
  "series": {
   "dates": [
    "2026-07-07",
@@ -101,7 +101,8 @@
    "2026-11-16",
    "2026-11-17",
    "2026-11-18",
-   "2026-11-19"
+   "2026-11-19",
+   "2026-11-20"
   ],
   "program": [
    0.0,
@@ -194,7 +195,8 @@
    -5.74,
    -5.52,
    -7.16,
-   -7.04
+   -7.04,
+   -6.11
   ],
   "benchmark": [
    0.0,
@@ -286,9 +288,10 @@
    1.14,
    -0.79,
    -1.8,
-   -1.8,
-   -1.8
+   -2.1,
+   -2.1,
+   -2.1
   ]
  },
- "updated": "2026-11-19"
+ "updated": "2026-11-20"
 }
