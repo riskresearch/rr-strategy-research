@@ -7,8 +7,8 @@
  "total_return_pct": -6.11,
  "max_drawdown_pct": -11.27,
  "benchmark": "SPY (dividend-adjusted)",
- "bench_total_return_pct": -4.02,
- "bench_max_drawdown_pct": -8.12,
+ "bench_total_return_pct": -7.51,
+ "bench_max_drawdown_pct": -11.46,
  "series": {
   "dates": [
    "2026-07-07",
@@ -290,8 +290,8 @@
    -1.8,
    -2.1,
    -4.02,
-   -4.02
+   -7.51
   ]
  },
- "updated": "2026-11-21"
+ "updated": "2026-11-22"
 }
