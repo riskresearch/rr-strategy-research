@@ -2,12 +2,12 @@
  "program": "SCRA",
  "account_type": "paper",
  "inception": "2026-07-07",
- "as_of": "2026-11-24",
- "trading_days": 94,
- "total_return_pct": -7.19,
+ "as_of": "2026-11-25",
+ "trading_days": 95,
+ "total_return_pct": -7.58,
  "max_drawdown_pct": -15.37,
  "benchmark": "SPY (dividend-adjusted)",
- "bench_total_return_pct": -3.63,
+ "bench_total_return_pct": -3.91,
  "bench_max_drawdown_pct": -11.46,
  "series": {
   "dates": [
@@ -104,7 +104,8 @@
    "2026-11-19",
    "2026-11-20",
    "2026-11-23",
-   "2026-11-24"
+   "2026-11-24",
+   "2026-11-25"
   ],
   "program": [
    0.0,
@@ -200,7 +201,8 @@
    -6.34,
    -7.71,
    -8.42,
-   -7.19
+   -7.19,
+   -7.58
   ],
   "benchmark": [
    0.0,
@@ -296,8 +298,9 @@
    -4.02,
    -7.51,
    -3.16,
-   -3.63
+   -3.63,
+   -3.91
   ]
  },
- "updated": "2026-11-25"
+ "updated": "2026-11-26"
 }
